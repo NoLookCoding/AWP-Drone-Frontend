@@ -9,6 +9,7 @@ import Car from './pages/store/Car';
 import User from './pages/UserInfo';
 import NoPage from './pages/NoPage';
 import Header from './pages/Header';
+import Footer from './pages/Footer';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="*" element={<NoPage/>}/>
       </Route>
     </Routes>
+    <Footer/>
     </BrowserRouter>
   );
 }

@@ -5,41 +5,40 @@ const Header = () => {
     return (
         <>
         <div className="header-frame">
+
+        <div className="header-top-frame">
     
         </div>
-        <table>
-            <tr>
-                <td> 
+        <div className="header-nav-frame">
+            <div className="header-name"> Drones</div>
+            <div className="header-nav-button-frame">
                     <Link to = "/">
-                    <button>
+                    <button className="header-nav-button-item">
                         Definition
                     </button>
                     </Link> 
-                </td>
-                <td> 
+         
                     <Link to = "/usage">
-                    <button>
+                    <button className="header-nav-button-item">
                         Usage
                     </button>
                     </Link> 
-                </td>
-                <td> 
+
                     <Link to = "/store">
-                    <button>
+                    <button className="header-nav-button-item">
                         Store
                     </button>
                     </Link> 
-                </td>
-                <td> 
+
                     <Link to = "/cart">
-                    <button>
+                    <button className="header-nav-button-item">
                         Cart
                     </button>
                     </Link> 
-                </td>
-            </tr>
-        </table>
+            </div>
+        </div>
         <Outlet/>
+        </div>
         </>
     );
 }
