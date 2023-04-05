@@ -1,5 +1,5 @@
 const NoPage = () => {
-    return <h1>No Page</h1>;
+    return <div className="outlet-container">No Pagevff</div>;
 };
 
 export default NoPage;

@@ -1,3 +1,23 @@
+.header-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.outlet-container {
+    /* flex-grow: 1; */
+    /* position: relative;
+  width: 100%;
+  height: 100%; */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  background-size: cover;
+  background-position: center;
+  /* background-image: url('https://www.hdec.kr/FileContents/EditorImg/20220308/20200427_7886_770.jpg'); */
+}
+
 .header-frame{
     position: relative;
     width: 100%;
@@ -5,11 +25,12 @@
     left: 0px;
     top: 0px;
 
+
   }
   .header-top-frame{
     position: relative;
     width: 100%;
-    height: 30px;
+    height: 20px;
     left: 0px;
     top: 0px;
     text-align: center;
@@ -19,7 +40,7 @@
   .header-nav-frame{
     position: relative;
     width: 100%;
-    height: 100px;
+    height: 70px;
     align-items: center;
     background: #FFFFFF;
     display: flex;
@@ -27,30 +48,74 @@
   }
 
   .header-name{
-    font-family: 'Inter';
+    position: relative;
+    font-family: 'Bebas_Regular';
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
     line-height: 36px;
     margin-left: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     color: #2400FE;
+  }
+  .header-name:hover{
+    color: #000000;
+  }
+  .header-name:hover::before {
+    width: 100%;
+  }
+  .header-name::before {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* 자식 요소가 위치할 곳을 설정 */
+    left: 0;
+    width: 0;
+    height: 5px;
+    background-color: #000000;
+    transition: all 0.2s ease-out;
+  }
+
+  .header-name-item:active {
+    transform: scale(0.98);
   }
 
   .header-nav-button-frame{
+    width: 500px;
     display: flex;
-    justify-content: flex-end;
+    justify-content:space-between;
     align-items: center;
   }
 
   .header-nav-button-item{
-    font-family: 'Inter';
+    position: relative;
+    font-family: 'Bebas_Regular';
     font-style: normal;
-    margin-right: 60px;
     font-weight: 400;
     font-size: 25px;
     line-height: 30px;
     border: none;
     background-color: transparent;
+  }
+  .header-nav-button-item:hover{
+    color: #2400FE;
+  }
+  .header-nav-button-item::before {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* 자식 요소가 위치할 곳을 설정 */
+    left: 0;
+    width: 0;
+    height: 5px;
+    background-color: #2400FE;
+    transition: all 0.2s ease-out;
+  }
+  
+  .header-nav-button-item:hover::before {
+    width: 100%;
+  }
+  .header-nav-button-item:active {
+    transform: scale(0.98);
   }
   
   .follow-frame-left-side header{

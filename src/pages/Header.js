@@ -3,18 +3,19 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <>
+        <div className="header-container">
         <div className="header-frame">
 
         <div className="header-top-frame">
     
         </div>
         <div className="header-nav-frame">
-            <div className="header-name"> Drones</div>
+            <div className="header-name"> NoLook Drones</div>
             <div className="header-nav-button-frame">
+           
                     <Link to = "/">
                     <button className="header-nav-button-item">
-                        Definition
+                        Introduce
                     </button>
                     </Link> 
          
@@ -35,11 +36,15 @@ const Header = () => {
                         Cart
                     </button>
                     </Link> 
+                    <div></div>
             </div>
         </div>
-        <Outlet/>
+        <div className="outlet-container">
+        
+            <Outlet/>
         </div>
-        </>
+        </div>
+        </div>
     );
 }
 export default Header;

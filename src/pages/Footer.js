@@ -1,43 +1,37 @@
 import { Outlet, Link } from "react-router-dom"
-import './Header.css'
+import './Footer.css'
+
 
 const Header = () => {
     return (
         <>
-        <div className="header-frame">
-
-        <div className="header-top-frame">
     
-        </div>
-        <div className="header-nav-frame">
-            <div className="header-name"> Drones</div>
-            <div className="header-nav-button-frame">
+        <div className="footer-nav-frame">
+            <div className="footer-nav-button-frame">
                     <Link to = "/">
-                    <button className="header-nav-button-item">
-                        Definition
+                    <button className="footer-nav-button-item">
+                        개인정보
                     </button>
                     </Link> 
          
                     <Link to = "/usage">
-                    <button className="header-nav-button-item">
-                        Usage
+                    <button className="footer-nav-button-item">
+                        nolookcoding
                     </button>
                     </Link> 
 
                     <Link to = "/store">
-                    <button className="header-nav-button-item">
-                        Store
+                    <button className="footer-nav-button-item">
+                        copyright
                     </button>
                     </Link> 
 
                     <Link to = "/cart">
-                    <button className="header-nav-button-item">
+                    <button className="footer-nav-button-item">
                         Cart
                     </button>
                     </Link> 
             </div>
-        </div>
-        <Outlet/>
         </div>
         </>
     );

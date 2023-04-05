@@ -11,6 +11,7 @@ import NoPage from './pages/NoPage';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
 
+import { Outlet, Link } from "react-router-dom"
 
 function App() {
   return (
@@ -23,8 +24,10 @@ function App() {
         <Route path="*" element={<NoPage/>}/>
       </Route>
     </Routes>
+ 
     <Footer/>
     </BrowserRouter>
+    
   );
 }
 
