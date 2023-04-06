@@ -13,16 +13,16 @@ import Header from './pages/Header';
 import Footer from './pages/Footer';
 
 import { Outlet, Link } from "react-router-dom"
+import Layout from './pages/definition/Layout';
 
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
-
-      <Route path="/" element = {<Layout/>}>
-        <Route index element={<Home/>}/>
-        <Route path="carinfo" element = {<DetailDrone/>}/>
+      <Route path="/" element = {<Header/>}>
+        <Route index element = {<Definition/>}/>
+        <Route path="store" element = {<DetailDrone/>}/>
         <Route path="userinfo" element = {<User/>}/>
         <Route path="*" element={<NoPage/>}/>
       </Route>
