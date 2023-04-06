@@ -22,7 +22,8 @@ function App() {
     <Routes>
       <Route path="/" element = {<Header/>}>
         <Route index element = {<Definition/>}/>
-        <Route path="store" element = {<DetailDrone/>}/>
+        {/* <Route path="store" element = {<DetailDrone/>}/> */}
+        <Route path="store/:indexOfList" element = {<DetailDrone/>}/>
         <Route path="userinfo" element = {<User/>}/>
         <Route path="*" element={<NoPage/>}/>
       </Route>
