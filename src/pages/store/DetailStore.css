@@ -1,0 +1,68 @@
+div.entire {
+    text-align: center;
+}
+
+div.scaffold {
+    float: left;
+    text-align: center;
+}
+
+div.scaffold_img {
+    float: left;
+    text-align: center;
+
+    vertical-align: middle;
+}
+
+div#contents {
+    width: 30%;
+    text-align: center;
+}
+
+p.title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+p.hashTags {
+    font-size: 15px;
+    color: green;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+p.price {
+    font-size: 21px;
+}
+
+div.quantity {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 18px;
+}
+
+button.btn_background {
+    border-width: 0;
+    border-radius: 3px;
+    text-align: center;
+    background-color: transparent;
+    font-size: 22px;
+}
+
+button.buy_btn {
+    width: 220px;
+    padding: 3px;
+    font-size: 19px;
+    background-color: #2400FE;
+    border-radius: 8px;
+    color: white;
+    border: none;
+}
+
+span.count {
+    font-size: 22px;
+    font-weight: bold;
+}
