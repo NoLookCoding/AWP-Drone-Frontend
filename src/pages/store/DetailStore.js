@@ -21,14 +21,14 @@ const DetailDrone = () => {
     const dispatch = useDispatch();
     return (
         <div className="entire">
-            <div className="scaffold">
+            <div className="scaffold_img">
                 <img width="auto" height="200px" src={product.imageLoc} />
             </div>
             <div className="scaffold" id="contents">
                 <div>
-                    <span className="title">{product.name}</span> <br/>
-                    <span className="hashTags">{product.hashTags.map((h) => (<span>#{h} </span>))}</span> <br/>
-                    <span className="price">{product.price.toLocaleString('ko-KR')}￦</span>
+                    <p className="title">{product.name}</p>
+                    <p className="hashTags">{product.hashTags.map((h) => (<span>#{h} </span>))}</p> <br/>
+                    <p className="price">{product.price.toLocaleString('ko-KR')}￦</p>
                 </div>
 
                 <div className="quantity">
