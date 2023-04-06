@@ -23,8 +23,7 @@ const Store = () => {
             <ul className='ProductList'>
                 {products.map((product, index) => (
                     <div className = 'product'>
-                        <Link to = {`/detailStore/${index}`}>
-                        {/* <Link to = {'/detailStore'}> */}
+                        <Link to = {`/store/${index}`}>
                         <figure class = "snip1384">
                             <li key = {product.id}>
                                 <div className = 'product_img'><img src = {"https://www.droneportal.or.kr/module/upload/file/selectOrignlImageView.do?atchFileId=22000015007"}></img></div>
