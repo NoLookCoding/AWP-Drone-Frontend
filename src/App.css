@@ -27,6 +27,10 @@
 .App-link {
   color: #61dafb;
 }
+.main-frame{
+  width: 100%;
+  height: 100%;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -36,3 +40,19 @@
     transform: rotate(360deg);
   }
 }
+@font-face {
+  font-family: "Sansation_Bold";
+  src: url("./fonts/Sansation_Bold.ttf");
+  font-family: "Sansation_Bold_Italic";
+  src: url("./fonts/Sansation_Bold_Italic.ttf");
+  font-family: "Sansation_Bold_Italic";
+  src: url("./fonts/Sansation_Bold_Italic.ttf");
+  font-family: "Sansation_Light";
+  src: url("./fonts/Sansation_Light.ttf");
+
+  font-family: 'Archivo', sans-serif;
+
+  font-family: 'Bebas_Regular';
+  src: url("./fonts/bebas_neue/BebasNeue-Regular.ttf");
+}
+
