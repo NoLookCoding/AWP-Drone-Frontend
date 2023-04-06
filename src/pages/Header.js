@@ -9,11 +9,16 @@ const Header = () => {
         <div className="header-top-frame">
     
         </div>
+        
+
+
         <div className="header-nav-frame">
+        <Link to="/" style={{ textDecoration: 'none' }}>
             <div className="header-name"> NoLook Drones</div>
+            </Link>
             <div className="header-nav-button-frame">
            
-                    <Link to = "/">
+                    <Link to = "/introduce">
                     <button className="header-nav-button-item">
                         Introduce
                     </button>
