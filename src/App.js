@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Car from './pages/store/Car';
 import User from './pages/UserInfo';
 import NoPage from './pages/NoPage';
+import DetailDrone from './pages/store/DetailStore';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
     <Routes>
       <Route path="/" element = {<Layout/>}>
         <Route index element={<Home/>}/>
-        <Route path="" element = {<Car/>}/>
+        <Route path="carinfo" element = {<DetailDrone/>}/>
         <Route path="userinfo" element = {<User/>}/>
         <Route path="*" element={<NoPage/>}/>
       </Route>

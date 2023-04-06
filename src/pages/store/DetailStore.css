@@ -1,0 +1,47 @@
+div.entire{
+    text-align: center;
+}
+
+div.scaffold{
+    float:left;
+}
+
+div#contents{
+    width: 40%;
+    text-align: center;
+}
+
+span.title{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+span.hashTags{
+    font-size: 16px;
+    color: green;
+}
+
+span.price{
+    font-size: 21px;
+    
+}
+
+div.quantity{
+    display: inline-flex;
+}
+
+button.btn_background{
+    border-width: 0;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+button.buy_btn{
+    width: 180px;
+    padding: 3px;
+    font-size: 19px;
+    background-color: #2400FE;
+    border-radius: 8px;
+    color: white;
+    border: none;
+}
