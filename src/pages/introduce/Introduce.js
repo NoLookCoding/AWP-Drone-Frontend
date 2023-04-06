@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './Layout.css'
+import './Introduce.css'
 
-const Layout = () => {
+const Introduce = () => {
 
   return (
     <>
@@ -29,4 +29,4 @@ const Layout = () => {
   );
 }
 
-export default Layout;
+export default Introduce;
