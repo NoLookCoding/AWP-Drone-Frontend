@@ -24,7 +24,7 @@ function App() {
       <Route path="/" element = {<Header/>}>
         <Route index element = {<Definition/>}/>
         <Route path="store" element = {<Store/>}/>
-        <Route path="detailStore" element = {<DetailDrone/>}/>
+        <Route path="store/:indexOfList" element = {<DetailDrone/>}/>
         <Route path="userinfo" element = {<User/>}/>
         <Route path="*" element={<NoPage/>}/>
       </Route>
