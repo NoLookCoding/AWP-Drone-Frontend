@@ -51,6 +51,15 @@
   src: url("./fonts/Sansation_Light.ttf");
 
   font-family: 'Archivo', sans-serif;
+  
+  font-family: 'SamsungOne_400';
+  src: url("./fonts/samsungone-cufonfonts/SamsungOne-400.ttf");
+
+  font-family: 'SamsungOne_700';
+  src: url("./fonts/samsungone-cufonfonts/SamsungOne-700.ttf");
+
+  font-family: 'SamsungOne_Bold';
+  src: url("./fonts/samsungone-cufonfonts/SamsungSharpSans-Bold.ttf");
 
   font-family: 'Bebas_Regular';
   src: url("./fonts/bebas_neue/BebasNeue-Regular.ttf");
