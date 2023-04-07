@@ -9,8 +9,10 @@ background-image: url('../../static/drone_1.jpg');
 }
 
 .Usage-content-frame {
+  position: absolute;
+  top: 0;
     width: 500px;
-    height: calc(100% - 140px);
+    height: calc(100% - 350px);
     background: #FFFFFF;
     background-size: cover;
     background-position: center;
@@ -19,11 +21,29 @@ background-image: url('../../static/drone_1.jpg');
     margin: 50px;
     padding: 20px;
     border-radius: 25px;
+    justify-content: center;
 }
 
 .Usage-picture-frame {
+  position: absolute;
+  bottom: 0;
   background-size: cover;
   border-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+.Usage-picture-content{
+  width: 150px;
+  height: 150px;
+  margin: 40px;
+  cursor: 'pointer';
+  border-radius: 25px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.Usage-picture-content:hover{
+  opacity: 0.7;
 }
 
 .container {

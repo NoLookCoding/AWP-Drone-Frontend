@@ -9,7 +9,9 @@ import Store from './pages/store/Store';
 import DetailDrone from './pages/store/DetailStore';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
-import Usage from './pages/usage/Usage'
+import Usage from './pages/usage/Usage';
+import Member from './pages/membership/Membership';
+
 
 const images = ['https://cdn.pixabay.com/photo/2016/11/29/02/59/drone-1866961_1280.jpg',
   'https://cdn.pixabay.com/photo/2017/09/07/08/57/drone-2724257_1280.jpg',
@@ -26,8 +28,9 @@ function App() {
           <Route path="store" element={<Store />} />
           <Route path="store/:productId" element={<DetailDrone />} />
           <Route path="userinfo" element={<User />} />
-          <Route path="*" element={<NoPage />} />
           <Route path="/usage" element={<Usage />} />
+          <Route path="*" element={<NoPage />} />
+          <Route path="/membership" element={<Member />} />
         </Route>
       </Routes>
       <Footer />

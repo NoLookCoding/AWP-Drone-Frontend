@@ -1,0 +1,26 @@
+.introduce-frame{
+
+    width: 100%;
+    height: calc(100vh - 140px);
+    display: flex;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: left;
+    background-image: url('https://nt.global.ssl.fastly.net/binaries/content/gallery/website/national/library/discover-and-learn/film-and-tv/drone-flying-cerne-abbas-dorset-1502257.jpg');
+
+   
+}
+
+.introduce-content-frame {
+    width: 500px;
+    height: calc(100% - 140px);
+    background: #FFFFFF;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    opacity: 0.7;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 25px;
+  
+  }

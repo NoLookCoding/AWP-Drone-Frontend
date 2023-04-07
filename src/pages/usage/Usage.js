@@ -1,5 +1,7 @@
 import './Usage.css';
+import '../home/HomeSlide.css'
 import React, { useState, useEffect } from 'react';
+
 
 const Usage = () => {
 
@@ -72,21 +74,21 @@ const Usage = () => {
                 <br />
               </div>
             )}
-            <button id="button" style={{ visibility: isButtonVisible ? 'visible' : 'hidden' }} onClick={ClickDroneBuyButton}>button</button>
+            <button className="home-slide-content-button" id="button" style={{ visibility: isButtonVisible ? 'visible' : 'hidden', opacity:`1`}} onClick={ClickDroneBuyButton}>구매하기</button>
           </div>
           <div className='Usage-picture-frame'>
             {/* 이미지 배열을 반복하여 이미지 렌더링 */}
             {images.map(image => (
-              <img
-                key={image.id}
-                src={image.src}
-                alt={image.alt}
-                style={{ width: 150, height: 150, margin: 20, cursor: 'pointer' }} // 이미지에 스타일 적용
-                onClick={() => {
-                  handleImageIdClick(image.id);
-                  handleImageSrcClick(image.src);
-                }}
-              />
+             <div className="Usage-picture-content"
+             key={image.id}
+             style={{
+               backgroundImage: `url(${image.src})`, // 이미지 URL을 배경으로 지정
+             }}
+             onClick={() => {
+               handleImageIdClick(image.id);
+               handleImageSrcClick(image.src);
+             }}
+           />
             ))}
           </div>
         </div>
