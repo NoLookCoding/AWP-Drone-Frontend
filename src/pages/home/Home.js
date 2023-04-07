@@ -1,33 +1,146 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Home.css";
+import "../Footer.css"
+
+import {FiChevronLeft,FiChevronRight } from "react-icons/fi"
+import HomeSlide from "./HomeSlide";
+import HomeContent from "./HomeContent";
+
+const images = ['https://cdn.pixabay.com/photo/2016/11/29/02/59/drone-1866961_1280.jpg', 
+'https://cdn.pixabay.com/photo/2017/09/07/08/57/drone-2724257_1280.jpg',
+'https://www.cctvnews.co.kr/news/photo/202009/209837_210397_5058.jpg',
+'https://media.kingston.com/kingston/hero/ktc-hero-blog-personal-storage-drone-photography-tips-lg.jpg'];
 
 const Home = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isSliding, setIsSliding] = useState(true); // Add state to toggle sliding
+
+  const slideComponents = [
+    <HomeSlide index={0} />,
+    <HomeSlide index={1} />,
+    <HomeSlide index={2} />,
+    <HomeSlide index={3} />
+  ];
+
+
+  const sliderImages = useRef([]);
+  const intervalRef = useRef(null);
 
   const handlePreviousImage = () => {
-    setCurrentImageIndex(
-      (currentImageIndex + images.length - 1) % images.length
-    );
+    const newIndex = (currentImageIndex + images.length - 1) % images.length;
+    setCurrentImageIndex(newIndex);
+  
+    const sliderImages = document.querySelectorAll('.home-slider-image');
+    const currentImage = sliderImages[currentImageIndex];
+    const newImage = sliderImages[newIndex];
+  
+    if (currentImage && newImage) {
+      currentImage.classList.add('fadeOut');
+  
+      setTimeout(() => {
+        currentImage.classList.remove('active');
+        currentImage.classList.remove('fadeOut');
+        newImage.classList.add('active');
+      }, 300);
+    }
+  };
+  const handleNextImage = () => {
+    const newIndex = (currentImageIndex + 1) % images.length;
+    setCurrentImageIndex(newIndex);
+  
+    const sliderImages = document.querySelectorAll('.home-slider-image');
+    const currentImage = sliderImages[currentImageIndex];
+    const newImage = sliderImages[newIndex];
+  
+    if (currentImage && newImage) {
+      currentImage.classList.add('fadeOut');
+  
+      setTimeout(() => {
+        currentImage.classList.remove('active');
+        currentImage.classList.remove('fadeOut');
+        newImage.classList.add('active');
+      }, 300);
+    }
   };
 
-  const handleNextImage = () => {
-    setCurrentImageIndex((currentImageIndex + 1) % images.length);
-  };
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      if (isSliding) { // Check if sliding is enabled
+        const newIndex = (currentImageIndex + 1) % images.length;
+        setCurrentImageIndex(newIndex);
+    
+        const sliderImages = document.querySelectorAll('.home-slider-image');
+        const currentImage = sliderImages[currentImageIndex];
+        const newImage = sliderImages[newIndex];
+    
+        if (currentImage && newImage) {
+          currentImage.classList.add('fadeOut');
+    
+          setTimeout(() => {
+            currentImage.classList.remove('active');
+            currentImage.classList.remove('fadeOut');
+            newImage.classList.add('active');
+          }, 300);
+        }
+      }
+    }, 5000);
+
+    return () => clearInterval(intervalRef.current);
+  }, [currentImageIndex, images.length, isSliding]); // Add isSliding to the dependency array
+
+
 
   return (
-    <div className="slider">
-      <div
-        className="slider-image"
-        style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
-      />
-      <button className="slider-previous" onClick={handlePreviousImage}>
-        &lt;
-      </button>
-      <button className="slider-next" onClick={handleNextImage}>
-        &gt;
-      </button>
+    <div className="home-container"> 
+      <div className="home-slider" onMouseEnter={() => setIsSliding(false)} onMouseLeave={() => setIsSliding(true)}>{/* Add onMouseEnter and onMouseLeave event handlers */}
+          {slideComponents.map((slideComponent, index) => (
+            <div
+              key={index}
+              className={`home-slider-image${index === currentImageIndex ? " active" : ""}`}
+              ref={(el) => (sliderImages.current[index] = el)}
+              style={{ backgroundImage: `url(${images[index]})`}}
+            >
+              {slideComponent}
+            </div>
+          ))}
+        <HomeSlideFooter setCurrentImageIndex={setCurrentImageIndex}  currentImageIndex={currentImageIndex}/>
+        <FiChevronLeft className="home-slider-previous" onClick={handlePreviousImage}>
+        </FiChevronLeft>
+        <FiChevronRight className="home-slider-next" onClick={handleNextImage}>
+        </FiChevronRight>
+      </div>
+      <HomeContent/>
     </div>
   );
 };
+
+const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex }) => {
+  const buttonLabels = ["촬영드론", "오지구조드론", "새 출발 SALE", "Global Drones"];
+
+  const handleClickIndex = (index) => {
+    setCurrentImageIndex(index);
+  };
+
+  return (
+    <div className="home-footer-nav-frame">
+      <div className="home-footer-nav-button-frame">
+        {buttonLabels.map((label, index) => (
+          <button
+          key={index}
+          className={`home-footer-nav-button-item${
+            index === currentImageIndex ? " active" : ""
+          }`}
+          onClick={() => handleClickIndex(index)}
+        >
+            {label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
+
 
 export default Home;

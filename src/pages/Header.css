@@ -49,27 +49,28 @@
 
   .header-name{
     position: relative;
-    font-family: 'Bebas_Regular';
+    /* font-family: 'Bebas_Regular'; */
+    font-family: 'SamsungOne_Bold';
     font-style: normal;
-    font-weight: 700;
-    font-size: 30px;
+    font-weight: 900;
+    font-size: 20px;
     line-height: 36px;
     margin-left: 20px;
     padding-left: 5px;
     padding-right: 5px;
-    color: #2400FE;
-    
+    color: #000000;
   }
+
   .header-name:hover{
     color: #000000;
   }
-  .header-name:hover::before {
+  /* .header-name:hover::before {
     width: 100%;
   }
   .header-name::before {
     content: "";
     position: absolute;
-    bottom: -5px; /* 자식 요소가 위치할 곳을 설정 */
+    bottom: -5px; 
     left: 0;
     width: 0;
     height: 5px;
@@ -79,10 +80,11 @@
 
   .header-name-item:active {
     transform: scale(0.98);
-  }
+  } 
+  */
 
   .header-nav-button-frame{
-    width: 500px;
+    width: 450px;
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -90,10 +92,11 @@
 
   .header-nav-button-item{
     position: relative;
-    font-family: 'Bebas_Regular';
+    /* font-family: 'Bebas_Regular'; */
+    font-family: 'SamsungOne_Bold';
     font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
+    font-weight: 900;
+    font-size: 13px;
     line-height: 30px;
     border: none;
     background-color: transparent;
@@ -119,6 +122,20 @@
     transform: scale(0.98);
   }
   
+  .header-nav-button-icon{
+    position: relative;
+    /* font-family: 'Bebas_Regular'; */
+    font-family: 'SamsungOne_Bold';
+    font-style: normal;
+    font-weight: 900;
+    width: 25px;
+    height: 25px;
+    line-height: 30px;
+    border: none;
+    color:#000000;
+    background-color: transparent;
+  }
+
   .follow-frame-left-side header{
     display: flex;
     justify-content: center;
