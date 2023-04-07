@@ -12,6 +12,7 @@ import Store from './pages/store/Store';
 import DetailDrone from './pages/store/DetailStore';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
+import Usage from './pages/usage/Usage'
 
 import { Outlet, Link } from "react-router-dom"
 import Layout from './pages/definition/Layout';
@@ -27,6 +28,7 @@ function App() {
         <Route path="store/:indexOfList" element = {<DetailDrone/>}/>
         <Route path="userinfo" element = {<User/>}/>
         <Route path="*" element={<NoPage/>}/>
+        <Route path="/usage" element={<Usage/>}/>
       </Route>
     </Routes>
  
