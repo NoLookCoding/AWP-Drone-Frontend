@@ -27,22 +27,22 @@ const Usage = () => {
   const ClickDroneBuyButton = () => {
     switch (selectedImageId) {
       case 1:
-        window.location.href = '/store/0';
-        break;
-      case 2:
         window.location.href = '/store/1';
         break;
-      case 3:
+      case 2:
         window.location.href = '/store/2';
         break;
-      case 4:
-        window.location.href = '/store/3';
-        break;
-      case 5:
+      case 3:
         window.location.href = '/store/4';
         break;
+      case 4:
+        window.location.href = '/store/10';
+        break;
+      case 5:
+        window.location.href = '/store/6';
+        break;
       case 6:
-        window.location.href = '/store/5';
+        window.location.href = '/store/3';
         break;
     }
   }
