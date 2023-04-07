@@ -8,6 +8,7 @@
  * @property imageLoc: 상품 이미지 저장 경로
  * @property hashTags: 해시 태그 리스트
  */
+
 export const drones = [
     { id: 1, name: "NoLook 공연드론", description: "가벼움, 밝기 강함, 안전함", price: 2300000, category: "PERF", imageLoc: "https://www.droneportal.or.kr/module/upload/file/selectOrignlImageView.do?atchFileId=21000010818&fileSn=0", hashTags: ['공연', '기업홍보', '지자체 홍보', '이벤트'] },
     { id: 2, name: "NoLook 헥사-120", description: "이륙 준비 3분 이내, GPS, 센서 통합 모듈 탑재", price: 1800000, category: "FILM", imageLoc: "https://www.droneportal.or.kr/module/upload/file/selectOrignlImageView.do?atchFileId=22000015055&fileSn=0", hashTags: ["장거리촬영", "수직이착륙", "왕멋짐"] },
@@ -20,4 +21,3 @@ export const drones = [
     { id: 9, name: "NoLook DJ2", description: "소형, 견고함, 튼튼함, 카메라 2개 탑재", price: 850000, category: "FILM", imageLoc: "https://stormsend1.djicdn.com/stormsend/uploads/a9669f9875e59818f5a2c5987e57c457.png", hashTags: ["귀욤귀", "화질굿", "디자인굿"] },
     { id: 10, name: "NoLook 허밍버드", description: "소형, 장애물 충돌 저감, 보호 프레임", price: 750000, category: "MANAGE", imageLoc: "https://www.droneportal.or.kr/module/upload/file/selectOrignlImageView.do?atchFileId=22000012063&fileSn=0", hashTags: ["특이한", "지구본?", "귀욥"] }
 ];
-

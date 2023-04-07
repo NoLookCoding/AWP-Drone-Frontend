@@ -1,4 +1,4 @@
-.Usage{
+.Usage {
 width: 100%;
 height: calc(100vh - 140px);
 display: flex;
@@ -21,7 +21,7 @@ background-image: url('../../static/drone_1.jpg');
     border-radius: 25px;
   }
 
-.Usage-picture-frame{
+.Usage-picture-frame {
     background-size: cover;
     border-radius: 25px;
 }
