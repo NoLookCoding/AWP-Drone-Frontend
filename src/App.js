@@ -15,7 +15,6 @@ import Footer from './pages/Footer';
 import Usage from './pages/usage/Usage'
 
 import { Outlet, Link } from "react-router-dom"
-import Layout from './pages/definition/Layout';
 
 
 function App() {
@@ -29,6 +28,7 @@ function App() {
         <Route path="userinfo" element = {<User/>}/>
         <Route path="*" element={<NoPage/>}/>
         <Route path="/usage" element={<Usage/>}/>
+        <Route path="/drone1" element={<Store/>} />
       </Route>
     </Routes>
  
