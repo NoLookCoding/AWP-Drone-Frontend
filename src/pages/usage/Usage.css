@@ -19,14 +19,14 @@ background-image: url('../../static/drone_1.jpg');
     margin: 50px;
     padding: 20px;
     border-radius: 25px;
-  }
+}
 
-.Usage-picture-frame{
-    background-size: cover;
-    border-radius: 25px;
+.Usage-picture-frame {
+  background-size: cover;
+  border-radius: 25px;
 }
 
 .container {
     display: grid;
     place-items: center; /* 세로, 가로 중앙 정렬 */
-  }
+}

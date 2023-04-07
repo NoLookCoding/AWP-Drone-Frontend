@@ -2,7 +2,7 @@
     display:flex;
     flex-direction: row;
     flex-wrap : wrap;
-    width: 100%;
+    width: auto;
     list-style-type: none;
     justify-content: center;
   }
@@ -50,13 +50,12 @@
 
   .product_title {
     padding-top: 40px;
-    padding-left: 82px;
     font-size : 1.3rem;
     font-weight: 600;
-    margin : 4%;
+    text-align: center;
   }
   .product_des {
-    padding-left: 110px;
+    text-align: center;
     font-size : 0.8rem;
     margin : 2% 3% 2% 4%;
   }
@@ -129,7 +128,6 @@
   figure.snip1384 h3,
   figure.snip1384 .links {
     width: 100%;
-    margin: 10px;
     padding: 40px;
   }
   figure.snip1384 h3 {
@@ -192,4 +190,5 @@
     -webkit-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
     opacity: 1;
+    text-align: center;
   }
