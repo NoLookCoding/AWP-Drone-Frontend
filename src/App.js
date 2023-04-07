@@ -10,12 +10,17 @@ import Home from './pages/home/Home';
 import User from './pages/UserInfo';
 
 import NoPage from './pages/NoPage';
+import Store from './pages/store/Store';
+import DetailDrone from './pages/store/DetailStore';
 import Header from './pages/Header';
 
 import Car from './pages/store/Car';
 import Footer from './pages/Footer';
+import Usage from './pages/usage/Usage'
 
 import { Outlet, Link } from "react-router-dom"
+import Layout from './pages/definition/Layout';
+
 
 // import image1 from 'https://cdn.aitimes.com/news/photo/201904/46763_4_1732.jpg';
 // import image2 from 'https://www.adobe.com/content/dam/cc/us/en/creative-cloud/photography/discover/drone-photography/desktop/drone-photography_P1_900x420.jpg';
@@ -33,8 +38,11 @@ function App() {
       <Route path="/" element = {<Header/>}>
         <Route index element={<Home images={images}/>}/>
         <Route path="introduce" element = {<Introduce/>}/>
+        <Route path="store" element = {<Store/>}/>
+        <Route path="store/:indexOfList" element = {<DetailDrone/>}/>
         <Route path="userinfo" element = {<User/>}/>
         <Route path="*" element={<NoPage/>}/>
+        <Route path="/usage" element={<Usage/>}/>
       </Route>
     </Routes>
  
