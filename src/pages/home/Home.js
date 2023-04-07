@@ -131,7 +131,7 @@ const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex }) => {
   };
 
   return (
-    <div className="home-footer-nav-frame">
+    <div className="home-footer-nav-frame" style={{zIndex:`3`}}>
       <div className="home-footer-nav-button-frame">
         {buttonLabels.map((label, index) => (
           <button

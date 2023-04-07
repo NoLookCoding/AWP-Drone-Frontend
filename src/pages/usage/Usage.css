@@ -5,7 +5,7 @@ display: flex;
 justify-content: center;
 background-size: cover;
 background-position: center;
-background-image: url('..\\src\\static\\drone_1.jpg');
+background-image: url('../../static/drone_1.jpg');
 }
 
 .Usage-content-frame {
