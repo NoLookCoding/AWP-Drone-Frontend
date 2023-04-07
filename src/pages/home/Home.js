@@ -41,6 +41,9 @@ const Home = ({ images }) => {
         currentImage.classList.remove('active');
         currentImage.classList.remove('fadeOut');
         newImage.classList.add('active');
+        // Add z-index logic to set the current slide's z-index to 2
+        currentImage.style.zIndex = '1';
+        newImage.style.zIndex = '2';
       }, 300);
     }
   };
@@ -59,6 +62,9 @@ const Home = ({ images }) => {
         currentImage.classList.remove('active');
         currentImage.classList.remove('fadeOut');
         newImage.classList.add('active');
+        // Add z-index logic to set the current slide's z-index to 2
+        currentImage.style.zIndex = '1';
+        newImage.style.zIndex = '2';
       }, 300);
     }
   };
@@ -80,6 +86,9 @@ const Home = ({ images }) => {
             currentImage.classList.remove('active');
             currentImage.classList.remove('fadeOut');
             newImage.classList.add('active');
+            // Add z-index logic to set the current slide's z-index to 2
+            currentImage.style.zIndex = '1';
+            newImage.style.zIndex = '2';
           }, 300);
         }
       }
