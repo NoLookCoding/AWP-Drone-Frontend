@@ -10,6 +10,7 @@ import User from './pages/UserInfo';
 import NoPage from './pages/NoPage';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
+import Usage from './pages/usage/Usage'
 
 import { Outlet, Link } from "react-router-dom"
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="" element = {<Car/>}/>
         <Route path="userinfo" element = {<User/>}/>
         <Route path="*" element={<NoPage/>}/>
+        <Route path="/usage" element={<Usage/>}/>
       </Route>
     </Routes>
  
