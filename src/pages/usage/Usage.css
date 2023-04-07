@@ -1,11 +1,11 @@
 .Usage {
-width: 100%;
-height: calc(100vh - 140px);
-display: flex;
-justify-content: center;
-background-size: cover;
-background-position: center;
-background-image: url('../../static/drone_1.jpg');
+  width: 100%;
+  height: calc(100vh - 140px);
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../../static/drone_1.jpg');
 }
 
 .Usage-content-frame {
@@ -19,14 +19,14 @@ background-image: url('../../static/drone_1.jpg');
     margin: 50px;
     padding: 20px;
     border-radius: 25px;
-  }
+}
 
 .Usage-picture-frame {
-    background-size: cover;
-    border-radius: 25px;
+  background-size: cover;
+  border-radius: 25px;
 }
 
 .container {
     display: grid;
     place-items: center; /* 세로, 가로 중앙 정렬 */
-  }
+}

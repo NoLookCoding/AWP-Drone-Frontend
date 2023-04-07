@@ -1,39 +1,142 @@
-.slider {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-  }
-  
-  .slider-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .slider-previous,
-  .slider-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .slider-previous {
-    left: 10px;
-  }
-  
-  .slider-next {
-    right: 10px;
-  }
-  
+.home-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.home-slider {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+
+.home-slider-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.home-slider-image.active {
+  opacity: 1;
+}
+
+
+
+
+
+
+.home-slider-previous,
+.home-slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  border: none;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  background-color: transparent;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.home-slider-next:hover{
+  color: #FFFFFF;
+}
+.home-slider-previous:hover{
+  color: #FFFFFF;
+}
+
+.home-slider-previous {
+  left: 0;
+}
+
+.home-slider-next {
+  right: 0;
+}
+
+.home-slider-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.home-slider-content.active {
+  opacity: 1;
+}
+
+.home-footer-nav-frame{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  background: transparent;
+  display: flex;
+  justify-content:center;
+}
+.home-footer-nav-button-frame{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.home-footer-nav-button-item{
+  position: relative;
+  font-family: 'SamsungOne_Bold';
+  font-style: normal;
+  margin-right: 0px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 30px;
+  border: none;
+  margin: 20px;
+  color: #FFFFFF;
+  background-color: transparent;
+}
+.home-footer-nav-button-item.active {
+  color: #FFFFFF;
+}
+.home-footer-nav-button-item:hover {
+  color: #000000;
+}
+.home-footer-nav-button-item.active:hover {
+  color: #000000;
+}
+
+.home-footer-nav-button-item::before {
+  content: "";
+  position: absolute;
+  bottom: 2px; /* 자식 요소가 위치할 곳을 설정 */
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #FFFFFF;
+  transition: all 0.5s ease-out;
+}
+
+.home-footer-nav-button-item.active::before {
+  width: 100%;
+}
+
+
