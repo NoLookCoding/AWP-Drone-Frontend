@@ -19,11 +19,6 @@ const Introduce = () => {
             감사합니다.
           </text>
         </div>
-
-        {/* <div className="">
-            <span>2023 NoLoock Drones</span>
-            <span>Advanced Drone 런칭체험단</span>
-        </div> */}
       </div>
     </>
   );

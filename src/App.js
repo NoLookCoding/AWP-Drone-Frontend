@@ -1,5 +1,5 @@
-import './App.css';
-import React from 'react'
+import "./App.css";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Introduce from './pages/introduce/Introduce';
 import Home from './pages/home/Home';
@@ -11,12 +11,14 @@ import Header from './pages/Header';
 import Footer from './pages/Footer';
 import Usage from './pages/usage/Usage';
 import Member from './pages/membership/Membership';
+import ShoppingCartPage from "./pages/cart/ShoppingCartPage";
 
-
-const images = ['https://cdn.pixabay.com/photo/2016/11/29/02/59/drone-1866961_1280.jpg',
-  'https://cdn.pixabay.com/photo/2017/09/07/08/57/drone-2724257_1280.jpg',
-  'https://www.cctvnews.co.kr/news/photo/202009/209837_210397_5058.jpg',
-  'https://media.kingston.com/kingston/hero/ktc-hero-blog-personal-storage-drone-photography-tips-lg.jpg'];
+const images = [
+  "https://cdn.pixabay.com/photo/2016/11/29/02/59/drone-1866961_1280.jpg",
+  "https://cdn.pixabay.com/photo/2017/09/07/08/57/drone-2724257_1280.jpg",
+  "https://www.cctvnews.co.kr/news/photo/202009/209837_210397_5058.jpg",
+  "https://media.kingston.com/kingston/hero/ktc-hero-blog-personal-storage-drone-photography-tips-lg.jpg",
+];
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
           <Route path="/usage" element={<Usage />} />
           <Route path="*" element={<NoPage />} />
           <Route path="/membership" element={<Member />} />
+          <Route path="/cart" element={<ShoppingCartPage />} />
         </Route>
       </Routes>
       <Footer />
