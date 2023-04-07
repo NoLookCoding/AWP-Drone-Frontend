@@ -24,16 +24,38 @@ const Usage = () => {
     );
   }
 
+  const ClickDroneBuyButton = () => {
+    switch (selectedImageId) {
+      case 1:
+        window.location.href = '/store/0';
+        break;
+      case 2:
+        window.location.href = '/store/1';
+        break;
+      case 3:
+        window.location.href = '/store/2';
+        break;
+      case 4:
+        window.location.href = '/store/3';
+        break;
+      case 5:
+        window.location.href = '/store/4';
+        break;
+      case 6:
+        window.location.href = '/store/5';
+        break;
+    }
+  }
 
 
   // 이미지와 텍스트 정보를 배열로 관리
   const images = [
-    { id: 1, src: 'https://angelswing.io/wp-content/uploads/2022/06/shutterstock_1694609380-1024x683.jpg', alt: 'Image 1', text: 'Image 1 Text' },
-    { id: 2, src: 'https://angelswing.io/wp-content/uploads/2022/06/shutterstock_1694609380-1024x683.jpg', alt: 'Image 2', text: 'Image 2 Text' },
-    { id: 3, src: 'https://angelswing.io/wp-content/uploads/2022/06/shutterstock_1694609380-1024x683.jpg', alt: 'Image 3', text: 'Image 3 Text' },
-    { id: 4, src: 'https://angelswing.io/wp-content/uploads/2022/06/shutterstock_1694609380-1024x683.jpg', alt: 'Image 4', text: 'Image 4 Text' },
-    { id: 5, src: 'https://angelswing.io/wp-content/uploads/2022/06/shutterstock_1694609380-1024x683.jpg', alt: 'Image 5', text: 'Image 5 Text' },
-    { id: 6, src: 'https://angelswing.io/wp-content/uploads/2022/06/shutterstock_1694609380-1024x683.jpg', alt: 'Image 6', text: 'Image 6 Text' }
+    { id: 1, src: 'https://i.ytimg.com/vi/EEUXteod8mc/maxresdefault.jpg', alt: '공연', text: '군집 드론을 활용한 쇼인 드론쇼에 활용. 2018 평창올림픽에서활용' },
+    { id: 2, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_1.png', alt: '촬영', text: '영화, 예능 및 드라마 촬영, 재난 지역 실시간 촬영 등에서 활용' },
+    { id: 3, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_2.png', alt: '방역', text: '드론을 통해 가장 잘 활용되는 분야로 농약 살포 및 소독 방역에 활용' },
+    { id: 4, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_3.png', alt: '시설관리', text: '교량 관리, 도로비탈면 정밀조사, 상세 시설물 파악, 난접근/비접근 구조물 정밀점검 등에 활용' },
+    { id: 5, src: 'https://www.forest.go.kr/kfsweb/cmm/fms/FileDown.do?atchFileId=CTGRY_00000000375202&fileSn=4', alt: '산불 감시', text: ' 산불감시, 해상 구조, 불법어로, 불법침입 등을 감시하는데에 활용' },
+    { id: 6, src: 'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201607/17/htm_20160717124439268109.jpg', alt: '물류', text: '택배수송, 화물 수송, 군수품 수송, 구호품 수송 등에 활용' }
   ];
 
   return (
@@ -41,7 +63,7 @@ const Usage = () => {
       <div className="Usage">
         <div className='container'>
           <div className="Usage-content-frame">
-            <h3 style={{ fontFamily: "Sansation" }}>무슨 드론인지</h3>
+            <h3 style={{ fontFamily: "Sansation" }}>드론의 사용 예시</h3>
             {/* 선택된 이미지에 따라 버튼 표시 */}
             {selectedImageId && (
               <div>
@@ -50,7 +72,7 @@ const Usage = () => {
                 <br />
               </div>
             )}
-            <button id="button" style={{ visibility: isButtonVisible ? 'visible' : 'hidden' }}>button</button>
+            <button id="button" style={{ visibility: isButtonVisible ? 'visible' : 'hidden' }} onClick={ClickDroneBuyButton}>button</button>
           </div>
           <div className='Usage-picture-frame'>
             {/* 이미지 배열을 반복하여 이미지 렌더링 */}

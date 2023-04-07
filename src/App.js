@@ -19,7 +19,6 @@ import Footer from './pages/Footer';
 import Usage from './pages/usage/Usage'
 
 import { Outlet, Link } from "react-router-dom"
-import Layout from './pages/definition/Layout';
 
 
 // import image1 from 'https://cdn.aitimes.com/news/photo/201904/46763_4_1732.jpg';
