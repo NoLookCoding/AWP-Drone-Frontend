@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom"
 import './Header.css'
+import {AiOutlineShoppingCart,AiOutlineSearch } from "react-icons/ai"
 
 const Header = () => {
     return (
@@ -14,33 +15,40 @@ const Header = () => {
 
         <div className="header-nav-frame">
         <Link to="/" style={{ textDecoration: 'none' }}>
-            <div className="header-name"> NoLook Drones</div>
+            <div className="header-name"> NOLOOK DRONES</div>
             </Link>
             <div className="header-nav-button-frame">
            
                     <Link to = "/introduce">
                     <button className="header-nav-button-item">
-                        Introduce
+                        회사 소개 {/* Introduce */}
                     </button>
                     </Link> 
          
                     <Link to = "/usage">
                     <button className="header-nav-button-item">
-                        Usage
+                        드론 사용
                     </button>
                     </Link> 
 
                     <Link to = "/store">
                     <button className="header-nav-button-item">
-                        Store
+                        드론스토어
                     </button>
+                    </Link> 
+                    <Link to = "/membership">
+                    <button className="header-nav-button-item">
+                        멤버십
+                    </button>
+                    </Link> 
+                    <Link to = "/search">
+                    <AiOutlineSearch className="header-nav-button-icon"/>
                     </Link> 
 
                     <Link to = "/cart">
-                    <button className="header-nav-button-item">
-                        Cart
-                    </button>
+                    <AiOutlineShoppingCart className="header-nav-button-icon"/>
                     </Link> 
+                
                     <div></div>
             </div>
         </div>
