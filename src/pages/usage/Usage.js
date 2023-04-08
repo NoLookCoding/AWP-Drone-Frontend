@@ -1,31 +1,42 @@
 import './Usage.css';
-import '../home/HomeSlide.css'
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 
 const Usage = () => {
 
-  var usageElement = document.querySelector('.Usage');
-  var newImageUrl = '';
+  // Manage selected image information as state
+  const [selectedImageId, setSelectedImageId] = useState(null);
+  const [selectedImageSrc, setSelectedImageSrc] = useState(null);
+  const [isButtonVisible, setIsButtonVisible] = useState(false);
+  const [selectedImageAlt, setSelectedImageAlt] = useState(null);
+  const [selectedImageText, setSelectedImageText] = useState(null);
 
-  const [selectedImageId, setSelectedImageId] = useState(null); // 선택된 이미지 아이디를 상태로 관리
-  const [selectedImageSrc, setSelectedImageSrc] = useState(null); // 선택된 이미지 url를 상태로 관리
-  const [isButtonVisible, setIsButtonVisible] = useState(false); // 버튼의 가시성을 상태로 관리
-
-  // 이미지 클릭 핸들러
+  // Image click handers
+  // Save selected image information to state
+  // update button visibility state to true
   const handleImageIdClick = (imageId) => {
-    setSelectedImageId(imageId); // 선택된 이미지 아이디를 상태에 저장
-    setIsButtonVisible(true); // 버튼 가시성 상태를 true로 업데이트
-
-    // 여기에 이제 imageId에 따라 버튼을 눌렀을 때 store의 다른 드론 페이지로 넘어가는 코드 작성 
+    setSelectedImageId(imageId);
+    setIsButtonVisible(true); 
   }
-
+  // Change the background image to the selected photo
   const handleImageSrcClick = (imageSrc) => {
     setSelectedImageSrc(
       document.querySelector('.Usage').style.backgroundImage = 'url(' + imageSrc + ')'
     );
   }
+  // Change to the description of the selected image
+  const handleImageAltClick = (imageAlt) => {
+    setSelectedImageAlt(
+      document.getElementById("usageHeader").innerText = imageAlt
+    );
+  }
+  // Change to the text of the selected image
+  const handleImageTextClick = (imageText) => {
+    setSelectedImageText(
+      document.getElementById("usageExample").innerText = imageText
+    )
+  }
 
+  // Depending on the selected image, click the button to go to another drone page
   const ClickDroneBuyButton = () => {
     switch (selectedImageId) {
       case 1:
@@ -49,46 +60,40 @@ const Usage = () => {
     }
   }
 
-
-  // 이미지와 텍스트 정보를 배열로 관리
+  // Manage image and text information as an array
   const images = [
-    { id: 1, src: 'https://i.ytimg.com/vi/EEUXteod8mc/maxresdefault.jpg', alt: '공연', text: '군집 드론을 활용한 쇼인 드론쇼에 활용. 2018 평창올림픽에서활용' },
-    { id: 2, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_1.png', alt: '촬영', text: '영화, 예능 및 드라마 촬영, 재난 지역 실시간 촬영 등에서 활용' },
-    { id: 3, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_2.png', alt: '방역', text: '드론을 통해 가장 잘 활용되는 분야로 농약 살포 및 소독 방역에 활용' },
-    { id: 4, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_3.png', alt: '시설관리', text: '교량 관리, 도로비탈면 정밀조사, 상세 시설물 파악, 난접근/비접근 구조물 정밀점검 등에 활용' },
-    { id: 5, src: 'https://www.forest.go.kr/kfsweb/cmm/fms/FileDown.do?atchFileId=CTGRY_00000000375202&fileSn=4', alt: '산불 감시', text: ' 산불감시, 해상 구조, 불법어로, 불법침입 등을 감시하는데에 활용' },
-    { id: 6, src: 'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201607/17/htm_20160717124439268109.jpg', alt: '물류', text: '택배수송, 화물 수송, 군수품 수송, 구호품 수송 등에 활용' }
+    { id: 1, src: 'https://i.ytimg.com/vi/EEUXteod8mc/maxresdefault.jpg', alt: '공연 분야', text: '공연 분야에서 드론은 새로운 시각적 효과를 제공하고 공연의 무게감을 높여주는 등 다양한 방식으로 활용될 수 있습니다. 드론은 조명, 프로젝션 매핑, 춤사위, 무대 효과, 오브제 등 다양한 방식으로 공연 분야에서 활용될 수 있습니다. 이 외에도 새로운 드론 기술이 지속적으로 개발되고 있어, 더 다양하고 창의적인 활용 방법들이 나올 것으로 예상됩니다.' },
+    { id: 2, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_1.png', alt: '촬영 분야', text: '촬영 분야에서 드론은 다양한 카메라를 장착하여 촬영 분야에서 활용될 수 있습니다. 드론을 활용하면 고공에서의 촬영이 가능하며, 다양한 시점과 움직임을 활용하여 독특하고 다이나믹한 영상 효과를 구현할 수 있습니다. ' },
+    { id: 3, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_2.png', alt: '방역 분야', text: '방역 분야에서 드론은 환경을 모니터링헤 공기, 수질, 토양등의 환경 데이터를 수집할 수 있습니다. 또한 드론은 원격 의료 서비스를 제공하는 등의 방역 분야에서의 활용 가능성이 있습니다. 다양한 방식으로 드론이 방역 분야에서 활용되어 더 효과적이고 효율적인 방역 조치가 이루어질 수 있습니다.' },
+    { id: 4, src: 'https://angelswing.io/wp-content/uploads/2022/06/angelswing_drone_3.png', alt: '시설관리 분야', text: '시설 관리 분야에서 드론은 높은 높이나 복잡한 구조물에 접근하기 어려운 곳에서 쉽게 시설 점검 및 유지보수가 가능합니다. 또한 무인 측량, 착공 및 준공 검사, 시설물의 인벤토리 관리 등 다양한 용도로 활용될 수 있습니다' },
+    { id: 5, src: 'https://www.forest.go.kr/kfsweb/cmm/fms/FileDown.do?atchFileId=CTGRY_00000000375202&fileSn=4', alt: '재난 분야', text: '재난 분야에서 드론은 재난 발생시 인명 구조 작업에 활용될 수 있습니다. 또한 이 외에도 재난 감시, 무인 측량 및 매핑, 신속한 피해 평가 등 다양한 용도로 드론이 재난 분야에서 활용될 수 있습니다.' },
+    { id: 6, src: 'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201607/17/htm_20160717124439268109.jpg', alt: '물류 분야', text: '물류 분야에서 드론은 상품이나 물품을 빠르고 효율적으로 배송할 수 있습니다. 또한 드론은 물류 분야에서 빠른, 효율적인 작업을 가능하게 하여 생산성과 비용 절감을 도모할 수 있는 많은 잠재력을 가지고 있습니다.' }
   ];
 
+  // Show page
+  // Render an image by looping through the image array
   return (
     <>
       <div className="Usage">
         <div className='container'>
           <div className="Usage-content-frame">
-            <h3 style={{ fontFamily: "Sansation" }}>드론의 사용 예시</h3>
-            {/* 선택된 이미지에 따라 버튼 표시 */}
-            {selectedImageId && (
-              <div>
-                {/* 선택된 이미지에 따라 배열에서 텍스트 찾아 표시 */}
-                {images.find(image => image.id === selectedImageId)?.text}
-                <br />
-              </div>
-            )}
+            <h2 style={{ fontFamily: "Sansation" }} id='usageHeader'>드론의 사용 예시</h2>
+            <h4 id="usageExample">드론의 활용범위는 매우 다양한데, 드론의 시작이 된 군사용 무기에서부터 건설, 에너지, 물류, 재난구조, 농업, 촬영 등 각종 분야로 활동 가능한 영역이 사실상 무한대로 넓어졌습니다. </h4>
             <button className="home-slide-content-button" id="button" style={{ visibility: isButtonVisible ? 'visible' : 'hidden', opacity:`1`}} onClick={ClickDroneBuyButton}>구매하기</button>
           </div>
           <div className='Usage-picture-frame'>
-            {/* 이미지 배열을 반복하여 이미지 렌더링 */}
             {images.map(image => (
              <div className="Usage-picture-content"
-             key={image.id}
              style={{
-               backgroundImage: `url(${image.src})`, // 이미지 URL을 배경으로 지정
+               backgroundImage: `url(${image.src})`
              }}
-             onClick={() => {
-               handleImageIdClick(image.id);
-               handleImageSrcClick(image.src);
-             }}
-           />
+                onClick={() => {
+                  handleImageIdClick(image.id);
+                  handleImageSrcClick(image.src);
+                  handleImageAltClick(image.alt);
+                  handleImageTextClick(image.text);
+                }}
+              />
             ))}
           </div>
         </div>
