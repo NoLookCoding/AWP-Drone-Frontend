@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   removeFromCart,
@@ -10,6 +10,22 @@ import "./ShoppingCartPage.css";
 const ShoppingCartPage = () => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const cartItemsRef = useRef(null);
+
+  useEffect(() => {
+    const cartItemsContainer = cartItemsRef.current;
+
+    const handleWheel = (e) => {
+      e.preventDefault();
+      cartItemsContainer.scrollLeft += e.deltaY;
+    };
+
+    cartItemsContainer.addEventListener("wheel", handleWheel);
+
+    return () => {
+      cartItemsContainer.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
 
   const handleRemove = (item) => {
     dispatch(removeFromCart(item));
@@ -23,13 +39,6 @@ const ShoppingCartPage = () => {
     dispatch(decrementQuantity(item));
   };
 
-  const cartItemsContainer = document.querySelector(".cart-items-container");
-
-  cartItemsContainer.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    cartItemsContainer.scrollLeft += e.deltaY;
-  });
-
   return (
     <div className="cart-container">
       {cart.length === 0 ? (
@@ -37,7 +46,7 @@ const ShoppingCartPage = () => {
       ) : (
         <div>
           <h1 className="cart-title">CART</h1>
-          <div className="cart-items-container">
+          <div className="cart-items-container" ref={cartItemsRef}>
             {cart.map((item) => (
               <div key={item.id} className="cart-item-container">
                 <div className="cart-item">
