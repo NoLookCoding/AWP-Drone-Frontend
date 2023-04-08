@@ -1,8 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./HomeSlide.css";
 
+// function MouseOverButton(e){
+//     e.currentTarget.style.background = COLOR.black;
+//     e.currentTarget.style.color = COLOR.white;
+
+// }
+// function MouseOutButton(e){
+//     e.currentTarget.style.background = COLOR.white;
+//     e.currentTarget.style.color = COLOR.black;
+// }
+
 
 const HomeSlide = (props) => {
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseOver = (e) => {
+        console.log("왜 안돼");
+        e.currentTarget.style.background = "#000000";
+        e.currentTarget.style.color = "#FFFFFF";
+      };
+      
+      const handleMouseOut = (e) => {
+        e.currentTarget.style.background = "#FFFFFF";
+        e.currentTarget.style.color = "#000000";
+      };
+    
 
     switch(props.index){
         case 0 :
@@ -42,9 +65,7 @@ const HomeSlide = (props) => {
                 <br/>
                 <span className="home-slide-content-title" style={{color:`#FFFFFF`, fontFamily:`Bebas_Regular`}}>BIG SALE</span>
                 <br/>    
-                <button className="home-slide-content-button-white" style={{marginTop:`23px`}}> Live 알림 신청하기</button>
-                <button className="home-slide-content-button" style={{marginTop:`23px`}}> 구매 헤택 보기</button>
-
+                <button className="home-slide-content-button-white"> Live 알림 신청하기</button>
                 </div>
               </div>
             );

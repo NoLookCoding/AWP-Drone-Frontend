@@ -49,14 +49,17 @@
   }
 
   .product_title {
+    font-family: "SamsungOne_Bold";
     padding-top: 40px;
     font-size : 1.3rem;
-    font-weight: 600;
+    font-weight: 800;
     text-align: center;
   }
   .product_des {
+    font-family: "SamsungOne_Bold";
     text-align: center;
-    font-size : 0.8rem;
+    font-weight: 800;
+    font-size : 1.3rem;
     margin : 2% 3% 2% 4%;
   }
   .product_mon {
@@ -135,6 +138,7 @@
     font-weight: 700;
     font-size: 1.4em;
     text-transform: uppercase;
+    text-align: center;
     opacity: 0;
   }
   figure.snip1384 p {
