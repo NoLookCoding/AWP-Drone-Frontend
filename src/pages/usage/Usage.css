@@ -28,5 +28,5 @@
 
 .container {
     display: grid;
-    place-items: center; /* 세로, 가로 중앙 정렬 */
+    place-items: center; 
 }
