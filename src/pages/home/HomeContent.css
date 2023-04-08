@@ -1,0 +1,79 @@
+.home-content-container {
+    width: calc(100%);
+    justify-content: center;
+    padding-bottom: 80px;
+    
+}
+/*여행*/
+.home-content-trip-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 80px;
+}
+.home-content-trip {
+    height: 400px;
+    width: calc(100%);
+    background-image: url('http://www.ridemag.co.kr/news/photo/202011/15466_94487_3121.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: left;
+    display: inline-block;
+}
+
+
+/*엑스포*/
+.home-content-expo-container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 80px;
+}
+.home-content-expo {
+    position: relative;
+    height: 520px;
+    width: calc(80%);
+    background-image: url('https://vrthumb.imagetoday.co.kr/2021/08/10/ta0091t000023.jpg');
+    background-size: cover;
+    background-position: top;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+.home-content-expo-title {
+    position: relative;
+    font-family: 'SamsungOne_Bold';
+    font-style: normal;
+    font-weight: 900;
+    white-space: pre-wrap;
+    font-size: 35px;
+    line-height: 45px;
+    margin-left: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #FFFFFF;
+}
+
+/*초소형*/
+.home-content-mini-container{
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 80px;
+}
+.home-content-mini {
+    height: 100%;
+    width: calc(40%);
+    background-image: url('http://www.ridemag.co.kr/news/photo/202011/15466_94488_3310.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+    text-align: center;
+}
+.home-content-mini-content {
+    height: 100%;
+    width: calc(40%);
+
+    text-align: left;
+}
