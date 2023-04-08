@@ -26,13 +26,13 @@ const Usage = () => {
   // Change to the description of the selected image
   const handleImageAltClick = (imageAlt) => {
     setSelectedImageAlt(
-      document.getElementById('usage head').innerText = imageAlt
+      document.getElementById("usageHeader").innerText = imageAlt
     );
   }
   // Change to the text of the selected image
   const handleImageTextClick = (imageText) => {
     setSelectedImageText(
-      document.getElementById("usage example").innerText = imageText
+      document.getElementById("usageExample").innerText = imageText
     )
   }
 
@@ -84,7 +84,6 @@ const Usage = () => {
           <div className='Usage-picture-frame'>
             {images.map(image => (
              <div className="Usage-picture-content"
-             key={image.id}
              style={{
                backgroundImage: `url(${image.src})`
              }}
