@@ -15,16 +15,18 @@ const ShoppingCartPage = () => {
   useEffect(() => {
     const cartItemsContainer = cartItemsRef.current;
 
-    const handleWheel = (e) => {
-      e.preventDefault();
-      cartItemsContainer.scrollLeft += e.deltaY;
-    };
+    if (cartItemsContainer) {
+      const handleWheel = (e) => {
+        e.preventDefault();
+        cartItemsContainer.scrollLeft += e.deltaY;
+      };
 
-    cartItemsContainer.addEventListener("wheel", handleWheel);
+      cartItemsContainer.addEventListener("wheel", handleWheel);
 
-    return () => {
-      cartItemsContainer.removeEventListener("wheel", handleWheel);
-    };
+      return () => {
+        cartItemsContainer.removeEventListener("wheel", handleWheel);
+      };
+    }
   }, []);
 
   const handleRemove = (item) => {
