@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./DetailStore.css";
 import { drones } from "../../static/drones";
-import { addToCart } from "../cart/cartSlice";
+import { addCount, addToCart } from "../cart/cartSlice";
 
 const DetailDrone = () => {
   const { productId } = useParams();
@@ -13,7 +13,8 @@ const DetailDrone = () => {
   const count = useSelector((state) => state.stockCount.count);
   const [totalPrice, setTotalPrice] = useState(product.price);
   const dispatch = useDispatch();
-  const handleAddToCart = (drone) => {
+  const handleAddToCart = (drone, count) => {
+    dispatch(addCount(count));
     dispatch(addToCart(drone));
   };
 
@@ -67,7 +68,7 @@ const DetailDrone = () => {
           <div className="buy_btn">
             <button
               className="buy_btn"
-              onClick={() => handleAddToCart(product)}
+              onClick={() => handleAddToCart(product, count)}
             >
               Buy &nbsp;{totalPrice.toLocaleString("ko-KR")}￦
             </button>

@@ -1,14 +1,13 @@
 .cart-container {
   margin: 20px;
   padding: 10px;
-  border: 1px solid black;
 }
 .cart-empty {
-  font-size: 1.5em;
+  font-size: 3em;
   font-weight: bold;
 }
 .cart-title {
-  font-size: 1.5em;
+  font-size: 3em;
   font-weight: bold;
 }
 
@@ -19,52 +18,76 @@
 .cart-item-container {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+  margin-left: 2%;
   margin-bottom: 20px;
+  background-color: #dcdcdc;
+  width: 300px;
+  height: 550px;
+  border-radius: 25px;
 }
 .cart-item {
-  margin: 10px;
-  min-width: 300px;
-  padding: 10px;
-  border: 1px solid black;
+  width: 300px;
+  height: 470px;
 }
 
 .item-name {
-  font-size: 1.2em;
   font-weight: bold;
+  font-family: "Inter";
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
 }
-
+.img-container {
+  text-align: center;
+}
 .item-image {
-  max-width: 100px;
+  width: 270px;
+  height: 205px;
 }
 
 .item-price {
-  color: green;
+  color: black;
+  margin-left: 20px;
+}
+
+.item-quantity-container {
+  display: flex;
+  align-items: center;
 }
 
 .item-quantity {
-  color: blue;
+  color: black;
+  margin-left: 20px;
 }
 
 .cart-item-btns {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.remove-btn,
-.increment-btn,
-.decrement-btn {
-  color: black;
-  font-size: 16px;
+  text-align: center;
 }
 
 .remove-btn {
-  background-color: red;
+  background-color: rgb(219, 55, 55);
   padding: 12px 24px;
   font-size: 18px;
+  margin-right: 10px;
+  border-radius: 25px;
+  border: none;
+  color: black;
 }
 
 .increment-btn,
 .decrement-btn {
-  background-color: grey;
-  padding: 10px 20px;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+
+  background-color: #f0f0f0;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.increment-btn:hover,
+.decrement-btn:hover {
+  background-color: #d8d8d8;
 }
