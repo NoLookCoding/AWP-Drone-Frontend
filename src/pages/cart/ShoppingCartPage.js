@@ -23,6 +23,13 @@ const ShoppingCartPage = () => {
     dispatch(decrementQuantity(item));
   };
 
+  const cartItemsContainer = document.querySelector(".cart-items-container");
+
+  cartItemsContainer.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    cartItemsContainer.scrollLeft += e.deltaY;
+  });
+
   return (
     <div className="cart-container">
       {cart.length === 0 ? (
@@ -43,7 +50,8 @@ const ShoppingCartPage = () => {
                     />
                   </div>
                   <h4 className="item-price">
-                    Price: {item.price * item.quantity}
+                    Price:{" "}
+                    {(item.price * item.quantity).toLocaleString("ko-KR")}￦
                   </h4>
                   <div className="item-quantity-container">
                     <h4 className="item-quantity">Quantity: {item.quantity}</h4>
