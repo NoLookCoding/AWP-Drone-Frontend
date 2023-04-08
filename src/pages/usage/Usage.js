@@ -77,8 +77,8 @@ const Usage = () => {
       <div className="Usage">
         <div className='container'>
           <div className="Usage-content-frame">
-            <h2 style={{ fontFamily: "Sansation" }} id='usage head'>드론의 사용 예시</h2>
-            <h4 id="usage example">드론의 활용범위는 매우 다양한데, 드론의 시작이 된 군사용 무기에서부터 건설, 에너지, 물류, 재난구조, 농업, 촬영 등 각종 분야로 활동 가능한 영역이 사실상 무한대로 넓어졌습니다. </h4>
+            <h2 style={{ fontFamily: "Sansation" }} id='usageHeader'>드론의 사용 예시</h2>
+            <h4 id="usageExample">드론의 활용범위는 매우 다양한데, 드론의 시작이 된 군사용 무기에서부터 건설, 에너지, 물류, 재난구조, 농업, 촬영 등 각종 분야로 활동 가능한 영역이 사실상 무한대로 넓어졌습니다. </h4>
             <button className="home-slide-content-button" id="button" style={{ visibility: isButtonVisible ? 'visible' : 'hidden', opacity:`1`}} onClick={ClickDroneBuyButton}>구매하기</button>
           </div>
           <div className='Usage-picture-frame'>
