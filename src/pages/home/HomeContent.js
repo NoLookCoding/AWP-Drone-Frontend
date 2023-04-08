@@ -19,7 +19,7 @@ const HomeContent = (props) => {
       setScroll(3);
     }else if(window.scrollY >=100+480){
       setScroll(2);
-    }else if(window.scrollY >=400){
+    }else if(window.scrollY >=200){
       setScroll(1);
     }
   }

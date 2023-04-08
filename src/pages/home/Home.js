@@ -3,6 +3,9 @@ import "./Home.css";
 import "../Footer.css"
 
 import {FiChevronLeft,FiChevronRight } from "react-icons/fi"
+import {CiPause1,CiPlay1} from "react-icons/ci";
+import {FaPause,FaPlay} from "react-icons/fa";
+
 import HomeSlide from "./HomeSlide";
 import HomeContent from "./HomeContent";
 
@@ -101,7 +104,7 @@ const Home = ({ images }) => {
 
   return (
     <div className="home-container"> 
-      <div className="home-slider" onMouseEnter={() => setIsSliding(false)} onMouseLeave={() => setIsSliding(true)}>{/* Add onMouseEnter and onMouseLeave event handlers */}
+      <div className="home-slider">
           {slideComponents.map((slideComponent, index) => (
             <div
               key={index}
@@ -112,7 +115,7 @@ const Home = ({ images }) => {
               {slideComponent}
             </div>
           ))}
-        <HomeSlideFooter setCurrentImageIndex={setCurrentImageIndex}  currentImageIndex={currentImageIndex}/>
+        <HomeSlideFooter setCurrentImageIndex={setCurrentImageIndex} currentImageIndex={currentImageIndex} isSliding={isSliding} setIsSliding={setIsSliding} />
         <FiChevronLeft className="home-slider-previous" onClick={handlePreviousImage}>
         </FiChevronLeft>
         <FiChevronRight className="home-slider-next" onClick={handleNextImage}>
@@ -123,7 +126,7 @@ const Home = ({ images }) => {
   );
 };
 
-const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex }) => {
+const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex, isSliding, setIsSliding }) => {
   const buttonLabels = ["촬영드론", "오지구조드론", "새 출발 SALE", "Global Drones"];
 
   const handleClickIndex = (index) => {
@@ -144,6 +147,13 @@ const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex }) => {
             {label}
           </button>
         ))}
+        <div>
+        {
+          isSliding === true
+          ? <FaPause style={{color:`#FFFFFF`, margin:`20px`}} onClick ={()=>setIsSliding(false)}/>
+          : <FaPlay style={{color:`#FFFFFF`, margin:`20px`}} onClick ={()=>setIsSliding(true)}/>
+        }
+      </div>
       </div>
     </div>
   );

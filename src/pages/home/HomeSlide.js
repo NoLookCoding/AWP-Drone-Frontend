@@ -50,7 +50,13 @@ const HomeSlide = (props) => {
                 <div>
                   <span className="home-slide-content-title" style={{color:`#FFFFFF`}}>최첨단 구조 드론</span>
                   <br/>
-                    <span className="home-slide-content-text" style={{color:`#FFFFFF`}}>어느 위험한 곳이라도 문제없는 DRONE RX</span>           
+                  <span className="home-slide-content-title" style={{color:`#FFFFFF`}}>오직, 이곳에서</span>
+                  <br/>
+                  <br/>
+                    <span className="home-slide-content-text" style={{color:`#FFFFFF`}}>어느 위험한 곳이라도 문제없는 DRONE RX</span>
+                    <br/>
+                    <span className="home-slide-content-text" style={{color:`#FFFFFF`}}>구호물품 전달까지, 문제없는 수행 능력</span>
+                   
                          </div>
               </div>
             );
@@ -65,7 +71,7 @@ const HomeSlide = (props) => {
                 <br/>
                 <span className="home-slide-content-title" style={{color:`#FFFFFF`, fontFamily:`Bebas_Regular`}}>BIG SALE</span>
                 <br/>    
-                <button className="home-slide-content-button-white"> Live 알림 신청하기</button>
+                <button className="home-slide-content-button-white"style={{marginTop:`23px`}}> Live 알림 신청하기</button>
                 </div>
               </div>
             );
