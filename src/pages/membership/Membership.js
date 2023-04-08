@@ -1,29 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import './Membership.css'
 
+const memberInfo=[
+  {id:0,name:"문희상",stdId:20190001,info:"소프트웨어학과 3학년",git:"깃허브주소",sns:"인스타주소",img:"d"},
+  {id:1,name:"신승건",stdId:20190002,info:"소프트웨어학과 3학년",git:"깃허브주소",sns:"인스타주소",img:"s"},
+  {id:2,name:"이승민",stdId:20190003,info:"소프트웨어학과 3학년",git:"깃허브주소",sns:"인스타주소",img:"d"},
+  {id:3,name:"이승원",stdId:20190004,info:"소프트웨어학과 3학년",git:"깃허브주소",sns:"인스타주소",img:"3"},
+  {id:4,name:"이현석",stdId:20190005,info:"소프트웨어학과 3학년",git:"깃허브주소",sns:"인스타주소",img:"43"}
+]
+
+
+const OneMember = (props) => {
+
+  const member = props.member;
+
+  return(
+    <div className="membership-member-frame">
+      <div className="membership-member-image" 
+      // style={{backgroundImage: `url(${member.img})`}}
+      />
+      <div className="membership-member-content"/>
+    </div>
+  );
+}
+
 const Member = () => {
 
   return (
     <>
-      <div className="introduce-frame">
-        <div className="introduce-content-frame">
-          <h3 style={{ fontFamily: "Sansation" }}>Introduce</h3>
-          <text>
-            대한민국 드론 선도기업인 NoLoock Drones는 공공부문 특화 임무용 드론을 개발/제작하는 기업으로 정부기관 및 국책연구기관과 공동개발/납품을 진행하고 있습니다.
-            <br />
-            특히 비행체의 최적화 설계, 비행제어 안정화, 센서 활용 기술 등 세계적 수준의 기술을 보유하고 있으며
-            산림보존/시설물점검/물품배송/재난환경/군사목적의 정부R&D 과제를 수행함으로써 대한민국을 대표하는 연구 전문기업이 되었습니다.
-            <br />
-            ‘기술 축적의 시간이 혁신이다’라는 마음가짐으로 4차산업혁명 시대의 미래를 열어나가겠습니다.
-            <br />
-            감사합니다.
-          </text>
+      <div className="membership-frame">
+        <div className="membership-content-frame">
+        {memberInfo.map(member => (
+             <Member member={member}/>
+            ))}
         </div>
-
-        {/* <div className="">
-            <span>2023 NoLoock Drones</span>
-            <span>Advanced Drone 런칭체험단</span>
-        </div> */}
       </div>
     </>
   );

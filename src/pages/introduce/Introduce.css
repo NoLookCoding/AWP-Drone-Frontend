@@ -22,5 +22,35 @@
     margin: 50px;
     padding: 20px;
     border-radius: 25px;
+    animation: fadein 1s ease-in-out;
+
   
   }
+  .introduce-content-text {
+    position: relative;
+    font-family: 'SamsungOne_Bold';
+    font-style: normal;
+    font-weight: 500;
+    white-space: pre-wrap;
+
+    font-size: 18px;
+    line-height: 30px;
+    margin-left: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #000000;
+
+    overflow: hidden;
+    animation: fadein 1s ease-in-out;
+}
+
+@keyframes fadein{
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100%{
+        opacity: 0.7;
+        transform:none;
+    }
+}

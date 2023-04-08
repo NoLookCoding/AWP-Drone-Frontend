@@ -2,15 +2,33 @@ import React, { useState, useRef, useEffect } from "react";
 import "./HomeContent.css";
 import "./HomeSlide.css";
 
-
 const HomeContent = (props) => {
+  const [scroll,setScroll] = useState(0);
 
+  useEffect(() =>{
+    window.addEventListener('scroll',handleScroll);
+  
+    return() => {
+      window.removeEventListener('scroll',handleScroll);
+    };
+  },[]);
+  
+  const handleScroll = () =>{
+    // mini
+    if(window.scrollY >= 230+520+480){
+      setScroll(3);
+    }else if(window.scrollY >=100+480){
+      setScroll(2);
+    }else if(window.scrollY >=400){
+      setScroll(1);
+    }
+  }
     
             return(
                 <div className="home-content-container">
 
                   {/* 여행 */}
-                <div className="home-content-trip-container">
+                  <div className={`home-content-trip-container slide-in ${scroll >= 1 ? 'visible' : ''}`}>
                   <div className="home-content-trip">
                   <div className="home-content-expo-title" style={{color:`#000000`, paddingTop:`20px`}}>내 여행의 즐거움을 2배로<br/>세계로 나가는 <br/>Global Drones-X<br/>체험단 모집</div>
                   <button className="home-slide-content-button" style={{marginTop:`23px`}}> 체험단 신청</button>
@@ -18,7 +36,7 @@ const HomeContent = (props) => {
                 </div>
 
                   {/* 엑스포 */}
-                <div className="home-content-expo-container">
+                  <div className={`home-content-expo-container slide-in ${scroll >= 2 ? 'visible' : ''}`}>
                   <div className="home-content-expo">
                   
                   <br/>
@@ -33,7 +51,7 @@ const HomeContent = (props) => {
                 </div>
 
                   {/* 초소형드론 */}
-                <div className="home-content-mini-container">
+                  <div className={`home-content-mini-container slide-in ${scroll >= 3 ? 'visible' : ''}`}>
                   <div className="home-content-mini">
                   <div className="home-content-expo-title" style={{color:`#FFFFFF`, paddingTop:`30px`}}>초경량 드론 Smini2 출시</div>
                   </div>
