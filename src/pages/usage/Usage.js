@@ -86,7 +86,7 @@ const Usage = () => {
              <div className="Usage-picture-content"
              key={image.id}
              style={{
-               backgroundImage: `url(${image.src})`, // 이미지 URL을 배경으로 지정
+               backgroundImage: `url(${image.src})`
              }}
                 onClick={() => {
                   handleImageIdClick(image.id);
