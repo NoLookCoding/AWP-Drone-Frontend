@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './Introduce.css'
+import './Membership.css'
 
-const Introduce = () => {
+const Member = () => {
 
   return (
     <>
@@ -19,9 +19,14 @@ const Introduce = () => {
             감사합니다.
           </text>
         </div>
+
+        {/* <div className="">
+            <span>2023 NoLoock Drones</span>
+            <span>Advanced Drone 런칭체험단</span>
+        </div> */}
       </div>
     </>
   );
 }
 
-export default Introduce;
+export default Member;
