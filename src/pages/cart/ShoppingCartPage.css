@@ -14,7 +14,24 @@
 .cart-items-container {
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden; /* enable vertical scrolling */
+  flex-direction: row; /* set items to stack horizontally */
+  white-space: nowrap; /* prevent items from wrapping to next line */
 }
+
+.cart-items-container::-webkit-scrollbar {
+  height: 1rem; /* adjust height of scrollbar */
+}
+
+.cart-items-container::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* adjust color of scrollbar thumb */
+  border-radius: 0.25rem; /* adjust border radius of scrollbar thumb */
+}
+
+.cart-items-container::-webkit-scrollbar-track {
+  background-color: transparent; /* adjust color of scrollbar track */
+}
+
 .cart-item-container {
   display: flex;
   flex-direction: column;
@@ -73,6 +90,10 @@
   border-radius: 25px;
   border: none;
   color: black;
+  cursor: pointer;
+}
+.remove-btn:hover {
+  background-color: rgb(229, 36, 36);
 }
 
 .increment-btn,
