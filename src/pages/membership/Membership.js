@@ -48,7 +48,7 @@ const OneMember = (props) => {
       <div className="membership-member-info">{member.info}</div>
       <div className="membership-member-git">
         <BsGithub onClick={() => handleClick(member.git)} onMouseOver={(e) => mouseOverGit(e)} onMouseOut={(e) => mouseOutGit(e)} style={{color:`${isGHovering ? `#2400FE` :`#000000`}`, width:`30px`, height:'30px', marginRight:`15px`}}/>
-        <BsInstagram onClick={() => handleClick(member.insta)}onMouseOver={(e) => mouseOverInsta(e)} onMouseOut={(e) => mouseOutInsta(e)} style={{color:`${isIHovering ? `#dd2a7b` :`#000000`}`, width:`30px`, height:'30px', marginLeft:`15px`}}/>
+        <BsInstagram onClick={() => handleClick(member.sns)}onMouseOver={(e) => mouseOverInsta(e)} onMouseOut={(e) => mouseOutInsta(e)} style={{color:`${isIHovering ? `#dd2a7b` :`#000000`}`, width:`30px`, height:'30px', marginLeft:`15px`}}/>
         </div>
       </div>
     </div>
