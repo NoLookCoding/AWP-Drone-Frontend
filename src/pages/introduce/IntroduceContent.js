@@ -37,16 +37,16 @@ const IntroduceContent = (props) => {
                 <div className="introduce-content-container">
 
                   {/* Title */}
-                  <div className={`introduce-content-trip-container slide-in ${scroll >= 1 ? 'visible' : 'visible'}`}>
-                  <div className="introduce-content-trip">
-                  <div className="introduce-content-expo-title" style={{ paddingTop:`20px`}}>NOLOOK DRONES 소개</div>
+                  <div className={`introduce-content-title-container slide-in ${scroll >= 1 ? 'visible' : 'visible'}`}>
+                  <div className="introduce-content-title">
+                  <div className="introduce-content-text" style={{ paddingTop:`20px`}}>NOLOOK DRONES 소개</div>
                   </div>
                 </div>
                   {/* 1 */}
-                  <div className="introduce-content-mini-container" >
-                    <div className={`introduce-content-mini slide-in ${scroll >= 2 ? 'visible' : ''}`} style={{backgroundImage:`url(${'http://www.ridemag.co.kr/news/photo/202011/15466_94488_3310.jpg'})`}}>                    </div>
-                    <div className={`introduce-content-mini-content slide-in ${scroll >= 3 ? 'visible' : ''}`}>
-                      <div className="introduce-content-expo-title"> 
+                  <div className="introduce-content-image-container" >
+                    <div className={`introduce-content-image slide-in ${scroll >= 2 ? 'visible' : ''}`} style={{backgroundImage:`url(${'http://www.ridemag.co.kr/news/photo/202011/15466_94488_3310.jpg'})`}}>                    </div>
+                    <div className={`introduce-content-image-text slide-in ${scroll >= 3 ? 'visible' : ''}`}>
+                      <div className="introduce-content-text"> 
                       2000년에 시작한<br/>
                       NOLOOK DRONES는<br/>
                       고품질 장비와<br/>
@@ -56,9 +56,9 @@ const IntroduceContent = (props) => {
                     </div>
                   </div>
                   {/* 2 */}
-                  <div className="introduce-content-mini-container">
-                    <div className={`introduce-content-mini-content slide-in ${scroll >= 5 ? 'visible' : ''}`}>
-                      <div className="introduce-content-expo-title"> 
+                  <div className="introduce-content-image-container">
+                    <div className={`introduce-content-image-text slide-in ${scroll >= 5 ? 'visible' : ''}`}>
+                      <div className="introduce-content-text"> 
                       공연, 촬영, 방역, 시설관리,<br/>
                       재난, 물류 등<br/> 
                       다양한 산업분야에<br/> 
@@ -67,15 +67,15 @@ const IntroduceContent = (props) => {
 
                       </div>
                     </div>
-                    <div className={`introduce-content-mini slide-in ${scroll >= 4 ? 'visible' : ''}`} style={{backgroundImage:`url(${'https://img.wowtv.co.kr/wowtv_news/dnrs/20220727/B20220727094157290.jpg'})`}}>
+                    <div className={`introduce-content-image slide-in ${scroll >= 4 ? 'visible' : ''}`} style={{backgroundImage:`url(${'https://img.wowtv.co.kr/wowtv_news/dnrs/20220727/B20220727094157290.jpg'})`}}>
                     </div>
                   </div>
                   {/* 3 */}
-                  <div className="introduce-content-mini-container">
-                  <div className={`introduce-content-mini slide-in ${scroll >= 6 ? 'visible' : ''}`} style={{backgroundImage:`url(${'https://www.ilovepc.co.kr/news/photo/201806/19539_35706_255.jpg'})`}}>
+                  <div className="introduce-content-image-container">
+                  <div className={`introduce-content-image slide-in ${scroll >= 6 ? 'visible' : ''}`} style={{backgroundImage:`url(${'https://www.ilovepc.co.kr/news/photo/201806/19539_35706_255.jpg'})`}}>
                     </div>
-                    <div className={`introduce-content-mini-content slide-in ${scroll >= 7 ? 'visible' : ''}`}>
-                      <div className="introduce-content-expo-title" >
+                    <div className={`introduce-content-image-text slide-in ${scroll >= 7 ? 'visible' : ''}`}>
+                      <div className="introduce-content-text" >
                         고객의 요구에 따라<br/> 
                         맞춤형 서비스를 제공하며,<br/>
                         12가지 분야와 협업하여<br/>
