@@ -27,13 +27,13 @@ const Store = () => {
 
               <figure class="figure_class">
                 <li key={product.id}>
-                  <div className="product_img"><img src={product.imageLoc}></img></div>
+                  <div className="product_img" ><img src={product.imageLoc}></img></div>
                   <div className="product_title">{product.name}</div>
                   <div className="product_des">{product.price.toLocaleString("ko-KR")}￦</div>
                 </li>
                 {/* 효과 들어가는 블럭*/}
-                <figcaption>
-                  <h3>{product.name}</h3>
+                <figcaption style={{textAlign:`center`}}>
+                  <h3 style={{fontFamily:`SamsungOne_Bold`, textAlign:`center`}}>{product.name}</h3>
                   <BsArrowUpRightCircleFill className = "ArrowIcon"/>
                 </figcaption>
               </figure>
