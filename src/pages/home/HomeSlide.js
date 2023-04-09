@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import "./HomeSlide.css";
 
 const HomeSlide = (props) => {
-    const [isHovering, setIsHovering] = useState(false);
 
     switch(props.index){
         case 0 :

@@ -64,24 +64,7 @@
   .header-name:hover{
     color: #000000;
   }
-  /* .header-name:hover::before {
-    width: 100%;
-  }
-  .header-name::before {
-    content: "";
-    position: absolute;
-    bottom: -5px; 
-    left: 0;
-    width: 0;
-    height: 5px;
-    background-color: #000000;
-    transition: all 0.2s ease-out;
-  }
 
-  .header-name-item:active {
-    transform: scale(0.98);
-  } 
-  */
 
   .header-nav-button-frame{
     width: 450px;
@@ -92,7 +75,6 @@
 
   .header-nav-button-item{
     position: relative;
-    /* font-family: 'Bebas_Regular'; */
     font-family: 'SamsungOne_Bold';
     font-style: normal;
     font-weight: 900;
