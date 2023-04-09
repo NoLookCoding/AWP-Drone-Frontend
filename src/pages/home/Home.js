@@ -120,7 +120,7 @@ const Home = ({ images }) => {
 };
 
 const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex, isSliding, setIsSliding }) => {
-  const buttonLabels = ["사전판매", "Drone Rx", "새 출발 SALE", "Global Drones", "무소음 드론"];
+  const buttonLabels = ["무소음 드론","사전판매", "Drone Rx", "새 출발 SALE", "Global Drones"];
   const [isHovering, setIsHovering] = useState(false);
 
   const handleClickIndex = (index) => {

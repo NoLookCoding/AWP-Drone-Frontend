@@ -74,18 +74,18 @@ const ShoppingCartPage = () => {
                       className="item-image"
                     />
                   </div>
-                  <h4 className="item-price">
-                    Price:{" "}
+                  <div className="shoppingCart-quantity-title" >
+                    가격:{" "}
                     {(item.price * item.quantity).toLocaleString("ko-KR")}￦
-                  </h4>
+                  </div>
                   <div className="item-quantity-container">
-                  <div className="shoppingCart-quantity-title" >Quantity: {item.quantity}
+                  <div className="shoppingCart-quantity-title" >수량: {item.quantity}
                     <br/>
                     <div style={{justifyContent:`center`}}>
-                    <BsCartPlus style={{width:`30px`, height:`30px`}}
+                    <BsCartPlus style={{width:`30px`, height:`30px`, marginRight:`10px`}}
                       onClick={() => handleIncrement(item)}
                     />
-                    <BsCartDash style={{width:`30px`, height:`30px`}}
+                    <BsCartDash style={{width:`30px`, height:`30px`, marginLeft:`10px`}}
                       onClick={() => handleDecrement(item)}
                     />
                     </div>
