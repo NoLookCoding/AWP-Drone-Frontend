@@ -81,7 +81,7 @@
 /*생기는 효과*/
 .slide-in {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(30%);
     transition: opacity 1s ease, transform 1s ease;
   }
   

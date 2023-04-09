@@ -7,6 +7,11 @@ const Introduce = () => {
   return (
     <>
       <div className="introduce-frame">
+        <div className="introduce-content-left-title">
+        <span className="home-content-expo-title" >2030부산세계박람회</span>
+                    <br/>
+                    <span className="home-content-expo-title" >유치를 위해 NOLOOK이 함께 뛰겠습니다.</span>
+        </div>
         <div className="introduce-content-frame">
           <h3 style={{ fontFamily: "SamsungOne_Bold" }}>Introduce</h3>
           <div className="introduce-content-text">

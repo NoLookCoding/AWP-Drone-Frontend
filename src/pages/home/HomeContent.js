@@ -15,7 +15,13 @@ const HomeContent = (props) => {
   
   const handleScroll = () =>{
     // mini
-    if(window.scrollY >= 230+520+480){
+    if(window.scrollY >= 230+520+480 +150){
+      setScroll(6);
+    }else if(window.scrollY >=230+520+480 + 1000){
+      setScroll(5);
+    }else if(window.scrollY >=230+520+480 + 50){
+      setScroll(4);
+    }else if(window.scrollY >=230+520+480){
       setScroll(3);
     }else if(window.scrollY >=100+480){
       setScroll(2);
@@ -51,11 +57,11 @@ const HomeContent = (props) => {
                 </div>
 
                   {/* 초소형드론 */}
-                  <div className={`home-content-mini-container slide-in ${scroll >= 3 ? 'visible' : ''}`}>
-                  <div className="home-content-mini">
+                  <div className="home-content-mini-container">
+                  <div className={`home-content-mini slide-in ${scroll >= 3 ? 'visible' : ''}`}>
                   <div className="home-content-expo-title" style={{color:`#FFFFFF`, paddingTop:`30px`}}>초경량 드론 Smini2 출시</div>
                   </div>
-                  <div className="home-content-mini-content">
+                  <div className={`home-content-mini-content slide-in ${scroll >= 5 ? 'visible' : ''}`}>
                   <div className="home-content-expo-title" style={{color:`#000000`, paddingTop:`30px`}}>고화질 카메라 및 <br/>다양한 편의 기능 탑재<br/><br/>놀랍도록 쉬운 비행 조작<br/><br/>쉬운 영상 제작과 공유<br/><br/>719,000원부터</div>
                   </div>
                 </div>
