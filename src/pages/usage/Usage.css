@@ -12,13 +12,13 @@ background-image: url('../../static/drone_1.jpg');
   position: absolute;
   top: 0;
     width: 500px;
-    height: calc(100% - 350px);
+    height: calc(100%-100px);
     background: #FFFFFF;
     background-size: cover;
     background-position: center;
     text-align: center;
     opacity: 0.7;
-    margin: 50px;
+    margin-top: 50px;
     padding: 20px;
     border-radius: 25px;
     justify-content: center;
@@ -49,4 +49,55 @@ background-image: url('../../static/drone_1.jpg');
 .container {
     display: grid;
     place-items: center;
+}
+
+.usage-content-title {
+  position: relative;
+  font-family: 'SamsungOne_Bold';
+  font-style: normal;
+  font-weight: 900;
+  white-space: pre-wrap;
+  font-size: 35px;
+  line-height: 50px;
+  margin-left: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #000000;
+}
+
+.usage-content-text {
+  position: relative;
+  font-family: 'SamsungOne_Bold';
+  font-style: normal;
+  font-weight: 500;
+  white-space: pre-wrap;
+
+  font-size: 18px;
+  line-height: 30px;
+  margin-left: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #000000;
+}
+.usage-content-button{
+  position: absolute;
+  font-family: 'SamsungOne_Bold';
+  font-style: normal;
+  text-align: center;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 30px;
+  border: none;
+  border-radius: 40px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #000000;
+  color: #FFFFFF;
+  opacity: 1;
+}
+.usage-content-button:hover{
+  background-color: #FFFFFF;
+  color: #000000;
 }
