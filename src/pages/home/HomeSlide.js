@@ -1,31 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./HomeSlide.css";
 
-// function MouseOverButton(e){
-//     e.currentTarget.style.background = COLOR.black;
-//     e.currentTarget.style.color = COLOR.white;
-
-// }
-// function MouseOutButton(e){
-//     e.currentTarget.style.background = COLOR.white;
-//     e.currentTarget.style.color = COLOR.black;
-// }
-
-
 const HomeSlide = (props) => {
     const [isHovering, setIsHovering] = useState(false);
-
-    const handleMouseOver = (e) => {
-        console.log("왜 안돼");
-        e.currentTarget.style.background = "#000000";
-        e.currentTarget.style.color = "#FFFFFF";
-      };
-      
-      const handleMouseOut = (e) => {
-        e.currentTarget.style.background = "#FFFFFF";
-        e.currentTarget.style.color = "#000000";
-      };
-    
 
     switch(props.index){
         case 0 :
@@ -90,6 +67,23 @@ const HomeSlide = (props) => {
                 <br/>   
                 <button className="home-slide-content-button" style={{marginTop:`23px`}}> 구매 헤택 보기</button>
                 </div>
+              </div>
+            );
+            case 4 :
+            return(
+                <div className="home-slide-content-container">
+                <div>
+                <span className="home-slide-content-text" style={{color:`#FFFFFF`,fontSize:`23px`}}>4월 12일(수) 오후 7시 방송</span>     
+                <br/>
+                <span className="home-slide-content-title" style={{color:`#FFFFFF`}}>무소음 쿼드콥터</span>
+                <br/>
+                <span className="home-slide-content-title" style={{color:`#FFFFFF`}}>최초공개</span>
+                <br/>
+                <br/>
+                <span className="home-slide-content-text"  style={{color:`#FFFFFF`}}>더욱 조용해진 비행</span>     
+                <br/>
+                <span className="home-slide-content-text" style={{color:`#FFFFFF`}}>NOLOOK DRONE만의 기술을 놓치지 마세요</span>
+                  </div>
               </div>
             );
         default : 

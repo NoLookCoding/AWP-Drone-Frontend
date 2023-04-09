@@ -34,7 +34,7 @@ const HomeContent = (props) => {
                 <div className="home-content-container">
 
                   {/* 여행 */}
-                  <div className={`home-content-trip-container slide-in ${scroll >= 1 ? 'visible' : ''}`}>
+                  <div className={`home-content-trip-container slide-in ${scroll >= 1 ? 'visible' : 'visible'}`}>
                   <div className="home-content-trip">
                   <div className="home-content-expo-title" style={{color:`#000000`, paddingTop:`20px`}}>내 여행의 즐거움을 2배로<br/>세계로 나가는 <br/>Global Drones-X<br/>체험단 모집</div>
                   <button className="home-slide-content-button" style={{marginTop:`23px`}}> 체험단 신청</button>

@@ -3,16 +3,10 @@ import "./Home.css";
 import "../Footer.css"
 
 import {FiChevronLeft,FiChevronRight } from "react-icons/fi"
-import {CiPause1,CiPlay1} from "react-icons/ci";
 import {FaPause,FaPlay} from "react-icons/fa";
 
 import HomeSlide from "./HomeSlide";
 import HomeContent from "./HomeContent";
-
-const images = ['https://cdn.pixabay.com/photo/2016/11/29/02/59/drone-1866961_1280.jpg', 
-'https://cdn.pixabay.com/photo/2017/09/07/08/57/drone-2724257_1280.jpg',
-'https://www.cctvnews.co.kr/news/photo/202009/209837_210397_5058.jpg',
-'https://media.kingston.com/kingston/hero/ktc-hero-blog-personal-storage-drone-photography-tips-lg.jpg'];
 
 const Home = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -22,7 +16,8 @@ const Home = ({ images }) => {
     <HomeSlide index={0} />,
     <HomeSlide index={1} />,
     <HomeSlide index={2} />,
-    <HomeSlide index={3} />
+    <HomeSlide index={3} />,
+    <HomeSlide index={4} />
   ];
 
 
@@ -125,7 +120,7 @@ const Home = ({ images }) => {
 };
 
 const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex, isSliding, setIsSliding }) => {
-  const buttonLabels = ["사전판매", "Drone Rx", "새 출발 SALE", "Global Drones"];
+  const buttonLabels = ["사전판매", "Drone Rx", "새 출발 SALE", "Global Drones", "무소음 드론"];
   const [isHovering, setIsHovering] = useState(false);
 
   const handleClickIndex = (index) => {
