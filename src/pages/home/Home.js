@@ -3,13 +3,10 @@ import "./Home.css";
 import "../Footer.css"
 
 import {FiChevronLeft,FiChevronRight } from "react-icons/fi"
+import {FaPause,FaPlay} from "react-icons/fa";
+
 import HomeSlide from "./HomeSlide";
 import HomeContent from "./HomeContent";
-
-const images = ['https://cdn.pixabay.com/photo/2016/11/29/02/59/drone-1866961_1280.jpg', 
-'https://cdn.pixabay.com/photo/2017/09/07/08/57/drone-2724257_1280.jpg',
-'https://www.cctvnews.co.kr/news/photo/202009/209837_210397_5058.jpg',
-'https://media.kingston.com/kingston/hero/ktc-hero-blog-personal-storage-drone-photography-tips-lg.jpg'];
 
 const Home = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -19,7 +16,8 @@ const Home = ({ images }) => {
     <HomeSlide index={0} />,
     <HomeSlide index={1} />,
     <HomeSlide index={2} />,
-    <HomeSlide index={3} />
+    <HomeSlide index={3} />,
+    <HomeSlide index={4} />
   ];
 
 
@@ -97,11 +95,9 @@ const Home = ({ images }) => {
     return () => clearInterval(intervalRef.current);
   }, [currentImageIndex, images.length, isSliding]); // Add isSliding to the dependency array
 
-
-
   return (
     <div className="home-container"> 
-      <div className="home-slider" onMouseEnter={() => setIsSliding(false)} onMouseLeave={() => setIsSliding(true)}>{/* Add onMouseEnter and onMouseLeave event handlers */}
+      <div className="home-slider">
           {slideComponents.map((slideComponent, index) => (
             <div
               key={index}
@@ -112,7 +108,7 @@ const Home = ({ images }) => {
               {slideComponent}
             </div>
           ))}
-        <HomeSlideFooter setCurrentImageIndex={setCurrentImageIndex}  currentImageIndex={currentImageIndex}/>
+        <HomeSlideFooter setCurrentImageIndex={setCurrentImageIndex} currentImageIndex={currentImageIndex} isSliding={isSliding} setIsSliding={setIsSliding} />
         <FiChevronLeft className="home-slider-previous" onClick={handlePreviousImage}>
         </FiChevronLeft>
         <FiChevronRight className="home-slider-next" onClick={handleNextImage}>
@@ -123,12 +119,21 @@ const Home = ({ images }) => {
   );
 };
 
-const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex }) => {
-  const buttonLabels = ["촬영드론", "오지구조드론", "새 출발 SALE", "Global Drones"];
+const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex, isSliding, setIsSliding }) => {
+  const buttonLabels = ["사전판매", "Drone Rx", "새 출발 SALE", "Global Drones", "무소음 드론"];
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleClickIndex = (index) => {
     setCurrentImageIndex(index);
   };
+
+  const mouseOver = (e) =>{
+    setIsHovering(true);
+  } 
+  const mouseOut = (e) =>{
+    setIsHovering(false);
+  } 
+
 
   return (
     <div className="home-footer-nav-frame" style={{zIndex:`3`}}>
@@ -144,6 +149,13 @@ const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex }) => {
             {label}
           </button>
         ))}
+        <div>
+        {
+          isSliding === true
+          ? <FaPause onMouseOver={(e) => mouseOver(e)} onMouseOut={(e) => mouseOut(e)} style={{color:`${isHovering ? `#000000` :`#FFFFFF`}`, margin:`20px`}} onClick ={()=>setIsSliding(false)}/>
+          : <FaPlay  onMouseOver={(e) => mouseOver(e)} onMouseOut={(e) => mouseOut(e)} style={{color:`${isHovering ? `#000000` :`#FFFFFF`}`, margin:`20px`}} onClick ={()=>setIsSliding(true)}/>
+        }
+      </div>
       </div>
     </div>
   );

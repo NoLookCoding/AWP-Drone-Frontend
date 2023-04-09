@@ -53,7 +53,6 @@ const Header = () => {
             </div>
         </div>
         <div className="outlet-container">
-        
             <Outlet/>
         </div>
         </div>

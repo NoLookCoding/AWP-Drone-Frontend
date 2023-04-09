@@ -1,26 +1,99 @@
-.introduce-frame{
-
+.introduce-container {
+    position: relative;
     width: 100%;
-    height: calc(100vh - 140px);
-    display: flex;
-    justify-content: flex-end;
-    background-size: cover;
-    background-position: left;
-    background-image: url('https://nt.global.ssl.fastly.net/binaries/content/gallery/website/national/library/discover-and-learn/film-and-tv/drone-flying-cerne-abbas-dorset-1502257.jpg');
-
-   
-}
-
-.introduce-content-frame {
-    width: 500px;
-    height: calc(100% - 140px);
-    background: #FFFFFF;
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    opacity: 0.7;
-    margin: 50px;
-    padding: 20px;
-    border-radius: 25px;
-  
+    max-width: 100%;
+    overflow: hidden;
   }
+  
+  .introduce-slider {
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    width: 100%;
+    height: 400px;
+  }
+  
+  .introduce-slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .introduce-slider-image.active {
+    opacity: 1;
+  }
+  
+  .introduce-slider-previous,
+  .introduce-slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 60px;
+    height: 60px;
+    border: none;
+    margin-left: 5px;
+    margin-right: 5px;
+  
+    background-color: transparent;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .introduce-slider-next:hover{
+    color: #FFFFFF;
+  }
+  .introduce-slider-previous:hover{
+    color: #FFFFFF;
+  }
+  
+  .introduce-slider-previous {
+    left: 0;
+  }
+  
+  .introduce-slider-next {
+    right: 0;
+  }
+  
+  .introduce-slider-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .introduce-slider-content.active {
+    opacity: 1;
+  }
+  
+  .introduce-footer-nav-frame{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    background: #d9d9d9;
+    display: flex;
+    justify-content:center;
+  }
+  .introduce-footer-nav-button-frame{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+  
+ 
+  
