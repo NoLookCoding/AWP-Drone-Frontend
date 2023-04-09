@@ -56,13 +56,13 @@ const IntroduceContent = (props) => {
                     <div className={`introduce-content-mini-content slide-in ${scroll >= 5 ? 'visible' : ''}`}>
                       <div className="introduce-content-expo-title" style={{color:`#000000`, paddingTop:`30px`}}> 다양한 산업분야에 <br/> 드론 솔루션을 제공 <br/> 재계약</div>
                     </div>
-                    <div className={`introduce-content-mini slide-in ${scroll >= 4 ? 'visible' : ''}`} style={{backgroundImage:`url(${'http://www.ridemag.co.kr/news/photo/202011/15466_94488_3310.jpg'})`}}>
+                    <div className={`introduce-content-mini slide-in ${scroll >= 4 ? 'visible' : ''}`} style={{backgroundImage:`url(${'https://img.wowtv.co.kr/wowtv_news/dnrs/20220727/B20220727094157290.jpg'})`}}>
                       <div className="introduce-content-expo-title" style={{color:`#FFFFFF`, paddingTop:`30px`}}></div>
                     </div>
                   </div>
                   {/* 3 */}
                   <div className="introduce-content-mini-container">
-                  <div className={`introduce-content-mini slide-in ${scroll >= 6 ? 'visible' : ''}`} style={{backgroundImage:`url(${'http://www.ridemag.co.kr/news/photo/202011/15466_94488_3310.jpg'})`}}>
+                  <div className={`introduce-content-mini slide-in ${scroll >= 6 ? 'visible' : ''}`} style={{backgroundImage:`url(${'https://www.ilovepc.co.kr/news/photo/201806/19539_35706_255.jpg'})`}}>
                       <div className="introduce-content-expo-title" style={{color:`#FFFFFF`, paddingTop:`30px`}}></div>
                     </div>
                     <div className={`introduce-content-mini-content slide-in ${scroll >= 7 ? 'visible' : ''}`}>

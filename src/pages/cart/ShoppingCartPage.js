@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   removeFromCart,
@@ -10,6 +10,24 @@ import "./ShoppingCartPage.css";
 const ShoppingCartPage = () => {
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const cartItemsRef = useRef(null);
+
+  useEffect(() => {
+    const cartItemsContainer = cartItemsRef.current;
+
+    if (cartItemsContainer) {
+      const handleWheel = (e) => {
+        e.preventDefault();
+        cartItemsContainer.scrollLeft += e.deltaY;
+      };
+
+      cartItemsContainer.addEventListener("wheel", handleWheel);
+
+      return () => {
+        cartItemsContainer.removeEventListener("wheel", handleWheel);
+      };
+    }
+  }, []);
 
   const handleRemove = (item) => {
     dispatch(removeFromCart(item));
@@ -26,90 +44,48 @@ const ShoppingCartPage = () => {
   return (
     <div className="cart-container">
       {cart.length === 0 ? (
-        <h2 className="cart-empty">Your cart is empty</h2>
+        <h1 className="cart-empty">Your cart is empty</h1>
       ) : (
         <div>
-          <h2 className="cart-title">Your cart</h2>
-          <div
-            className="cart-items-container"
-            style={{ display: "flex", overflowX: "auto" }}
-          >
+          <h1 className="cart-title">CART</h1>
+          <div className="cart-items-container" ref={cartItemsRef}>
             {cart.map((item) => (
-              <div
-                key={item.id}
-                className="cart-item-container"
-                style={{
-                  backgroundColor: "grey",
-                  width: "296px",
-                  height: "550px",
-                  borderRadius: "25px",
-                }}
-              >
+              <div key={item.id} className="cart-item-container">
                 <div className="cart-item">
-                  <h3
-                    className="item-name"
-                    style={{
-                      fontFamily: "Inter",
-                      fontStyle: "normal",
-                      fontWeight: 400,
-                      fontSize: "30px",
-                      lineHeight: "36px",
-                      textAlign: "center",
-                    }}
-                  >
-                    {item.name}
-                  </h3>
-                  <img
-                    src={item.imageLoc}
-                    alt={item.name}
-                    className="item-image"
-                    style={{
-                      width: "218px",
-                      height: "205px",
-                    }}
-                  />
-                  <p className="item-price">
-                    Price: {item.price * item.quantity}
-                  </p>
-                  <p className="item-quantity">Quantity: {item.quantity}</p>
+                  <h3 className="item-name">{item.name}</h3>
+                  <div className="img-container">
+                    <img
+                      src={item.imageLoc}
+                      alt={item.name}
+                      className="item-image"
+                    />
+                  </div>
+                  <h4 className="item-price">
+                    Price:{" "}
+                    {(item.price * item.quantity).toLocaleString("ko-KR")}￦
+                  </h4>
+                  <div className="item-quantity-container">
+                    <h4 className="item-quantity">Quantity: {item.quantity}</h4>
+                    <button
+                      className="increment-btn"
+                      onClick={() => handleIncrement(item)}
+                    >
+                      +
+                    </button>
+                    <button
+                      className="decrement-btn"
+                      onClick={() => handleDecrement(item)}
+                    >
+                      -
+                    </button>
+                  </div>
                 </div>
                 <div className="cart-item-btns">
                   <button
                     className="remove-btn"
                     onClick={() => handleRemove(item)}
-                    style={{
-                      backgroundColor: "red",
-                      color: "black",
-                      padding: "12px 24px",
-                      fontSize: "18px",
-                      marginRight: "10px",
-                    }}
                   >
                     Remove
-                  </button>
-                  <button
-                    className="increment-btn"
-                    onClick={() => handleIncrement(item)}
-                    style={{
-                      backgroundColor: "yellow",
-                      color: "black",
-                      padding: "8px 16px",
-                      fontSize: "20px",
-                    }}
-                  >
-                    +
-                  </button>
-                  <button
-                    className="decrement-btn"
-                    onClick={() => handleDecrement(item)}
-                    style={{
-                      backgroundColor: "yellow",
-                      color: "black",
-                      padding: "8px 16px",
-                      fontSize: "20px",
-                    }}
-                  >
-                    -
                   </button>
                 </div>
               </div>
