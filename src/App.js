@@ -32,9 +32,9 @@ function App() {
           <Route path="store/:productId" element={<DetailDrone />} />
           <Route path="userinfo" element={<User />} />
           <Route path="/usage" element={<Usage />} />
-          <Route path="*" element={<NoPage />} />
           <Route path="/membership" element={<Member />} />
           <Route path="/cart" element={<ShoppingCartPage />} />
+          <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
       <Footer />
