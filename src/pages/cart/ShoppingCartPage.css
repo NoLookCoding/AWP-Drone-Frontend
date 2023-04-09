@@ -35,14 +35,16 @@
 .cart-item-container {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-left: 2%;
   margin-bottom: 20px;
   background-color: #dcdcdc;
   width: 300px;
   height: 550px;
   border-radius: 25px;
+  animation: fadeInUp 1s;
 }
+
 .cart-item {
   width: 300px;
   height: 470px;
@@ -145,7 +147,6 @@
   white-space: pre-wrap;
   font-size: 20px;
   line-height: 50px;
-  margin-left: 20px;
   padding-left: 5px;
   padding-right: 5px;
   color: #000000;

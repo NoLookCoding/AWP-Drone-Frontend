@@ -4,7 +4,7 @@ import "./HomeSlide.css";
 const HomeSlide = (props) => {
 
     switch(props.index){
-        case 0 :
+        case 1 :
             return(
                 <div className="home-slide-content-container" >
                   <div>
@@ -20,7 +20,7 @@ const HomeSlide = (props) => {
                   </div>
                 </div>
                 );
-        case 1 :
+        case 2 :
             return(
                 <div className="home-slide-content-container">
                 <div>
@@ -36,7 +36,7 @@ const HomeSlide = (props) => {
                          </div>
               </div>
             );
-        case 2 :
+        case 3 :
             return(
                 <div className="home-slide-content-container">
                 <div>
@@ -51,7 +51,7 @@ const HomeSlide = (props) => {
                 </div>
               </div>
             );
-        case 3 :
+        case 4 :
             return(
                 <div className="home-slide-content-container">
                 <div>
@@ -68,7 +68,7 @@ const HomeSlide = (props) => {
                 </div>
               </div>
             );
-            case 4 :
+            case 0 :
             return(
                 <div className="home-slide-content-container">
                 <div>
