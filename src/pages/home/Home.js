@@ -100,8 +100,6 @@ const Home = ({ images }) => {
     return () => clearInterval(intervalRef.current);
   }, [currentImageIndex, images.length, isSliding]); // Add isSliding to the dependency array
 
-
-
   return (
     <div className="home-container"> 
       <div className="home-slider">
@@ -127,11 +125,20 @@ const Home = ({ images }) => {
 };
 
 const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex, isSliding, setIsSliding }) => {
-  const buttonLabels = ["촬영드론", "오지구조드론", "새 출발 SALE", "Global Drones"];
+  const buttonLabels = ["사전판매", "Drone Rx", "새 출발 SALE", "Global Drones"];
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleClickIndex = (index) => {
     setCurrentImageIndex(index);
   };
+
+  const mouseOver = (e) =>{
+    setIsHovering(true);
+  } 
+  const mouseOut = (e) =>{
+    setIsHovering(false);
+  } 
+
 
   return (
     <div className="home-footer-nav-frame" style={{zIndex:`3`}}>
@@ -150,8 +157,8 @@ const HomeSlideFooter = ({ setCurrentImageIndex, currentImageIndex, isSliding, s
         <div>
         {
           isSliding === true
-          ? <FaPause style={{color:`#FFFFFF`, margin:`20px`}} onClick ={()=>setIsSliding(false)}/>
-          : <FaPlay style={{color:`#FFFFFF`, margin:`20px`}} onClick ={()=>setIsSliding(true)}/>
+          ? <FaPause onMouseOver={(e) => mouseOver(e)} onMouseOut={(e) => mouseOut(e)} style={{color:`${isHovering ? `#000000` :`#FFFFFF`}`, margin:`20px`}} onClick ={()=>setIsSliding(false)}/>
+          : <FaPlay  onMouseOver={(e) => mouseOver(e)} onMouseOut={(e) => mouseOut(e)} style={{color:`${isHovering ? `#000000` :`#FFFFFF`}`, margin:`20px`}} onClick ={()=>setIsSliding(true)}/>
         }
       </div>
       </div>
