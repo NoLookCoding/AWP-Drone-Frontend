@@ -6,6 +6,9 @@ import {
   decrementQuantity,
 } from "./cartSlice";
 import "./ShoppingCartPage.css";
+import { Link } from 'react-router-dom';
+
+import {BsCart4,BsCartPlus,BsCartDash} from "react-icons/bs";
 
 const ShoppingCartPage = () => {
   const cart = useSelector((state) => state.cart.items);
@@ -44,10 +47,21 @@ const ShoppingCartPage = () => {
   return (
     <div className="cart-container">
       {cart.length === 0 ? (
-        <h1 className="cart-empty">Your cart is empty</h1>
+          <div className="shoppingCart-empty-frame">
+                    <div className="shoppingCart-empty-title" >
+                      장바구니가 비어있습니다.<br/>
+                      NOLOOK DRONES의 환상적인 기술을<br/>
+                      지금 한 번 체험해 보세요!<br/>
+                      <BsCart4 style={{wdith:`120px`, height:`120px`}}/>
+                      <br/>
+                      <Link to="/store">
+                      <button className="shoppingCart-content-button">스토어 보기</button>
+                      </Link>
+                    </div>
+            </div>
       ) : (
-        <div>
-          <h1 className="cart-title">CART</h1>
+        <div className="shoppingCart-full-frame">
+        <div className="shoppingCart-empty-title" >장바구니</div>
           <div className="cart-items-container" ref={cartItemsRef}>
             {cart.map((item) => (
               <div key={item.id} className="cart-item-container">
@@ -65,19 +79,17 @@ const ShoppingCartPage = () => {
                     {(item.price * item.quantity).toLocaleString("ko-KR")}￦
                   </h4>
                   <div className="item-quantity-container">
-                    <h4 className="item-quantity">Quantity: {item.quantity}</h4>
-                    <button
-                      className="increment-btn"
+                  <div className="shoppingCart-quantity-title" >Quantity: {item.quantity}
+                    <br/>
+                    <div style={{justifyContent:`center`}}>
+                    <BsCartPlus style={{width:`30px`, height:`30px`}}
                       onClick={() => handleIncrement(item)}
-                    >
-                      +
-                    </button>
-                    <button
-                      className="decrement-btn"
+                    />
+                    <BsCartDash style={{width:`30px`, height:`30px`}}
                       onClick={() => handleDecrement(item)}
-                    >
-                      -
-                    </button>
+                    />
+                    </div>
+                    </div>
                   </div>
                 </div>
                 <div className="cart-item-btns">
@@ -85,7 +97,7 @@ const ShoppingCartPage = () => {
                     className="remove-btn"
                     onClick={() => handleRemove(item)}
                   >
-                    Remove
+                    삭제하기
                   </button>
                 </div>
               </div>

@@ -26,6 +26,9 @@ p.title {
 }
 
 span.hashTags {
+    margin-top: "10px";
+    font-family: "SamsungOne_Bold";
+    line-height: 25px;
     font-size: 19px;
     color: green;
 }
@@ -41,7 +44,7 @@ p.price {
 
 p.description {
     word-wrap: break-word;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "SamsungOne_Bold"
 }
 
 div.quantity {
@@ -66,14 +69,14 @@ button.buy_btn {
     padding: 3px;
     font-size: 20px;
     text-align: center;
-    background-color: #2400FE;
+    background-color: #000000;
     border-radius: 8px;
     color: white;
     border: none;
 }
 
 button.buy_btn:hover {
-    background-color: coral;
+    background-color: gray;
 }
 
 span.count {

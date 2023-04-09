@@ -34,7 +34,7 @@ const Store = () => {
                 {/* 효과 들어가는 블럭*/}
                 <figcaption style={{textAlign:`center`}}>
                   <h3 style={{fontFamily:`SamsungOne_Bold`, textAlign:`center`}}>{product.name}</h3>
-                  <BsArrowUpRightCircleFill className = "ArrowIcon"/>
+                  <BsArrowUpRightCircleFill className = "ArrowIcon" style={{width:`50px`, height:`50px`}}/>
                 </figcaption>
               </figure>
             </Link>
