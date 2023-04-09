@@ -27,18 +27,18 @@
     font-style: normal;
     font-weight: 900;
     white-space: pre-wrap;
-    font-size: 30px;
-    line-height: 45px;
+    font-size: 35px;
+    line-height: 50px;
     margin-left: 20px;
     padding-left: 5px;
     padding-right: 5px;
-    color: #FFFFFF;
+    color: #000000;
 }
 
 /*초소형*/
 .introduce-content-mini-container{
     height: 400px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     display: flex;
     margin-top: 80px;
@@ -53,9 +53,10 @@
 }
 .introduce-content-mini-content {
     height: 100%;
-    width: calc(50%);
     text-align: center;
     margin: 25px;
+    display: flex;
+    align-items: center;
 
 }
 
