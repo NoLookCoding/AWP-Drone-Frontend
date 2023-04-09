@@ -1,8 +1,25 @@
+import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from "react-router-dom"
 import './Footer.css'
 
+import {MdLaptopMac} from 'react-icons/md';
+import {BsGithub,BsInstagram} from 'react-icons/bs';
 
-const Header = () => {
+
+
+const Footer = () => {
+    const [isGHovering, setIsGHovering] = useState(false);
+
+  const mouseOverGit = (e) =>{
+    setIsGHovering(true);
+  } 
+  const mouseOutGit = (e) =>{
+    setIsGHovering(false);
+  } 
+
+    const linkToGithub = () => {
+        window.open("https://github.com/SeungGun/AWP_FrontDev",'new');
+      };
     return (
         <>
     
@@ -10,30 +27,29 @@ const Header = () => {
             <div className="footer-nav-button-frame">
                     <Link to = "/">
                     <button className="footer-nav-button-item">
-                        개인정보
+                        개인정보처리방침
+                    </button>
+                    </Link> 
+                    <Link to = "/">
+                    <button className="footer-nav-button-item">
+                        이용약관
                     </button>
                     </Link> 
          
-                    <Link to = "/usage">
+                    <Link to = "/">
                     <button className="footer-nav-button-item">
-                        nolookcoding
+                        Home
                     </button>
                     </Link> 
 
-                    <Link to = "/store">
                     <button className="footer-nav-button-item">
-                        copyright
+                    Copyright ⓒ NOLOOKCOIDNG
                     </button>
-                    </Link> 
 
-                    <Link to = "/cart">
-                    <button className="footer-nav-button-item">
-                        Cart
-                    </button>
-                    </Link> 
+                    <BsGithub onClick={()=> linkToGithub()} onMouseOver={(e) => mouseOverGit(e)} onMouseOut={(e) => mouseOutGit(e)} style={{color:`${isGHovering ? `#2400FE` :`#000000`}`, width:`20px`, height:'20px', marginLeft:`15px`}}/>
             </div>
         </div>
         </>
     );
 }
-export default Header;
+export default Footer;
