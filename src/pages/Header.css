@@ -3,6 +3,24 @@
     flex-direction: column;
     height: 100%;
 }
+.header-logo-container{
+  height: 40px;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin-left: 20px;
+}
+.header-logo {
+  height: 100%;
+  width: 100%;
+  background-image: url("../static/nolookdrones.png");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  position: relative;
+}
+
 
 .outlet-container {
     /* flex-grow: 1; */
@@ -13,6 +31,7 @@
   width: 100%;
   height: 100%;
   background: #FFFFFF;
+  border: 2px solid #EFEFEF;
   background-size: cover;
   background-position: center;
   /* background-image: url('https://www.hdec.kr/FileContents/EditorImg/20220308/20200427_7886_770.jpg'); */
@@ -27,15 +46,7 @@
 
 
   }
-  .header-top-frame{
-    position: relative;
-    width: 100%;
-    height: 20px;
-    left: 0px;
-    top: 0px;
-    text-align: center;
-    background: #2400FE;
-  }
+ 
   
   .header-nav-frame{
     position: relative;

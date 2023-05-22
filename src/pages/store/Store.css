@@ -1,10 +1,172 @@
+.store-container{
+  background-color: #FFFFFF;
+  justify-content:center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 
+.store-search-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+    justify-content:center;
+    align-items: center;
+  background-color: #EFEFEF;
+} */
+
+.store-search-frame{
+  display: flex;
+  align-items: center;
+  border: 3px;
+  border-radius: 50px;
+  padding: 0px;
+  max-width: 500px; 
+  background-color: #f8f8f8;
+  margin-right: 4%;
+}
+.store-search-frame:hover{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05),
+  -2px -2px 3px rgba(0, 0, 0, 0.05),
+  2px -2px 3px rgba(0, 0, 0, 0.05),
+  -2px 2px 3px rgba(0, 0, 0, 0.05);
+
+}
+
+.store-search-frame:focus-within{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05),
+  -2px -2px 3px rgba(0, 0, 0, 0.05),
+  2px -2px 3px rgba(0, 0, 0, 0.05),
+  -2px 2px 3px rgba(0, 0, 0, 0.05);
+}
+
+.store-search-container{
+  display: flex;
+  justify-content:end; /* 가로 방향으로 가운데 정렬 */
+  align-items: center; /* 수직 방향으로 가운데 정렬 */
+  width: 100%; /* 부모 요소의 너비를 100%로 설정 */
+  padding-top: 10px;
+}
+
+.store-search-input-frame{
+  flex: 1;
+  border:none;
+  border-radius: 50px;
+  width: 255px;
+  height: 100%;
+  padding: 8px;
+  background-color: transparent;
+
+}
+
+.store-search-input{
+  font-size:14px;
+  border:none;
+  border-radius: 50px;
+  height: 100%;
+  width: 100%;
+  padding: 3px;
+  margin-left: 5px;
+  background-color: transparent;
+}
+.store-search-input:focus{
+  outline: none;
+}
+
+.store-search-button-icon{
+  width: 20px;
+  height: 100%;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.store-content-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.store-category{
+  width: 20%;
+}
+
+.category-ul{
+  padding:0%
+
+}
+
+.category-item{
+  width: 100%;
+  list-style-type: none;
+  border-top: 2px solid #EFEFEF;
+  padding : 10px;
+  cursor: pointer;
+  font-family: 'SamsungOne_Bold';
+  font-style: normal;
+  text-align: center;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 30px;
+  -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+
+.category-item:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.product-button-frame{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+}
+.product-button{
+  z-index: 2;
+  width: 70%;
+  cursor: pointer;
+  font-family: 'SamsungOne_Bold';
+  font-style: normal;
+  text-align: center;
+      font-weight: 900;
+  font-size: 14px;
+  line-height: 30px;
+  border: none;
+  border-radius: 40px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #000000;
+  color: #FFFFFF;
+}
+.product-button:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
 .ProductList{
+    width: 80%;
     display:flex;
     flex-direction: row;
     flex-wrap : wrap;
-    width: auto;
     list-style-type: none;
-    justify-content: center;
+    justify-content:space-between;
+    margin-right: 4%;
   }
 
   .product a {
@@ -14,15 +176,15 @@
 
   .product {
     width: 300px;
-    height: 300px;
+    height: 400px;
     left: 107px;
     top: 191px;
 
-    margin-left : 2%;
-    margin-right : 5%;
+    margin-left : 0%;
+    margin-right : 0%;
     margin-bottom : 4%;
 
-    background: #dcdcdc;
+    background: #F7F7F7;
     border-radius: 25px;
   }
 
@@ -32,7 +194,6 @@
     height: 400px;
     left: 107px;
     top: 191px;
-
     background: #F8F8F8;
     border-radius: 25px;
   }
@@ -58,12 +219,12 @@
   }
   .product_des {
     padding-top: 10px;
-    font-family: "SamsungOne_Bold";
+    font-family: "SamsungOne_Normal";
     text-align: center;
-    font-weight: 800;
-    font-size : 1.2rem;
+    font-weight: 600;
+    font-size : 1.0rem;
     color: black;
-    margin : 2% 3% 2% 4%;
+    margin : 2% 0% 2% 0%;
   }
   .product_mon {
     font-size : 1rem;
@@ -82,6 +243,11 @@
     border-radius : 10px;
     padding :5px;
   }
+  .product_li{
+    justify-content: center; /* 가로 방향으로 가운데 정렬 */
+    
+
+  }
 
   @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
   @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
@@ -91,14 +257,26 @@
     overflow: hidden;
     margin-top: 1px;
     margin-right: 2px;
-    margin-left: 1px;
+    margin-left: 2px;
     min-width: 230px;
     max-width: 315px;
-    height: 300px;
+    height: 400px;
     width: 100%;
     color: #ffffff;
     text-align: left;
     font-size: 16px;
+  }
+
+  .product:hover{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05),
+    -2px -2px 4px rgba(0, 0, 0, 0.05),
+    2px -2px 4px rgba(0, 0, 0, 0.05),
+    -2px 2px 4px rgba(0, 0, 0, 0.05);
+  
   }
 
   figure.figure_class * {
@@ -172,7 +350,7 @@
     right: 0;
     z-index: 1;
   }
-  figure.figure_class:hover img,
+  /* figure.figure_class:hover img,
   figure.figure_class.hover img {
     zoom: 1;
     filter: alpha(opacity=50);
@@ -209,4 +387,4 @@
   
   .figure_class:hover .ArrowIcon {
     opacity: 1;
-  }
+  } */
