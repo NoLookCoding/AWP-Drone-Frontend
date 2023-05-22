@@ -3,12 +3,23 @@ div.entire {
     width: 100%;
     height: calc(100vh - 140px);
     display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
     justify-content: space-evenly;
+    background-color: #f6f6f6;
+
 }
 
 div.scaffold {
-    width: 20%;
-    margin-top: 5%;
+    width: 300px;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    margin-right: 0%;
+    padding: 3%;
+    border:none;
+    border-radius: 30px;
+    background-color: #ffffff;
+
 }
 
 div.scaffold_img {
@@ -19,10 +30,10 @@ div.scaffold_img {
 }
 
 p.title {
-    font-size: 36px;
+    font-size: 26px;
     font-weight: bold;
     padding: 0;
-    margin: 0;
+    margin-top: 10%;
 }
 
 span.hashTags {
@@ -40,11 +51,14 @@ img {
 
 p.price {
     font-size: 23px;
+    font-weight: 800;
+    font-family: "SamsungOne_Bold";
+    color: #2189FF;
 }
 
 p.description {
     word-wrap: break-word;
-    font-family: "SamsungOne_Bold"
+    font-family: "SamsungOne_Bold";
 }
 
 div.quantity {
@@ -65,18 +79,55 @@ button.btn_background:hover {
 }
 
 button.buy_btn {
-    width: 100%;
-    padding: 3px;
-    font-size: 20px;
-    text-align: center;
-    background-color: #000000;
-    border-radius: 8px;
-    color: white;
-    border: none;
+    z-index: 2;
+  width: 45%;
+  cursor: pointer;
+  font-family: 'SamsungOne_Bold';
+  font-style: normal;
+  text-align: center;
+      font-weight: 900;
+  font-size: 14px;
+  line-height: 30px;
+  border: none;
+  border-radius: 40px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #000000;
+  color: #FFFFFF;
+  margin: 5px;
+}
+
+button.now_btn {
+    z-index: 2;
+  width: 45%;
+  cursor: pointer;
+  font-family: 'SamsungOne_Bold';
+  font-style: normal;
+  text-align: center;
+      font-weight: 900;
+  font-size: 14px;
+  line-height: 30px;
+  border: none;
+  border-radius: 40px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #2189FF;
+  color: #FFFFFF;
+  margin: 5px;
 }
 
 button.buy_btn:hover {
-    background-color: gray;
+    background-color: white;
+    color: black;
+}
+
+button.now_btn:hover {
+    background-color: white;
+    color: black;
 }
 
 span.count {
@@ -87,4 +138,21 @@ span.count {
 div.buy_btn {
     justify-content: center;
     align-items: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
 }
+
+div.buy_btn * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }
+div.now_btn * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }

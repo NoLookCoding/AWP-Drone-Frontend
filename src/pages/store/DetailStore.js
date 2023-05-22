@@ -35,7 +35,7 @@ const DetailDrone = () => {
                     <br />
                     <p className="description">{product.description}</p>
                     <br />
-                    <p className="price">{product.price.toLocaleString("ko-KR")}￦</p>
+                    <p className="price">{product.price.toLocaleString("ko-KR")}원</p>
                     <br />
                     <div className="quantity">
                         <div>
@@ -70,7 +70,13 @@ const DetailDrone = () => {
                             className="buy_btn"
                             onClick={() => { handleAddToCart(product, count); alert('장바구니에 상품을 담았습니다.'); }}
                         >
-                            Buy &nbsp;{totalPrice.toLocaleString("ko-KR")}￦
+                            장바구니 추가
+                        </button>
+                        <button
+                            className="now_btn"
+                            onClick={() => { handleAddToCart(product, count); alert('장바구니에 상품을 담았습니다.'); }}
+                        >
+                            바로구매
                         </button>
                     </div>
                 </div>

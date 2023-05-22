@@ -35,7 +35,7 @@
 .cart-item-container {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: 2%;
   margin-bottom: 20px;
   background-color: #dcdcdc;
