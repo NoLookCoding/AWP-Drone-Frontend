@@ -13,7 +13,7 @@ import Usage from './pages/usage/Usage';
 import Member from './pages/membership/Membership';
 import ShoppingCartPage from "./pages/cart/ShoppingCartPage";
 import Login from "./pages/login/Login"
-import Register from "./pages/register/Register.tsx"
+import Register from "./pages/register/Register"
 
 const images = [
   'https://cdn.imweb.me/upload/S201909210d30ce4a5f5d4/e19cbc5494c57.gif',
