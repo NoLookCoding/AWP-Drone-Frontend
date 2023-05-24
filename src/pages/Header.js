@@ -38,11 +38,18 @@ const Header = () => {
                         드론스토어
                     </button>
                     </Link> 
+
                     <Link to = "/membership">
                     <button className="header-nav-button-item">
                         멤버십
                     </button>
-                    </Link> 
+                    </Link>
+
+                    <Link to = "/login">
+                    <button className="header-nav-button-item">
+                        로그인
+                    </button>
+                    </Link>
 
                     <Link to = "/cart">
                     <AiOutlineShoppingCart className="header-nav-button-icon"/>
