@@ -95,6 +95,7 @@ button.buy_btn {
   padding-top: 6px;
   padding-bottom: 6px;
   background-color: #000000;
+  border:1px solid #000000;
   color: #FFFFFF;
   margin: 5px;
 }
@@ -116,6 +117,7 @@ button.now_btn {
   padding-top: 6px;
   padding-bottom: 6px;
   background-color: #2189FF;
+  border:1px solid #2189FF;
   color: #FFFFFF;
   margin: 5px;
 }

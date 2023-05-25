@@ -51,7 +51,7 @@
   .header-nav-frame{
     position: relative;
     width: 100%;
-    height: 70px;
+    height: 80px;
     align-items: center;
     background: #FFFFFF;
     display: flex;
@@ -78,7 +78,7 @@
 
 
   .header-nav-button-frame{
-    width: 450px;
+    width: 500px;
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -127,6 +127,28 @@
     border: none;
     color:#000000;
     background-color: transparent;
+  }
+
+  
+  .container {
+    position: relative; /* 내부 요소의 위치를 설정하기 위해 상위 요소를 relative로 설정합니다. */
+  }
+  
+  .hidden-content {
+    position: absolute;
+    top: -100%; /* 초기에는 숨겨진 상태로 위로 이동시킵니다. */
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    transition: top 0.3s; /* top 속성 변화에 대한 효과를 부드럽게 적용하기 위한 transition 속성입니다. */
+  }
+  
+  .trigger:hover + .hidden-content {
+    top: 100%; /* 마우스를 올리면 아래로 이동하여 내용이 나타나도록 설정합니다. */
+  }
+  
+  .header-nav-button-icon:hover .menu .menu-items {
+    max-height: 500px; /* 마우스를 올리면 최대 높이를 설정하여 내용이 보이도록 합니다. */
   }
 
   .follow-frame-left-side header{

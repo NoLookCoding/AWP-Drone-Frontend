@@ -66,7 +66,7 @@ const Store = () => {
           </li>
         </ul>
         </div>
-      <ul className="ProductList">
+      <ul className="ProductList" style={{paddingInlineStart:`0px`}}>
         {filteredProducts.map((product) => (
           <div className="product">
 

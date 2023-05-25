@@ -1,0 +1,124 @@
+.membership-member-image {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: calc(200px);
+    background: #FFFFFF;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    margin-bottom: 10px;
+    border-radius: 25px;
+}
+.membership-member-image:hover{
+    opacity: 0.7;
+}
+
+.membership-content-frame {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 140px);
+    background: transparent;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+
+  }
+
+.membership-member-frame {
+    width: 200px;
+    height: 350px;
+    background: #efefef;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    opacity: 1;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    padding: 25px;
+    border-radius: 25px;
+  
+  }
+
+  .membership-member-content {
+    width: 100%;
+    
+  }
+
+  /*이름*/
+  .membership-member-name {
+    position: relative;
+    font-family: 'SamsungOne_Bold';
+    font-style: normal;
+    font-weight: 800;
+    white-space: pre-wrap;
+    font-size: 30px;
+    line-height: 50px;
+
+    color: #000000;
+}
+  /*학번*/
+.membership-member-stdId {
+    position: relative;
+    font-family: 'SamsungOne-400';
+    font-style: normal;
+    font-weight: 400;
+    white-space: pre-wrap;
+    font-size: 18px;
+    line-height: 20px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    color: #000000;
+}
+  /*학과*/
+.membership-member-info {
+    position: relative;
+    font-family: 'SamsungOne-400';
+    font-style: normal;
+    font-weight: 400;
+    white-space: pre-wrap;
+    font-size: 18px;
+    line-height: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    color: #000000;
+}
+  /*깃허브주소*/
+.membership-member-git {
+    width: 100%;
+    position: relative;
+    font-family: 'SamsungOne-400';
+    font-style: normal;
+    font-weight: 400;
+    white-space: pre-wrap;
+    font-size: 18px;
+    line-height: 30px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    color: #000000;
+}
+
+.membership-ship{
+    width:100%;
+    height: 100%;
+    background: transparent;
+    background-size: cover;
+    background-position: center;
+    top:0;
+    background-image: url("../../static/pngegg.png");
+}
+.membership-wave{
+    width:100%;
+    height:calc(100%-180px);
+    background: transparent;
+    background-size: cover;
+    background-position: bottom;
+    background-image: url("https://s17.postimg.cc/9prr820gv/adbbb647baf740ac7b1c3e640b36dc72.gif");
+}
+
