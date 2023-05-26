@@ -21,15 +21,15 @@ const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
   return (
     <>
       {isOpen && (
-        <div className="modal-container">
-          <div className="modal-content">
-            <div className="left-section">
+        <div className="modal-container-purchase" onClick={onClose}>
+          <div className="modal-content-purchase" onClick={(e) => e.stopPropagation()}>
+            <div className="left-section-purchase">
               <img src={selectedDrone.imageLoc} alt={selectedDrone.name} />
               <p className="h2">{selectedDrone.name}</p>
               <p>가격: {selectedDrone.price.toLocaleString("ko-KR")}원</p>
               {/* Display other drone information */}
             </div>
-            <div className="right-section">
+            <div className="right-section-purchase">
               <p className="h2">구매 및 배송 정보 입력</p>
               <form onSubmit={handleSubmit}>
                 <div>
@@ -52,8 +52,8 @@ const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
                         <div>무통장임금</div>
               </div>
                 </div>
-                <div className="modal-buttons">
-                  <button type="submit">구매 완료</button>
+                <div className="modal-buttons-purchase">
+                  <button type="submit"  onClick={onClose}>구매 완료</button>
                   <button type="button" onClick={onClose}>
                     취소
                   </button>
