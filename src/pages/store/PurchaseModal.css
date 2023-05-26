@@ -1,4 +1,4 @@
-.modal-container {
+.modal-container-purchase {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,10 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
   
-  .modal-content {
-    width: 60%;
+  .modal-content-purchase {
+    width: 70%;
     background-color: #fff;
     padding: 20px;
     border-radius: 25px;
@@ -19,76 +20,89 @@
     flex-direction: row;
     justify-content: space-between;
 
+    animation: fadeInUp 1s;
+
+      @keyframes fadeInUp {
+      0% {
+          opacity: 0;
+          transform: translate3d(0, 50%, 0);
+      }
+      to {
+          opacity: 1;
+          transform: translateZ(0);
+      }
+    }
+
   }
 
-.left-section {
+.left-section-purchase {
   flex: 1;
   padding: 20px;
   background-color: #f0f0f0;
   border-radius: 15px;
 }
 
-.left-section .h2{
+.left-section-purchase .h2{
    font-family: 'SamsungOne_Bold';
    font-size: 24px;
    font-weight: 900;
    margin-Top: 20px;
   }
 
-  .left-section p{
+  .left-section-purchase p{
     font-family: 'SamsungOne_Bold';
     font-size: 20   px;
     font-weight: 600;
     margin-Top: 20px;
   }
 
-.left-section img {
+.left-section-purchase img {
   width: 100%;
   height: auto;
   margin-bottom: 10px;
 }
 
-.right-section {
+.right-section-purchase {
   flex: 1;
   padding: 20px;
 }
 
-.right-section .h2{
+.right-section-purchase .h2{
     font-family: 'SamsungOne_Bold';
     font-size: 22px;
     font-weight: 900;
   }
   
-  .modal-content h2 {
+  .modal-content-purchase h2 {
     font-size: 18px;
     margin-bottom: 20px;
   }
   
-  .modal-content form {
+  .modal-content-purchase form {
     display: grid;
     gap: 10px;
   }
   
-  .modal-content label {
+  .modal-content-purchase label {
     font-weight: bold;
     text-align: left;
     width: 100%;
   }
   
-  .modal-content input {
+  .modal-content-purchase input {
     width: 100%;
     padding: 8px;
     border-radius: 10px;
     border: 1px solid #ccc;
   }
   
-  .modal-buttons {
+  .modal-buttons-purchase {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
   }
   
-  .modal-buttons button {
+  .modal-buttons-purchase button {
     padding: 8px 16px;
     margin-left: 10px;
     border-radius: 40px;
@@ -100,23 +114,23 @@
     transition: all 0.35s ease;
   }
   
-  .modal-buttons button[type="submit"] {
+  .modal-buttons-purchase button[type="submit"] {
     background-color: #4caf50;
     color: #fff;
     border: 1px solid #4caf50;
   }
 
-  .modal-buttons button[type="submit"]:hover {
+  .modal-buttons-purchase button[type="submit"]:hover {
     background-color: #FFFFFF;
     color: #4caf50;
   }
   
-  .modal-buttons button[type="button"] {
+  .modal-buttons-purchase button[type="button"] {
     background-color: #f00;
     color: #fff;
     border: 1px solid #f00;  }
   
-  .modal-buttons button[type="button"]:hover {
+  .modal-buttons-purchase button[type="button"]:hover {
     background-color: #fff;
     color: #f00;
   }

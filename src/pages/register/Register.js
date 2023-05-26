@@ -246,8 +246,8 @@ const Register = ({ isOpen, onClose })=> {
                 <label for="age" class="input-label" hidden>age</label>
                 <input type="age" name="age" id="age" class="input-field" placeholder="나이" required/>
               </div>
-              <input type='radio' name='gender' value='female' required/>여성 &nbsp;
-              <input type='radio' name='gender' value='male' />남성
+              <input type='radio' name='gender' value='female' required/> &nbsp; 여성 &nbsp;
+              <input type='radio' name='gender' value='male' />&nbsp; 남성
               <div class="input-control">
               </div>
               <p>{emailMessage}</p>

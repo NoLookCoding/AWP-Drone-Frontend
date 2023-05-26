@@ -4,7 +4,6 @@
     display: flex;
     padding-left: 0%;
     padding-right: 6%;
-    padding-bottom: 4%;
     padding-top: 5%;
     justify-content: space-evenly;
     background-color: #f6f6f6;
@@ -284,18 +283,11 @@ li::marker {
   }
 
   .profile-frame{
-    width: 18%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
-
-    background-color: #ffffff;
-    border-radius: 0px 25px 0px 0px;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-Top: 4%;
-    padding-bottom: 4%;
   }
 
   .profile-frame span{
@@ -315,4 +307,175 @@ li::marker {
     width: 100%;
     margin-top: 5%;
     padding-top: 5%;
+  }
+
+  .profile-frame-nav {
+    position: relative;
+    width: 18%;
+    background-color: #ffffff;
+    border-radius: 0px 25px 0px 0px;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-Top: 4%;
+    padding-bottom: 4%;
+  }
+
+
+  .modal-container-order {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+
+  }
+  
+  .modal-content-order {
+    width: 50%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    animation: fadeInUp 1s;
+
+      @keyframes fadeInUp {
+      0% {
+          opacity: 0;
+          transform: translate3d(0, 50%, 0);
+      }
+      to {
+          opacity: 1;
+          transform: translateZ(0);
+      }
+    }
+
+  }
+
+.left-section-order {
+  flex: 3;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+}
+
+.left-section-order .h2{
+   font-family: 'SamsungOne_Bold';
+   font-size: 24px;
+   font-weight: 900;
+   margin-Top: 20px;
+  }
+
+  .left-section-order p{
+    font-family: 'SamsungOne_Bold';
+    font-size: 20   px;
+    font-weight: 600;
+    margin-Top: 20px;
+  }
+
+.left-section-order img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.right-section-order {
+  flex: 2;
+  padding: 20px;
+}
+
+.right-section-order .h2{
+    font-family: 'SamsungOne_Bold';
+    font-size: 22px;
+    font-weight: 900;
+  }
+  
+  .modal-content-order h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content-order form {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .modal-content-order label {
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+  }
+  
+  .modal-content-order input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .modal-buttons-order {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .modal-buttons-order button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }
+  
+  .modal-buttons-order button[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    border: 1px solid #4caf50;;
+  }
+
+  /* .modal-buttons-order button[type="submit"]:hover {
+    background-color: #FFFFFF;
+    color: #4caf50;
+  } */
+  
+  .modal-buttons-order button[type="button"] {
+    background-color: #f00;
+    color: #fff;
+    border: 1px solid #f00;  }
+  
+  .modal-buttons-order button[type="button"]:hover {
+    background-color: #fff;
+    color: #f00;
+  }
+
+  .payment{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+  }
+
+  .payment div{
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+  }
+
+  .payment input{
+    width: 30%;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
   }
