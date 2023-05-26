@@ -33,6 +33,7 @@ const Store = () => {
   //const filteredProducts = category ? drones.filter((product) => product.category === category) : drones;
   const filteredProducts = drones;
 
+  
 
 
 
@@ -66,8 +67,9 @@ const Store = () => {
           </li>
         </ul>
         </div>
-      <ul className="ProductList">
+      <ul className="ProductList" style={{paddingInlineStart:`0px`}}>
         {filteredProducts.map((product) => (
+          <Link to={`/store/${product.id}`} style={{textDecoration:`none`}}>
           <div className="product">
 
               <figure class="figure_class">
@@ -88,6 +90,7 @@ const Store = () => {
                 </figcaption> */}
               </figure>
           </div>
+          </Link>
         ))}
       </ul>
       </div>

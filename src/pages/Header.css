@@ -1,4 +1,5 @@
 .header-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -33,6 +34,7 @@
   background: #FFFFFF;
   border: 2px solid #EFEFEF;
   background-size: cover;
+  z-index: 1;
   background-position: center;
   /* background-image: url('https://www.hdec.kr/FileContents/EditorImg/20220308/20200427_7886_770.jpg'); */
 }
@@ -51,7 +53,7 @@
   .header-nav-frame{
     position: relative;
     width: 100%;
-    height: 70px;
+    height: 80px;
     align-items: center;
     background: #FFFFFF;
     display: flex;
@@ -78,7 +80,8 @@
 
 
   .header-nav-button-frame{
-    width: 450px;
+    height: 100%;
+    width: 500px;
     display: flex;
     justify-content:space-between;
     align-items: center;
@@ -89,9 +92,11 @@
     font-family: 'SamsungOne_Bold';
     font-style: normal;
     font-weight: 900;
-    font-size: 13px;
-    line-height: 30px;
+    font-size: 14px;
+    height: 100%;
     border: none;
+    padding-right: 9px;
+    padding-left: 9px;
     background-color: transparent;
   }
   .header-nav-button-item:hover{
@@ -205,4 +210,146 @@
     border-radius: 0.5rem;
     border: none;
     margin: 0.2rem 0;
+  }
+
+
+  /* 드롭다운 메뉴 */
+  @keyframes slide-fade-in-dropdown-animation {
+    0% {
+      transform: translateY(-100%);
+    }
+  
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .slide-fade-in-dropdown {
+    overflow: hidden;
+  }
+  
+  .slide-fade-in-dropdown > ul {
+    animation: slide-fade-in-dropdown-animation .4s ease;
+  }
+  
+  /* fade out */
+  
+  @keyframes slide-fade-out-dropdown-animation {
+    0% {
+      transform: translateY(0);
+    }
+  
+    100% {
+      transform: translateY(-100%);
+    }
+
+    /* 0% {
+      height: auto
+    }
+    100% {
+      height: 0;
+    } */
+  }
+  
+  .slide-fade-out-dropdown {
+    overflow: hidden;
+  }
+  
+  .slide-fade-out-dropdown > ul {
+    animation: slide-fade-out-dropdown-animation 0.4s ease;
+    /* animation-fill-mode: forwards; */ /* 애니메이션 끝나고 유지 */ 
+  }
+
+  .components-dropdown > ul {
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    list-style: none;
+    background-color: #ffffff;
+    border-radius: 0 0 25px 25px;
+    border: 2px solid #e9e9e9;
+  }
+
+  .dropdown-container {
+    position: absolute;
+    top: calc(80px); /* Dropdown을 헤더 아래로 위치시킴 */
+    left: calc(100% - 170px);
+    width: 150px;
+    z-index: 3; /* Outlet 컨테이너보다 위에 겹치도록 조정 */
+  }
+
+  .dropdown-container.active {
+    display: block;
+  }
+  
+  .outlet-dimmed-container {
+    position: fixed;
+    top: 81px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* 어두워지는 색상 */
+    opacity: 0; /* 초기에는 투명한 상태로 설정 */
+    pointer-events: none; /* outlet 콘텐츠와의 상호작용 방지 */
+    z-index: -1;
+    animation-duration: 0.5s; /* 애니메이션 지속 시간 */
+    animation-fill-mode: forwards; /* 애니메이션 종료 후 상태 유지 */
+  }
+  
+  @keyframes dimAnimation {
+    from {
+      opacity: 0; /* 시작 시 투명도 0 */
+      z-index: 2;
+
+    }
+    to {
+      opacity: 0.5; /* 종료 시 투명도 0.5 */
+      z-index: 2;
+
+    }
+  }
+  
+  @keyframes brightenAnimation {
+    from {
+      opacity: 0.5; /* 시작 시 투명도 0.5 */
+      z-index: 2;
+    }
+    to {
+      opacity: 0; /* 종료 시 투명도 0 */
+      z-index: 2;
+    }
+  }
+  
+  .outlet-dimmed-container.dimmed {
+    animation-name: dimAnimation; /* dimmed일 때 어두워지는 애니메이션 적용 */
+    z-index: 1;
+  }
+  
+  .outlet-dimmed-container.brighten {
+    animation-name: brightenAnimation; /* brighten일 때 밝아지는 애니메이션 적용 */
+  }
+
+
+  .dimmed-visible {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .dropdown-list-item {
+    width: 80%;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 14px;
+        border: none;
+    color: #000000;
+    text-decoration: none;
+    font-family: 'SamsungOne_Normal';
+    font-style: normal;
+  }
+
+  .dropdown-list-item a {
+    text-decoration: none;
   }

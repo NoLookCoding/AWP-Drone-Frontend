@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import React, { useState, useEffect, useCallback } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+import './Register.css'
 import { useNavigate } from 'react-router-dom';
 import { current } from '@reduxjs/toolkit';
 
-const Register = () => {
+const Register = ({ isOpen, onClose })=> {
 
   const baseUrl = "http://localhost:8081";
   // const [name, setName] = useState();
@@ -209,9 +210,10 @@ const Register = () => {
 
   return (
     <>
-      <div class="main">
+    {isOpen && (
+      <div className="main-register" onClick={onClose}>
         <div class="container">
-          <section class="wrapper" style={{maxWidth: '35rem'}}>
+          <section class="wrapper-register" style={{maxWidth: '35rem'}}  onClick={(e) => e.stopPropagation()}>
             <div class="heading">
               <h1 style={{ textAlign: 'center' }} class="text text-large" >회원가입</h1>
             </div>
@@ -260,6 +262,7 @@ const Register = () => {
           </section>
         </div>
       </div>
+    )}
     </>
   )
 };

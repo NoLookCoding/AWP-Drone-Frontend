@@ -93,6 +93,7 @@
   height: 100%;
   display: flex;
   flex-direction: row;
+  padding-top: 1%;
   
 }
 
@@ -101,12 +102,12 @@
 }
 
 .category-ul{
+  width: 100%;
   padding:0%
 
 }
 
 .category-item{
-  width: 100%;
   list-style-type: none;
   border-top: 2px solid #EFEFEF;
   padding : 10px;
@@ -115,7 +116,7 @@
   font-style: normal;
   text-align: center;
   font-weight: 900;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 30px;
   -webkit-transition: all 0.35s ease;
     transition: all 0.35s ease;
@@ -166,6 +167,7 @@
     flex-wrap : wrap;
     list-style-type: none;
     justify-content:space-between;
+    margin-left: 4%;
     margin-right: 4%;
   }
 
@@ -185,7 +187,25 @@
     margin-bottom : 4%;
 
     background: #F7F7F7;
-    border-radius: 25px;
+    border-radius: 18px;
+    cursor: pointer;
+    box-shadow: 2px 4px 12px rgb(0 0 0 / 8%);
+    transition: all .3s cubic-bezier(0,0,.5,1);
+  }
+
+  .product:hover {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    transform: scale(1.02); /* 컴포넌트를 1.2배로 확대 */
+
+    box-shadow: 2px 4px 20px rgb(0 0 0 / 20%);
+  }
+
+  .product:hover .product-button {
+    background-color: #FFFFFF;
+    color: #000000;
   }
 
   .product_backgroud {
@@ -194,19 +214,23 @@
     height: 400px;
     left: 107px;
     top: 191px;
-    background: #F8F8F8;
+    background: #fbfbfd;
     border-radius: 25px;
   }
 
-  .product_img_div {
-    text-align: center;
-  }
+  
 
   .product img {
     width: 150px;
     height: 150px;
-    margin-left: 68px;
-    margin-top: 20px;
+    
+  }
+
+  .product_img {
+    padding-top: 15%;
+    display: flex;
+    justify-content: center;
+
   }
 
   .product_title {
@@ -267,18 +291,6 @@
     font-size: 16px;
   }
 
-  .product:hover{
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition: all 0.35s ease;
-    transition: all 0.35s ease;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05),
-    -2px -2px 4px rgba(0, 0, 0, 0.05),
-    2px -2px 4px rgba(0, 0, 0, 0.05),
-    -2px 2px 4px rgba(0, 0, 0, 0.05);
-  
-  }
-
   figure.figure_class * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -298,14 +310,14 @@
     left: 0;
     right: 0;
   }
-  figure.figure_class:after {
+  /* figure.figure_class:after {
     content: '';
     background-color: rgba(0, 0, 0, 0.65);
     -webkit-transition: all 0.35s ease;
     transition: all 0.35s ease;
     opacity: 0;
     border-radius: 25px;
-  }
+  } */
   figure.figure_class figcaption {
     z-index: 1;
     padding: 40px;

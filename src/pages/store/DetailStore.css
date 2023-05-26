@@ -11,11 +11,15 @@ div.entire {
 }
 
 div.scaffold {
-    width: 300px;
+    width: 500px;
     margin-top: 7%;
     margin-bottom: 7%;
     margin-right: 0%;
-    padding: 3%;
+    padding-top: 3%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+
     border:none;
     border-radius: 30px;
     background-color: #ffffff;
@@ -33,7 +37,7 @@ p.title {
     font-size: 26px;
     font-weight: bold;
     padding: 0;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 span.hashTags {
@@ -95,9 +99,12 @@ button.buy_btn {
   padding-top: 6px;
   padding-bottom: 6px;
   background-color: #000000;
+  border:1px solid #000000;
   color: #FFFFFF;
-  margin: 5px;
-}
+  margin-top: 5px;
+  margin-bottom: 30px;
+  margin-left: 5px;
+  margin-right: 5px;}
 
 button.now_btn {
     z-index: 2;
@@ -116,8 +123,12 @@ button.now_btn {
   padding-top: 6px;
   padding-bottom: 6px;
   background-color: #2189FF;
+  border:1px solid #2189FF;
   color: #FFFFFF;
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 button.buy_btn:hover {
@@ -135,22 +146,11 @@ span.count {
     font-weight: bold;
 }
 
-div.buy_btn {
-    justify-content: center;
-    align-items: center;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition: all 0.35s ease;
-    transition: all 0.35s ease;
-}
-
-div.buy_btn * {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition: all 0.35s ease;
-    transition: all 0.35s ease;
+div.buy_btn_container {
+    margin-bottom: 30px;
   }
-div.now_btn * {
+  
+  div.buy_btn button {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-transition: all 0.35s ease;
