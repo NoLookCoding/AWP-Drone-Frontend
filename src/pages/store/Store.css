@@ -93,6 +93,7 @@
   height: 100%;
   display: flex;
   flex-direction: row;
+  padding-top: 1%;
   
 }
 
@@ -192,6 +193,21 @@
     transition: all .3s cubic-bezier(0,0,.5,1);
   }
 
+  .product:hover {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    transform: scale(1.02); /* 컴포넌트를 1.2배로 확대 */
+
+    box-shadow: 2px 4px 20px rgb(0 0 0 / 20%);
+  }
+
+  .product:hover .product-button {
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+
   .product_backgroud {
     position: absolute;
     width: 400px;
@@ -273,16 +289,6 @@
     color: #ffffff;
     text-align: left;
     font-size: 16px;
-  }
-
-  .product:hover{
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition: all 0.35s ease;
-    transition: all 0.35s ease;
-    transform: scale(1.02); /* 컴포넌트를 1.2배로 확대 */
-
-    box-shadow: 2px 4px 20px rgb(0 0 0 / 20%);
   }
 
   figure.figure_class * {

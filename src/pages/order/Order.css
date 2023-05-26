@@ -1,0 +1,318 @@
+.order-container{
+    text-align: center;
+    width: 100%;
+    display: flex;
+    padding-left: 0%;
+    padding-right: 6%;
+    padding-bottom: 4%;
+    padding-top: 5%;
+    justify-content: space-evenly;
+    background-color: #f6f6f6;
+}
+
+.order-frame{
+    padding-left: 4%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-top: 2%;
+    flex-direction: column; /* 요소를 수직으로 배치 */
+    align-items: center; /* 수직으로 정렬 */
+
+}
+
+.order-title-frame{
+    line-height: 1.2em;
+    width: 100%;
+    font-family: 'SamsungOne_Bold';
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 0;
+    margin-left: 5%;
+    text-align: start;
+    margin-bottom: 2%
+}
+
+.order-process-frame{
+    width: 100%;
+    height: 100%;
+
+}
+
+.order-process {
+
+}
+
+.order-process.circle-steps {
+    width: 100%;
+    height: 100%;
+}
+
+ol, ul, li {
+    list-style: none;    
+}
+
+.order-process.circle-steps ul {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+
+}
+
+.order-process.circle-steps ul li {
+    position: relative;
+    z-index: 1;
+    width: calc(30%);
+    text-align: center;
+    border: 4px solid transparent;
+    border-radius: 100%;
+    background: #fff;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+}
+
+.order-process.circle-steps ul:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 38px;
+    right: 68px;
+    height: 2px;
+    margin-top: -1px;
+    background: #2189FF;
+}
+
+.order-process.circle-steps ul li:before {
+    content: '';
+    float: left;
+    padding-bottom: 100%;
+}
+.order-process.circle-steps ul li ~ li {
+    margin-left: 4%;
+}
+
+.order-process.circle-steps ul li .num {
+    line-height: 5.1389vw;
+    font-size: 4vw;
+    color:rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.04em;
+}
+
+.order-process.circle-steps ul li .tit {
+    padding-top: 0.0494vw;
+    line-height: 1.2em;
+    width: 100%;
+    font-family: 'SamsungOne_Bold';
+    font-size: 1.15vw;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.order-process.circle-steps div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* 요소를 수직으로 배치 */
+    align-items: center; /* 수직으로 정렬 */
+    justify-content: center; /* 수평으로 정렬 */
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.order-content-frame{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    margin-bottom: 5%;
+    width: 95%;
+    border-radius: 25px;
+    background: #fff;
+    box-shadow: 0vw 0.2778vw 1.7361vw rgba(0, 0, 0, 0.06);
+}
+
+.order-content-frame h3{
+    text-align: start;
+}
+
+.order-content-ordered-list-contents{
+    border-top: 2px solid #000;
+    border-bottom: 1px solid #d9d9d9;
+
+    padding-top: 26px;
+
+}
+
+.order-content-ordered-list-contents ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+
+.order-content-noti {
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+.order-content-noti ul{
+}
+
+.order-content-noti ul li {
+    text-align: start;
+    line-height: 1.6em;
+    font-family: "SamsungOne_Regular";
+    font-size: 18px;
+    color: #000;
+    display: flex;
+    
+  }
+  
+  .order-content-noti ul li::before {
+    content: "•";
+  }
+  
+  .order-content-noti ul li span {
+    width: 120px;
+    font-family: 'SamsungOne_Bold';
+    font-size: 18px;
+    font-weight: 800;
+  }
+  
+  .order-content-noti ul li p {
+    display: inline;
+    margin-left: 10px;
+    font-family: 'SamsungOne_Regular';
+    font-size: 17px;
+    white-space: pre-line;
+
+  }
+
+li::marker {
+    color: #b0b0b0;
+}
+
+
+.order-product {
+    width: 26vw;
+    height: 150px;
+    padding-left:20px;
+    padding-top:25px;
+    padding-bottom:25px;
+
+
+    margin-left : 0%;
+    margin-right : 0%;
+    margin-bottom : 3vw;
+
+    background: #F7F7F7;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all .3s cubic-bezier(0,0,.5,1);
+  }
+
+  .order-product:hover {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    transform: scale(1.02); /* 컴포넌트를 1.2배로 확대 */
+
+    box-shadow: 2px 4px 10px rgb(0 0 0 / 20%);
+  }
+
+  .order-product .product-img {
+    background-size: 100% 100%;
+    width: 150px;
+    height: 100px;
+    border-radius: 18px;
+  }
+
+  .order-product .product-li {
+    display: flex;
+    align-content: flex-start;
+    flex-direction: row;
+    height: 100%;
+}
+
+.order-product-info {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 100%;
+    }
+
+    .order-product-id {
+        font-family: "SamsungOne_Bold";
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 170%;
+        text-align: left;
+        color: black;
+      }
+
+  .order-product-title {
+    font-family: "SamsungOne_Bold";
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    color: black;
+  }
+
+  .order-product-des{
+    text-align: left;
+    font-family: "SamsungOne_Regular";
+    font-size: 0.9rem;
+    margin-top: auto;
+    color: black;
+  }
+
+  .order-product-date{
+    text-align: left;
+    font-family: "SamsungOne_Regular";
+    font-size: 0.8rem;
+    color: #8E8E8E;
+  }
+
+  .profile-frame{
+    width: 18%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    background-color: #ffffff;
+    border-radius: 0px 25px 0px 0px;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-Top: 4%;
+    padding-bottom: 4%;
+  }
+
+  .profile-frame span{
+    text-align: start;
+    font-family: "SamsungOne_Bold";
+    font-size: 0.9rem;
+  }
+
+  .profile-frame div{
+    text-align: start;
+    display: flex;
+
+    font-family: "SamsungOne_Bold";
+    flex-direction: column;
+    align-items: start;
+    border-top: #000000 1px solid;
+    width: 100%;
+    margin-top: 5%;
+    padding-top: 5%;
+  }

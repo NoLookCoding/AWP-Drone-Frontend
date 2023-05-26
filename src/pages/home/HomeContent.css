@@ -13,7 +13,7 @@
 }
 .home-content-trip {
     height: 400px;
-    width: calc(100%);
+    width: calc(80%);
     background-image: url('http://www.ridemag.co.kr/news/photo/202011/15466_94487_3121.jpg');
     background-size: cover;
     background-position: center;
