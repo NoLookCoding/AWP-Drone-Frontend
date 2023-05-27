@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import { useNavigate } from 'react-router';
+import './Find.css'
 
 const Div = styled.div`
  margin: 1em;
  padding: 0.23em 13m;
 `;
 
-function Find() {
-    const baseUrl = "http://localhost:8080";
+function Find({ isOpen, onClose }) {
 
     const [name, setName] = useState();
     const [password, setPassword] = useState();
@@ -26,7 +26,7 @@ function Find() {
 
     async function getUser() {
         await axios
-            .get(baseUrl + "/")
+            .get("/")
             .then((response) => {
                 console.log(response.data);
                 setName(response.data.name);
@@ -48,7 +48,7 @@ function Find() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await axios
-            .post(baseUrl + "/users/login", {
+            .post( "/users/login", {
                 name: name,
                 password: password
             }).then((response) => {
@@ -82,15 +82,12 @@ function Find() {
         }
     };
 
-    function RedirectMain() {
-        directPage(-1);
-    };
-
     return (
         <>
-                <div class="main">
+        {isOpen && (
+                <div class="main-find" onClick={onClose}>
                     <div class="container">
-                        <section class="wrapper">
+                        <section class="wrapper-find" onClick={(e) => e.stopPropagation()}>
                             <div class="heading">
                                 <h2 class="text text-large" style={{ textAlign: 'center' }}>아이디/비밀번호 찾기</h2>
                             </div>
@@ -125,12 +122,13 @@ function Find() {
                                 </div>
                                 <div class="input-control">
                                     <input type="submit" name="submit" class="input-submit" value="확인" onClick={ChangePwSubmit} />
-                                    <p className="text text-normal" style={{marginTop: 30}}><span><span className="text text-links" style={{ cursor:'pointer', marginLeft: 119, fontWeight: 900}} onClick= {RedirectMain}>뒤로가기</span></span></p>
+                                    <p className="text text-normal" style={{marginTop: 30}}><span><span className="text text-links" style={{ cursor:'pointer', marginLeft: 119, fontWeight: 900}}>뒤로가기</span></span></p>
                                 </div>
                             </form>
                         </section>
                     </div>
                 </div>
+            )}
         </>
     )
 }
