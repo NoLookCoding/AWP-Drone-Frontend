@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import './Login.css'
 import Register from '../register/Register'
+import Find from '../find/Find'
+
 
 const Div = styled.div`
  margin: 1em;
@@ -13,8 +15,6 @@ const Div = styled.div`
 
 const Login = ({ isOpen, onClose })=> {
     
-    const baseUrl = "http://localhost:8081";
-
     const [id, setId] = useState();
     const [password, setPassword] = useState();
 
@@ -29,24 +29,39 @@ const Login = ({ isOpen, onClose })=> {
 
     const handleOpenRegister = (e) => {
         e.preventDefault();
-        openRegister(!isRegisterOpen);
+        openFind(!isRegisterOpen);
         //onClose(); // Close the login modal
       };
 
+      const [isFindOpen, setFindOpen] = useState(false);
+      const openFind = () => {
+          setFindOpen(true);
+      };
+  
+      const closeFind = () => {
+        setFindOpen(false);
+      };
+  
+      const handleOpenFind = (e) => {
+          e.preventDefault();
+          openFind(!isFindOpen);
+          //onClose(); // Close the login modal
+        };
+
     useEffect(() => {
-        getUser();
+        //getUser();
     }, []);
 
-    async function getUser() {
-        await axios
-            .get(baseUrl + "/users/login")
-            .then((response) => {
-                console.log(response.data);
-                setId(response.data.id);
-                setPassword(response.data.password);
-            });
+    // async function getUser() {
+    //     await axios
+    //         .get(baseUrl + "/users/login")
+    //         .then((response) => {
+    //             console.log(response.data);
+    //             setId(response.data.id);
+    //             setPassword(response.data.password);
+    //         });
 
-    }
+    // }
 
     const handleChange_userid = (e) => {
         e.preventDefault();
@@ -61,7 +76,7 @@ const Login = ({ isOpen, onClose })=> {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await axios
-            .post(baseUrl + "/users/login", {
+            .post("/users/login", {
                 id: id,
                 password: password
             }).then((response) => {
@@ -81,6 +96,11 @@ const Login = ({ isOpen, onClose })=> {
                     isOpen={openRegister}
                     onClose={closeRegister}
                     />)}
+                 {isFindOpen && (
+                    <Find
+                    isOpen={openFind}
+                    onClose={closeFind}
+                    />)}
                 <div className="container">
                     <section className="wrapper" onClick={(e) => e.stopPropagation()}>
                         <div className="heading">
@@ -99,7 +119,7 @@ const Login = ({ isOpen, onClose })=> {
                                 <input type="password" name="password" id="password" className="input-field" placeholder="Password" value={password} onChange={handleChange_password} required/>
                             </div>
                             <div className="input-control">
-                                <a href="find" className="text text-links" style={{ fontWeight: 900 }}>아이디/비밀번호 찾기</a>
+                                <a href="find" className="text text-links" style={{ fontWeight: 900 }} onClick={handleOpenFind} >아이디/비밀번호 찾기</a>
                                 <input type="submit" name="submit" className="input-submit" value="로그인" />
                             </div>
                         </form>

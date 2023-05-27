@@ -143,7 +143,7 @@ const Store = () => {
               <div className="product">
                 <figure class="figure_class">
                   <li className="product_li">
-                    <div className="product_img" ><img src={product.imgURL} alt={product.productName} /></div>
+                    <div className="product_img" ><img src={product.imgUrl} alt={product.productName} /></div>
                     <div className="product_title">{product.productName}</div>
                     <div className="product_des">{product.price.toLocaleString("ko-KR")}원</div>
                     <div className="product-button-frame" style={{ marginTop: `20px` }}>

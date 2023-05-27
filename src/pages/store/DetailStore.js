@@ -75,7 +75,7 @@ const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
         <div className="modal-container-purchase" onClick={onClose}>
           <div className="modal-content-purchase" onClick={(e) => e.stopPropagation()}>
             <div className="left-section-purchase">
-              <img src={selectedDrone.imgURL} alt={selectedDrone.productName} />
+              <img src={selectedDrone.imgUrl} alt={selectedDrone.productName} />
               <p className="h2">{selectedDrone.productName}</p>
               <p>가격: {selectedDrone.productPrice}원</p>
               {/* Display other drone information */}
@@ -184,7 +184,7 @@ const DetailDrone = () => {
   return (
     <div className="entire">
       <div className="scaffold_img">
-        <img src={product.imgURL} alt={product.productName} />
+        <img src={product.imgUrl} alt={product.productName} />
       </div>
       <div className="scaffold" id="contents">
           <p className="title">{product.productName}</p>

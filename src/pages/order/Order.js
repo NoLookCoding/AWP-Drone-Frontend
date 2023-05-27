@@ -215,7 +215,7 @@ const Order = () => {
 
   useEffect(() => {
     // 첫 번째 페이지 데이터를 가져옵니다.
-    fetchDrones({ cursor: 1, size: 10 });
+    fetchDrones({ cursor: 1, size: 10 })
     fetchAllDrones({ cursor: 1, size: 100 })
     fetchUserInfo()
   }, []);
