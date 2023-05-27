@@ -142,10 +142,14 @@ const DetailDrone = () => {
   const handleAddToCart = async (drone, count) => {
     try {
       // 장바구니 등록 API 요청
-      const response = await api.post(`/carts/${userId}`, {
-        productId: drone.id,
+      const response = await api.post(`/carts`, {
+        productId: drone.productId,
         quantity: count,
         // 필요한 경우 추가 데이터 전송
+      },{
+        headers: {
+          "Origin": "http://localhost:3000",
+        }
       });
   
       if (response.status === 200) {
@@ -230,7 +234,6 @@ const DetailDrone = () => {
               className="buy_btn"
               onClick={() => {
                 handleAddToCart(product, count);
-                alert("장바구니에 상품을 담았습니다.");
               }}
             >
               장바구니 추가
