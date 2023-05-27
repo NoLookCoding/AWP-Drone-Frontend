@@ -55,6 +55,9 @@ const Register = ({ isOpen, onClose })=> {
   const navigate = useNavigate();
 
   const onclickHandler = () => {
+    if(registerSubmit() == false){
+      return false;
+    }
     alert("회원가입이 완료되었습니다!");
     navigate("/login");
   }
@@ -68,6 +71,8 @@ const Register = ({ isOpen, onClose })=> {
   const [phone, setPhone] = React.useState("");
   const [birth, setBirth] = React.useState("");
   const [age, setAge] = React.useState("");
+  const [address, setAddress] = React.useState("");
+  const [gender, setGender] = React.useState("");
 
   // 오류메세지 상태 저장
   const [idMessage, setIdMessage] = React.useState("4-12사이 대소문자 또는 숫자만 입력해 주세요!");
@@ -78,16 +83,22 @@ const Register = ({ isOpen, onClose })=> {
   const [phoneMessage, setPhoneMessage] = React.useState("");
   const [birthMessage, setBirthMessage] = React.useState("");
   const [ageMessage, setAgeMessage] = React.useState("");
+  const [addressMessage, setAddressMessage] = React.useState("");
+  const [genderMessage, setGenderMessage] = React.useState("");
 
+  
   // 유효성 검사
   const [isId, setIsId] = React.useState(false);
-  const [isname, setIsName] = React.useState(false);
+  const [isName, setIsName] = React.useState(false);
   const [isPassword, setIsPassword] = React.useState(false);
   const [isPasswordConfirm, setIsPasswordConfirm] = React.useState(false);
   const [isEmail, setIsEmail] = React.useState(false);
   const [isPhone, setIsPhone] = React.useState(false);
   const [isBirth, setIsBirth] = React.useState(false);
   const [isAge, setIsAge] = React.useState(false);
+  const [isAddress, setIAddress] = React.useState(false);
+  const [isGender, setIsGende] = React.useState(false);
+
 
   const onChangeId = (e) => {
     const currentId = e.target.value;
@@ -162,7 +173,7 @@ const Register = ({ isOpen, onClose })=> {
   const onChangePhone = (getNumber) => {
     const currentPhone = getNumber;
     setPhone(currentPhone);
-    const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+    const phoneRegExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
  
     if (!phoneRegExp.test(currentPhone)) {
       setPhoneMessage("올바른 형식이 아닙니다!");
@@ -176,17 +187,50 @@ const Register = ({ isOpen, onClose })=> {
   const addHyphen = (e) => {
     const currentNumber = e.target.value;
     setPhone(currentNumber);
-    if (currentNumber.length == 3 || currentNumber.length == 8) {
-      setPhone(currentNumber + "-");
-      onChangePhone(currentNumber + "-");
-    } else {
-      onChangePhone(currentNumber);
-    }
   };
  
   const onChangeBirth = (e) => {
     const currentBirth = e.target.value;
     setBirth(currentBirth);
+  };
+
+  const onChangeAddress = (e) => {
+    const currentAddress = e.target.value;
+    setAddress(currentAddress);
+  }
+  const onChangeGender = (e) => {
+    const currentGender = e.target.value;
+    console.log(currentGender);
+    setGender(currentGender);
+  }
+  
+  // 조건 추가해야함
+  function registerSubmit () {
+    if(id == "" || isId == false){
+      alert('아이디를 입력해주세요!');
+      return false;
+    } else if (password == "" || isId == false){
+      alert('비밀번호를 입력해주세요!');
+      return false;
+    } else if(name == "" || isName == false) {
+      alert('이름을 입력해주세요!');
+      return false;
+    } else if(address == "" || isAddress == false){
+      alert('주소를 입력해주세요!');
+      return false;
+    } else if(phone == "" || isPhone == false ){
+      alert('전화번호를 입력해주세요!');
+      return false;
+    // } else if(gender == ""){
+    //   alert('성별을 확인해주세요!');
+    //   return false;
+    } else if(age.value == "" || isAge == false){
+      alert('나이를 입력해주세요!');
+      return false;
+    } else if(email == "" || isEmail == false){
+      alert('이메일을 입력해주세요!');
+      return false;
+    }
   };
   
   // 내가 새로 추가하다가 포기
@@ -221,42 +265,42 @@ const Register = ({ isOpen, onClose })=> {
               <p>{idMessage}</p>
               <div class="input-control">
                 <label for="id" class="input-label" hidden>id</label>
-                <input type="text" name="id" id="id" class="input-field" placeholder="8~20자 영문, 숫자" onChange={onChangeId} required />
+                <input type="text" name="id" id="id" class="input-field" placeholder="8~20자 영문, 숫자" onChange={onChangeId} />
               </div>
               <p>{passwordMessage}</p>
               <div class="input-control">
                 <label for="password" class="input-label" hidden>Password</label>
-                <input type="password" name="password" id="password" class="input-field" placeholder="8~20자 영문, 숫자" onChange={onChangePassword} required/>
+                <input type="password" name="password" id="password" class="input-field" placeholder="8~20자 영문, 숫자" onChange={onChangePassword} />
               </div>
               <div class="input-control">
                 <label for="name" class="input-label" hidden>name</label>
-                <input type="text" name="name" id="name" class="input-field" placeholder="이름" required/>
+                <input type="text" name="name" id="name" class="input-field" placeholder="이름" onChange={onChangeName} /> 
               </div>
               <div class="input-control">
                 <label for="address" class="input-label" hidden>address</label>
-                <input type="addrtextess" name="address" id="address" class="input-field" placeholder="주소" required/>
+                <input type="text" name="address" id="address" class="input-field" placeholder="주소" onChange={onChangeAddress} />
               </div>
               <p>{phoneMessage}</p>
               <div class="input-control">
                 <label for="tel" class="input-label" hidden>tel</label>
-                <input type="tel" name="tel" id="tel" class="input-field" placeholder="전화번호" value={phone} onChange={addHyphen} required/>
+                <input type="text" name="tel" id="tel" class="input-field" placeholder="전화번호" value={phone} onChange={addHyphen} />
               </div>
               <p>{ageMessage}</p>
               <div class="input-control">
                 <label for="age" class="input-label" hidden>age</label>
-                <input type="age" name="age" id="age" class="input-field" placeholder="나이" required/>
+                <input type="age" name="age" id="age" class="input-field" placeholder="나이" />
               </div>
-              <input type='radio' name='gender' value='female' required/> &nbsp; 여성 &nbsp;
-              <input type='radio' name='gender' value='male' />&nbsp; 남성
+              <input type='radio' id="female" name='gender' value='female' checked onChange={onChangeGender} required/>여성 &nbsp;
+              <input type='radio' id="male" name='gender' value='male' onChange={onChangeGender}/>남성
               <div class="input-control">
               </div>
               <p>{emailMessage}</p>
               <div class="input-control">
                 <label for="email" class="input-label" hidden>email</label>
-                <input type="text" name="email" id="email" class="input-field" placeholder="이메일" onChange={onChangeEmail} required/>
+                <input type="text" name="email" id="email" class="input-field" placeholder="이메일" onChange={onChangeEmail} />
               </div>
               <div class="input-control">
-                <button style={{ margin: '0 auto' }} type="button" name="submit" class="input-submit" value="Sign Up" onClick={onclickHandler}>가입하기</button>
+                <input style={{ margin: '0 auto' }} type="submit" name="submit" class="input-submit" value="가입하기" onClick={onclickHandler} />
               </div>
             </form>
           </section>
