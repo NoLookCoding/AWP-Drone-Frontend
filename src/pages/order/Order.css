@@ -111,6 +111,7 @@ ol, ul, li {
     width: 100%;
     height: 100%;
     display: flex;
+    cursor: pointer;
     flex-direction: column; /* 요소를 수직으로 배치 */
     align-items: center; /* 수직으로 정렬 */
     justify-content: center; /* 수평으로 정렬 */
@@ -179,7 +180,7 @@ ol, ul, li {
   }
   
   .order-content-noti ul li span {
-    width: 120px;
+    width: 150px;
     font-family: 'SamsungOne_Bold';
     font-size: 18px;
     font-weight: 800;
@@ -190,6 +191,7 @@ ol, ul, li {
     margin-left: 10px;
     font-family: 'SamsungOne_Regular';
     font-size: 17px;
+    text-align: start;
     white-space: pre-line;
 
   }
@@ -309,9 +311,8 @@ li::marker {
     padding-top: 5%;
   }
   .profile-frame-nav-container {
-    width: 25%;
+    width: 20%;
 
-    height: calc(100vh-100px);
     overflow: auto;
   }
 
@@ -324,8 +325,7 @@ li::marker {
     padding-bottom: 8%;
     padding-left: 10%;
     padding-right: 15%;
-    position:sticky;
-    top:0px;
+    
   }
 
 

@@ -104,7 +104,11 @@ button.buy_btn {
   margin-top: 5px;
   margin-bottom: 30px;
   margin-left: 5px;
-  margin-right: 5px;}
+  margin-right: 5px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;}
 
 button.now_btn {
     z-index: 2;
@@ -129,6 +133,10 @@ button.now_btn {
   margin-bottom: 30px;
   margin-left: 5px;
   margin-right: 5px;
+  -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
 }
 
 button.buy_btn:hover {

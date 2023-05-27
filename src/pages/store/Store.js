@@ -5,8 +5,85 @@ import { reset } from "./StockCountSlice";
 import React, { useState, useEffect } from "react";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { AiOutlineSearch } from "react-icons/ai";
-import axios from 'axios';
 import api from "../../static/api";
+import {userIdState} from "../../static/atoms";
+import { useRecoilValue } from 'recoil';
+
+
+const AddProductModal = ({ isOpen, onClose }) => {
+  const userId = useRecoilValue(userIdState);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+  
+          const addProductResponse = await api.post("/products", {
+            productName: formData.get("name"),
+            productPrice: formData.get("price"),
+            productDescription: formData.get("description"),
+            stockQuantity: formData.get("count"),
+            category: formData.get("category"),
+            hashtags: formData.get("tag"),
+            imgUrl: "http://www.xdrone.co.kr/bizdemo50929/component/board/board_7/u_image/25/1329953711_XD-I8D20BOX.png",
+            // 기타 필요한 주문 정보
+          });
+    alert("등록이 성공적으로 등록되었습니다.");
+    onClose();
+  };
+
+  return (
+    <>
+      {isOpen && (
+        <div className="modal-container-purchase" onClick={onClose}>
+          <div className="modal-content-purchase" onClick={(e) => e.stopPropagation()}>
+            {/* <div className="left-section-purchase">
+              <img src={selectedDrone.imgUrl} alt={selectedDrone.productName} />
+              <p className="h2">{selectedDrone.productName}</p>
+              <p>가격: {selectedDrone.productPrice}원</p>
+            </div> */}
+
+            <div className="right-section-purchase">
+              <p className="h2">등록 상품 정보 입력</p>
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="name">이름</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div>
+                  <label htmlFor="price">가격</label>
+                  <input type="number" id="price" name="price" required />
+                </div>
+                <div>
+                  <label htmlFor="description">상품 소개</label>
+                  <input type="text" id="description" name="description" required />
+                </div>
+                <div>
+                  <label htmlFor="count">수량</label>
+                  <input type="number" id="count" name="count" required />
+                </div>
+                <div>
+                  <label htmlFor="category">카테고리(PERFORMANCE, FILM, DISTRIBUTION, RECONNAISSANCE, ATTACK, MANAGE)</label>
+                  <input type="text" id="category" name="category" required />
+                </div>
+                <div>
+                  <label htmlFor="tag">해시태그</label>
+                  <input type="text" id="tag" name="tag" required />
+                </div>
+                <div>
+                </div>
+                <div className="modal-buttons-purchase">
+                  <button type="submit"  onClick={onClose}>상품 등록</button>
+                  <button type="button" onClick={onClose}>취소</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
 
 const Store = () => {
   const count = useSelector((state) => state.stockCount.count);
@@ -15,21 +92,25 @@ const Store = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-  
+  const userId = useRecoilValue(userIdState);
+
   const fetchDrones = (params) => {
     console.log("dddddd");
 
     setIsLoading(true);
 
     api
-      .get('/products', { params })
+      .get('/products', 
+      { params })
       .then(response => {
         const dronesData = response.data;
-        console.log(JSON.stringify(response.data)+"ddddd");
+        console.log(JSON.stringify(response.data)+"");
 
         // 현재 페이지가 1이면 데이터를 대체하고, 그렇지 않으면 기존 데이터에 추가합니다.
         // setData(prevData => (currentPage === 0 ? dronesData : [...prevData, ...dronesData]));
+        if(response.data.length != 0){
         setData(dronesData)
+        }
         setIsLoading(false);
       })
       .catch(error => {
@@ -102,8 +183,25 @@ const Store = () => {
     setSearchTerm(e.target.value);
   };
 
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div className="store-container">
+                {isModalOpen && (
+        <AddProductModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      )}
       <div className="store-search-container">
         <div className="store-search-frame">
           <div className="store-search-input-frame">
@@ -120,24 +218,31 @@ const Store = () => {
       <div className="store-content-container">
         <div className="store-category">
           <ul className="category-ul">
-            <li className="category-item" onClick={() => handleCategoryClick("산업용 드론")}>
-              산업용 드론
-            </li>
-            <li className="category-item" onClick={() => handleCategoryClick("촬영용 드론")}>
-              촬영용 드론
-            </li>
-            <li className="category-item" onClick={() => handleCategoryClick("공연용 드론")}>
+            <li className="category-item" onClick={() => handleCategoryClick("PERFORMANCE")}>
               공연용 드론
             </li>
-            <li className="category-item" onClick={() => handleCategoryClick("농업용 드론")}>
-              농업용 드론
+            <li className="category-item" onClick={() => handleCategoryClick("FILM")}>
+              촬영용 드론
             </li>
-            <li className="category-item" onClick={() => handleCategoryClick("군사용 드론")} style={{ borderBottom: `2px solid #EFEFEF` }}>
-              군사용 드론
+            <li className="category-item" onClick={() => handleCategoryClick("DISTRIBUTION")}>
+              물류용 드론
             </li>
+            <li className="category-item" onClick={() => handleCategoryClick("RECONNAISSANCE")}>
+              정찰용 드론
+            </li>
+            <li className="category-item" onClick={() => handleCategoryClick("ATTACK")}>
+              공격용 드론
+            </li>
+            <li className="category-item" onClick={() => handleCategoryClick("MANAGE")} >
+              관리용 드론
+            </li>
+            {userId != "admin" && <li className="category-item" onClick={openModal} >
+              상품 등록
+            </li>}
           </ul>
         </div>
         <ul className="ProductList" style={{ paddingInlineStart: `0px` }}>
+          {data.length === 0 && <div className="no-data">검색 결과가 없습니다.</div>}
           {data.map((product) => (
             <Link to={`/store/${product.productId}`} style={{ textDecoration: `none` }} key={product.productId}>
               <div className="product">

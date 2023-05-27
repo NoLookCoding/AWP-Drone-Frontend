@@ -1,8 +1,7 @@
 .membership-member-image {
     display: flex;
     justify-content: center;
-    width: 200px;
-    height: calc(200px);
+    width: 100%;
     background: #FFFFFF;
     background-size: cover;
     background-position: center;
@@ -28,7 +27,7 @@
 
 .membership-member-frame {
     width: 200px;
-    height: 350px;
+    height: 50%;
     background: #efefef;
     background-size: cover;
     background-position: center;
@@ -55,8 +54,8 @@
     font-style: normal;
     font-weight: 800;
     white-space: pre-wrap;
-    font-size: 30px;
-    line-height: 50px;
+    font-size: 24px;
+    line-height: 34px;
 
     color: #000000;
 }
@@ -68,8 +67,8 @@
     font-weight: 400;
     white-space: pre-wrap;
     font-size: 18px;
-    line-height: 20px;
-    margin-top: 5px;
+    line-height: 18px;
+    margin-top: 2px;
     display: flex;
     justify-content: center;
     color: #000000;
@@ -81,7 +80,7 @@
     font-style: normal;
     font-weight: 400;
     white-space: pre-wrap;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 20px;
     margin-top: 10px;
     display: flex;
