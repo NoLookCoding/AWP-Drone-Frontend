@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Order.css";
-import { Link, useNavigate } from "react-router-dom";
-import { drones } from "../../static/drones";
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '../../static/atoms';
+import api from "../../static/api";
 
-const OrderModal = ({ isOpen, onClose, selectedDrone }) => {
+
+const OrderModal = ({ isOpen, onClose, order }) => {
+  const userId = useRecoilValue(userIdState);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here
     // You can access the form input values using event.target.elements
     // For example: const name = event.target.elements.name.value;
     // Close the modal after handling form submission
+    onClose();
+  };
+  // 제품 개수에 따라 표시할 내용 설정
+  let productTitle = order.products[0].productName;
+  if (order.products.length > 1) {
+    productTitle += ` 외 ${order.products.length - 1}건`;
+  }
+  const totalPrice = order.products.reduce((total, item) => total + item.price, 0);
+
+  const handleCancel = () => {
+    // DELETE 요청 보내기
+    api.delete(`/orders/${order.orderId}`)
+      .then(response => {
+        console.log('Order canceled successfully:', response.data);
+        // 취소 성공 시 추가적인 작업을 수행하거나 상태를 업데이트할 수 있습니다.
+      })
+      .catch(error => {
+        console.error('Error canceling order:', error);
+        // 취소 실패 시 에러 처리를 수행할 수 있습니다.
+      });
+  
+    // 모달 닫기
     onClose();
   };
 
@@ -19,42 +45,38 @@ const OrderModal = ({ isOpen, onClose, selectedDrone }) => {
         <div className="modal-container-order" onClick={onClose}>
           <div className="modal-content-order" onClick={(e) => e.stopPropagation()}>
             <div className="left-section-order">
-              <img src={selectedDrone.imageLoc} alt={selectedDrone.name}/>
-              <p className="h2">{selectedDrone.name} 외 2 건</p>
-              <p>총 가격: {selectedDrone.price.toLocaleString("ko-KR")}원</p>
+              {/* <img src={order.products[0].imageLoc} alt={order.products[0].name}/> */}
+              <p className="h2">{productTitle}</p>
+              <p>총 가격: {totalPrice}원</p>
               {/* Display other drone information */}
             </div>
             <div className="right-section-order">
               <p className="h2">구매 및 배송 정보</p>
               <form onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="name">이름</label>
-                  <input type="text" id="name" name="name" value={'이승민'} readOnly />
+                  <label htmlFor="name">주문인</label>
+                  <input type="text" id="name" name="name" value={order.receiver} readOnly />
                 </div>
                 <div>
                   <label htmlFor="address">주소</label>
-                  <input type="text" id="address" name="address" value={'경기도 파주시'} readOnly />
-                </div>
-                <div>
-                  <label htmlFor="phone">전화번호</label>
-                  <input type="text" id="phone" name="phone" value={'010-0000-0000'} readOnly />
+                  <input type="text" id="address" name="address" value={order.address} readOnly />
                 </div>
                 <div>
                   <div className="payment">
-                    <input type="radio" name="pay" value="card" disabled checked/>
-                    <div>간편결제</div> &nbsp;
-                    <input type="radio" name="pay" value="bankbook" disabled/>
-                    <div>무통장임금</div>
+                  <input type="radio" name="pay" value="card" disabled checked={order.requestOption === 'card'} />
+                  <div>간편결제</div> &nbsp;
+                  <input type="radio" name="pay" value="bankbook" disabled checked={order.requestOption === 'paybook'}/>
+                  <div>무통장임금</div>
                   </div>
                 </div>
                 <div className="modal-buttons-order">
-                    {true ?  <button type="submit">
-                        배송중
+                    {userId===-1 ?  <button type="submit">
+                        {order.orderState}
                     </button> : <button type="button" >
                         삭제
                     </button>}
             
-                  <button type="button" onClick={onClose}>
+                  <button type="button" onClick={handleCancel}>
                     취소
                   </button>
                 </div>
@@ -67,32 +89,41 @@ const OrderModal = ({ isOpen, onClose, selectedDrone }) => {
   );
 };
 
-const OrderProcess = (props) => {
+const OrderProcess = ({ title, data, type }) => {
+  const orderCount = data?.filter(order => order.orderState === type).length;
+
   return (
     <div>
-      <strong className="num doubleNum" style={{ color: props.title === "취소" ? "#FF0000" : "" }}>
-        {props.num}
+      <strong className="num doubleNum" style={{ color: title === "취소" ? "#FF0000" : "" }}>
+        {orderCount}
       </strong>
-      <span className="tit">{props.title}</span>
+      <span className="tit">{title}</span>
     </div>
   );
 };
 
 const OrderProduct = ({ product, onClick }) => {
-  // product 객체가 없거나 imageLoc 속성이 없을 경우 처리
   if (!product || !product.imageLoc) {
-    return null; // 또는 기본적인 UI 또는 오류 메시지를 반환할 수 있음
+    return null;
+  }
+
+  const totalPrice = product.products.reduce((total, item) => total + item.price, 0);
+
+  // 제품 개수에 따라 표시할 내용 설정
+  let productTitle = product.products[0].productName;
+  if (product.products.length > 1) {
+    productTitle += ` 외 ${product.products.length - 1}건`;
   }
 
   return (
     <div className="order-product" onClick={() => onClick(product)}>
-      <li className="product-li" key={product.id}>
-        <div className="product-img" style={{ backgroundImage: `url(${product.imageLoc})` }}></div>
+      <li className="product-li" key={product.orderId}>
+        <div className="product-img" style={{ backgroundImage: `url(${product.products[0].imageLoc})` }}></div>
         <div className="order-product-info">
-          <div className="order-product-id">주문번호: 7979</div>
-          <div className="order-product-title">{product.name} 외 2개</div>
-          <div className="order-product-des">총 금액 : {product.price}원</div>
-          <div className="order-product-date">2023년 05월 26일</div>
+          <div className="order-product-id">주문번호: {product.orderUUID}</div>
+          <div className="order-product-title">{productTitle}</div>
+          <div className="order-product-des">총 금액 : {totalPrice}원</div>
+          <div className="order-product-date">{product.createdDate}</div>
         </div>
       </li>
     </div>
@@ -100,24 +131,131 @@ const OrderProduct = ({ product, onClick }) => {
 };
 
 const Order = () => {
+  console.log("call Order");
+
   const [isModalOpen, setModalOpen] = useState(false);
-  const [selectedDrone, setSelectedDrone] = useState(null);
-  const openModal = (drone) => {
-    setSelectedDrone(drone);
-    setModalOpen(true);
+  const [selectedOrder, setSelectedOrder] = useState({});
+  const userId = useRecoilValue(userIdState);
+
+  const openModal = (orderId) => {
+    api.get(`/orders/${userId}/${orderId}`)
+      .then(response => {
+        setSelectedOrder(response.data);
+        setModalOpen(true);
+      })
+      .catch(error => {
+        console.error('Error retrieving order details:', error);
+      });
   };
 
   const closeModal = () => {
     setModalOpen(false);
   };
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
+  const [state, setState] = useState(false);
+
+  const [userInfo, setUserInfo] = useState({});
+
+
+
+  const fetchDrones = (params) => {
+    console.log("call fetch drones");
+
+    setIsLoading(true);
+
+    api
+      .get(`/orders/${userId}`, { params })
+      .then(response => {
+        const dronesData = response.data;
+        console.log(dronesData);
+
+        // 현재 페이지가 1이면 데이터를 대체하고, 그렇지 않으면 기존 데이터에 추가합니다.
+        setData(prevData => (currentPage === 1 ? dronesData : [...prevData, ...dronesData]));
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('드론 정보를 가져오는 중 에러가 발생했습니다:', error);
+        setIsLoading(false);
+      });
+  };
+
+  const fetchUserInfo = () => {
+    console.log("Call user info");
+
+    api
+      .get(`/users/user-profile`)
+      .then(response => {  
+        setUserInfo(response.data);
+      })
+      .catch(error => {
+        console.error('회원 정보를 가져오는 중 에러가 발생했습니다:', error);
+      });
+  };
+
+  const fetchAllDrones = (params) => {
+    console.log("Call all");
+
+    api
+      .get(`/orders/${userId}`, { params })
+      .then(response => {
+        const dronesData = response.data;
+        console.log(dronesData+"all");
+
+        // 현재 페이지가 1이면 데이터를 대체하고, 그렇지 않으면 기존 데이터에 추가합니다.
+        setAllData(dronesData);
+      })
+      .catch(error => {
+        console.error('드론 정보를 가져오는 중 에러가 발생했습니다:', error);
+      });
+  };
+
+  useEffect(() => {
+    // 첫 번째 페이지 데이터를 가져옵니다.
+    fetchDrones({ cursor: 1, size: 10 });
+    fetchAllDrones({ cursor: 1, size: 100 })
+    fetchUserInfo()
+  }, []);
+
+  const handleScroll = () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const isAtBottom = scrollTop + windowHeight === documentHeight;
+
+    if (isAtBottom && !isLoading) {
+      // 다음 페이지를 가져오기 위해 요청 매개변수 설정
+      const params = {
+        cursor: currentPage + 1,
+        size: 10,
+        filter: state,
+      };
+
+      fetchDrones(params);
+      setCurrentPage(prevPage => prevPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [currentPage, state]);
+
+
   return (
     //전체 페이지를 감싸는 컨테이너
     <div className="order-container">
-      {isModalOpen && <OrderModal isOpen={isModalOpen} onClose={closeModal} selectedDrone={selectedDrone} />}
+      {isModalOpen && <OrderModal isOpen={isModalOpen} onClose={closeModal} selectedOrder={selectedOrder} />}
+      <div className="profile-frame-nav-container">
       <nav className="profile-frame-nav">
         <div className="profile-frame">
-          <span style={{}}>안녕하세요,</span>
+          <span style={{fontSize: `18px`}}>안녕하세요,</span>
           <span style={{ fontSize: `22px`, fontWeight: `800` }}>이승민 고객님</span>
           <br />
           <div>
@@ -138,11 +276,12 @@ const Order = () => {
           </div>
 
           <div>
-            <span>이메일</span>
-            <span>1109min@gmail.com</span>
+            <span>이메일: 1109min@gmail.com</span>
+            {/* <span>1109min@gmail.com</span> */}
           </div>
         </div>
       </nav>
+      </div>
       <div className="order-frame">
         <br />
         <div className="order-title-frame">주문/배송 조회</div>
@@ -151,34 +290,38 @@ const Order = () => {
           <div className="order-process circle-steps">
             <ul>
               <li>
-                <OrderProcess num={"0"} title={"주문완료"} />
+                <OrderProcess title={"주문완료"} data={allData} type={"PAID"} onClick={()=>setState(true)}/>
               </li>
               <li>
-                <OrderProcess num={"1"} title={"배송 준비중"} />
+                <OrderProcess title={"배송 준비중"} data={allData} type={"READY"} onClick={()=>setState(true)}/>
               </li>
               <li>
-                <OrderProcess num={"0"} title={"배송중"} />
+                <OrderProcess title={"배송중"} data={allData} type={"DELIVERING"} onClick={()=>setState(true)}/>
               </li>
               <li>
-                <OrderProcess num={"0"} title={"배송완료"} />
+                <OrderProcess title={"배송완료"} data={allData} type={"RECEIVED"} onClick={()=>setState(false)}/>
               </li>
               <li>
-                <OrderProcess num={"0"} title={"취소"} />
+                <OrderProcess title={"취소"} data={allData} type={"CANCEL"} onClick={()=>setState(false)}/>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="order-content-frame">
-          <h3 style={{ fontFamily: `SamsungOne_Bold`, fontWeight: `800`, fontSize: `20px`, marginBottom: `14px` }}>
+          <h3 style={{ fontFamily: `SamsungOne_Bold`, fontWeight: `800`, fontSize: `24px`, marginBottom: `14px` }}>
             주문 내역
           </h3>
           <div className="order-content-ordered-list-contents">
-            <ul>
-              {drones.map((product) => (
-                <OrderProduct product={product} onClick={openModal} />
-              ))}
-            </ul>
+            {data && data.length > 0 ? (
+              <ul>
+                {data.map((product) => (
+                  <OrderProduct product={product} onClick={() => openModal(product.orderId)} />
+                ))}
+              </ul>
+            ) : (
+              <div style={{padding:`5%`, marginBottom:`4%`, fontFamily:`SamsungOne_Bold`, fontSize:`17px`, fontWeight:`700`}}> 주문/배송 내역이 없습니다.</div>
+            )}
           </div>
         </div>
 

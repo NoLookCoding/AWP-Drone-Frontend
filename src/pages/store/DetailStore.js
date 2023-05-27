@@ -1,20 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { increment, decrement } from "./StockCountSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./DetailStore.css";
 import "./PurchaseModal.css";
 
-import { drones } from "../../static/drones";
 import { addCount, addToCart } from "../cart/cartSlice";
+import api from "../../static/api";
+import { useRecoilValue } from 'recoil';
+import { userIdState } from "../../static/atoms";
 
 const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
-  const handleSubmit = (event) => {
+  const userId = useRecoilValue(userIdState);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission logic here
-    // You can access the form input values using event.target.elements
-    // For example: const name = event.target.elements.name.value;
-    // Close the modal after handling form submission
+    const form = event.target;
+    const formData = new FormData(form);
+  
+    try {
+      // 재고 검증 API 요청
+      const stockValidationResponse = await api.post(`/products/${selectedDrone.productId}/stock-quantity/validate`, {
+        inputStockQuantity: selectedDrone.stockQuantity,
+      });
+      console.log(stockValidationResponse+"??");
+  
+      if (stockValidationResponse.status === 200) {
+        // 재고 검증 성공
+        const isStockAvailable = stockValidationResponse.data.isStockAvailable;
+  
+        if (isStockAvailable) {
+          // 재고가 있는 경우, 주문 등록 API 요청
+          const orderResponse = await api.post("/orders/direct", {
+            productId: selectedDrone.id,
+            quantity: selectedDrone.count,
+            userId: userId,
+            receiver: formData.get("name"),
+            address: formData.get("address"),
+            phoneNumber: formData.get("phone"),
+            requestOption: formData.get("payment"),
+            // 기타 필요한 주문 정보
+          });
+  
+          if (orderResponse.status === 200) {
+            // 주문 등록 성공
+            console.log("주문이 성공적으로 등록되었습니다.");
+            // 추가적인 처리 로직 작성
+          } else {
+            // 주문 등록 실패
+            console.log("주문 등록에 실패했습니다.");
+            // 추가적인 처리 로직 작성
+          }
+        } else {
+          // 재고가 없는 경우
+          console.log("재고가 부족합니다.");
+          // 추가적인 처리 로직 작성
+        }
+      } else {
+        // 재고 검증 실패
+        console.log("재고 검증에 실패했습니다.");
+        // 추가적인 처리 로직 작성
+      }
+    } catch (error) {
+      console.error("주문 등록 중 오류가 발생했습니다:", error);
+      // 추가적인 처리 로직 작성
+    }
+  
     onClose();
   };
 
@@ -24,9 +75,9 @@ const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
         <div className="modal-container-purchase" onClick={onClose}>
           <div className="modal-content-purchase" onClick={(e) => e.stopPropagation()}>
             <div className="left-section-purchase">
-              <img src={selectedDrone.imageLoc} alt={selectedDrone.name} />
-              <p className="h2">{selectedDrone.name}</p>
-              <p>가격: {selectedDrone.price.toLocaleString("ko-KR")}원</p>
+              <img src={selectedDrone.imgURL} alt={selectedDrone.productName} />
+              <p className="h2">{selectedDrone.productName}</p>
+              <p>가격: {selectedDrone.productPrice}원</p>
               {/* Display other drone information */}
             </div>
             <div className="right-section-purchase">
@@ -46,17 +97,15 @@ const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
                 </div>
                 <div>
                     <div className="payment">
-                    <input type='radio' name='gender' value='female' required/> 
+                    <input type='radio' name='payment' value='card' required/> 
                         <div>간편결제</div> &nbsp;
-                    <input type='radio' name='gender' value='male' />
-                        <div>무통장임금</div>
+                    <input type='radio' name='payment' value='paybook' />
+                        <div>무통장입금</div>
               </div>
                 </div>
                 <div className="modal-buttons-purchase">
                   <button type="submit"  onClick={onClose}>구매 완료</button>
-                  <button type="button" onClick={onClose}>
-                    취소
-                  </button>
+                  <button type="button" onClick={onClose}>취소</button>
                 </div>
               </form>
             </div>
@@ -69,15 +118,53 @@ const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
 
 const DetailDrone = () => {
   const { productId } = useParams();
-  const product = drones[parseInt(productId - 1)]; // 데이터 리스트에서 path로 가져온 상품 ID에 대한 상품 객체 가져오기
+  const [product, setProduct] = useState(null);
   const count = useSelector((state) => state.stockCount.count);
-  const [totalPrice, setTotalPrice] = useState(product.price);
-  const dispatch = useDispatch();
-  const handleAddToCart = (drone, count) => {
-    dispatch(addCount(count));
-    dispatch(addToCart(drone));
-  };
+  const [totalPrice, setTotalPrice] = useState(null);
+  const userId = useRecoilValue(userIdState);
 
+  useEffect(() => {
+    const fetchDrone = async () => {
+      try {
+        const response = await api.get(`products/${productId}`);
+        const drone = response.data;
+        setProduct(drone);
+        setTotalPrice(drone.productPrice);
+      } catch (error) {
+        console.error('드론 정보를 가져오는 중 에러가 발생했습니다:', error);
+      }
+    };
+
+    fetchDrone();
+  }, [productId]);
+
+  const dispatch = useDispatch();
+  const handleAddToCart = async (drone, count) => {
+    try {
+      // 장바구니 등록 API 요청
+      const response = await api.post(`/carts/${userId}`, {
+        productId: drone.id,
+        quantity: count,
+        // 필요한 경우 추가 데이터 전송
+      });
+  
+      if (response.status === 200) {
+        // 장바구니 등록 성공
+        console.log('장바구니에 상품이 성공적으로 추가되었습니다.');
+        // 추가적인 처리 로직 작성
+      } else {
+        // 장바구니 등록 실패
+        console.log('장바구니 등록에 실패했습니다.');
+        // 추가적인 처리 로직 작성
+      }
+    } catch (error) {
+      console.error('장바구니 등록 중 오류가 발생했습니다:', error);
+      // 추가적인 처리 로직 작성
+    }
+  
+    alert('장바구니에 상품을 담았습니다.');
+  };
+  
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedDrone, setSelectedDrone] = useState(null);
 
@@ -90,22 +177,26 @@ const DetailDrone = () => {
     setModalOpen(false);
   };
 
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="entire">
       <div className="scaffold_img">
-        <img src={product.imageLoc} alt={product.name} />
+        <img src={product.imgURL} alt={product.productName} />
       </div>
       <div className="scaffold" id="contents">
-          <p className="title">{product.name}</p>
+          <p className="title">{product.productName}</p>
           <span className="hashTags">
-            {product.hashTags.map((h) => (
+            {product.hashtags.map((h) => (
               <span>#{h} </span>
             ))}
           </span>
           <br />
-          <p className="description">{product.description}</p>
+          <p className="description">{product.productDescription}</p>
           <br />
-          <p className="price">{product.price.toLocaleString("ko-KR")}원</p>
+          <p className="price">{product.productPrice}원</p>
           <div className="quantity">
             <div>
               <button
@@ -113,7 +204,7 @@ const DetailDrone = () => {
                 onClick={() => {
                   if (count > 1) {
                     dispatch(decrement());
-                    setTotalPrice(totalPrice - product.price);
+                    setTotalPrice(totalPrice - product.productPrice);
                   }
                 }}
               >
@@ -126,7 +217,7 @@ const DetailDrone = () => {
                 className="btn_background"
                 onClick={() => {
                   dispatch(increment());
-                  setTotalPrice(totalPrice + parseInt(product.price));
+                  setTotalPrice(totalPrice + parseInt(product.productPrice));
                 }}
               >
                 ▶

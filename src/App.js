@@ -17,6 +17,9 @@ import Register from "./pages/register/Register"
 import Find from "./pages/find/Find"
 import Order from "./pages/order/Order"
 
+import { RecoilRoot } from 'recoil';
+
+
 const images = [
   'https://cdn.imweb.me/upload/S201909210d30ce4a5f5d4/e19cbc5494c57.gif',
 'https://cdn.pixabay.com/photo/2016/11/29/02/59/drone-1866961_1280.jpg', 
@@ -27,28 +30,27 @@ const images = [
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index element={<Home images={images} />} />
-          <Route path="introduce" element={<Introduce />} />
-          <Route path="store" element={<Store />} />
-          <Route path="store/:productId" element={<DetailDrone />} />
-          <Route path="user" element={<UserInfo />} />
-          <Route path="usage" element={<Usage />} />
-          <Route path="membership" element={<Member />} />
-          <Route path="cart" element={<ShoppingCartPage />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="order" element={<Order />} />
-          <Route path="*" element={<NoPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/find" element={<Find />} />
-        </Route>
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <RecoilRoot>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route index element={<Home images={images} />} />
+            <Route path="introduce" element={<Introduce />} />
+            <Route path="store" element={<Store />} />
+            <Route path="store/:productId" element={<DetailDrone />} />
+            <Route path="user" element={<UserInfo />} />
+            <Route path="usage" element={<Usage />} />
+            <Route path="membership" element={<Member />} />
+            <Route path="cart" element={<ShoppingCartPage />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="order" element={<Order />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
 
