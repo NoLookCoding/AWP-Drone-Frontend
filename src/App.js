@@ -14,6 +14,7 @@ import Member from './pages/membership/Membership';
 import ShoppingCartPage from "./pages/cart/ShoppingCartPage";
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
+import Find from "./pages/find/Find"
 import Order from "./pages/order/Order"
 
 import { RecoilRoot } from 'recoil';

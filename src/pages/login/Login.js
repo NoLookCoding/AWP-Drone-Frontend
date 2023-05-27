@@ -15,7 +15,7 @@ const Login = ({ isOpen, onClose })=> {
     
     const baseUrl = "http://localhost:8081";
 
-    const [name, setName] = useState();
+    const [id, setId] = useState();
     const [password, setPassword] = useState();
 
     const [isRegisterOpen, setRegisterOpen] = useState(false);
@@ -39,18 +39,18 @@ const Login = ({ isOpen, onClose })=> {
 
     async function getUser() {
         await axios
-            .get(baseUrl + "/")
+            .get(baseUrl + "/users/login")
             .then((response) => {
                 console.log(response.data);
-                setName(response.data.name);
+                setId(response.data.id);
                 setPassword(response.data.password);
             });
 
     }
 
-    const handleChange_username = (e) => {
+    const handleChange_userid = (e) => {
         e.preventDefault();
-        setName(e.target.value);
+        setId(e.target.value);
     }
 
     const handleChange_password = (e) => {
@@ -61,8 +61,8 @@ const Login = ({ isOpen, onClose })=> {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await axios
-            .post(baseUrl + "/api/member", {
-                name: name,
+            .post(baseUrl + "/users/login", {
+                id: id,
                 password: password
             }).then((response) => {
                 console.log(response.data);
@@ -87,19 +87,19 @@ const Login = ({ isOpen, onClose })=> {
                             <h1 className="text text-large" onClick={onClose} style={{textAlign:'center'}}>로그인</h1>
                             <br></br>
                             <br></br>
-                            <p className="text text-normal">아직 가입을 안하셨나요? <span><span className="text text-links" style={{ marginLeft: 123, fontWeight: 900 }} onClick={handleOpenRegister}>회원가입</span></span></p>
+                            <p className="text text-normal">아직 가입을 안하셨나요? <span><span className="text text-links" style={{ cursor:'pointer', marginLeft: 119, fontWeight: 900 }} onClick={handleOpenRegister}>회원가입</span></span></p>
                         </div>
                         <form name="signin" className="form" onSubmit={handleSubmit}>
                             <div className="input-control">
                                 <label for="id" className="input-label" hidden>id</label>
-                                <input type="id" name="id" id="id" className="input-field" placeholder="Id" required/>
+                                <input type="id" name="id" id="id" className="input-field" placeholder="Id" value={id} onChange={handleChange_userid} required/>
                             </div>
                             <div className="input-control">
                                 <label for="password" className="input-label" hidden>Password</label>
-                                <input type="password" name="password" id="password" className="input-field" placeholder="Password" required/>
+                                <input type="password" name="password" id="password" className="input-field" placeholder="Password" value={password} onChange={handleChange_password} required/>
                             </div>
                             <div className="input-control">
-                                <a href="findUser" className="text text-links" style={{ fontWeight: 900 }}>아이디/비밀번호 찾기</a>
+                                <a href="find" className="text text-links" style={{ fontWeight: 900 }}>아이디/비밀번호 찾기</a>
                                 <input type="submit" name="submit" className="input-submit" value="로그인" />
                             </div>
                         </form>
