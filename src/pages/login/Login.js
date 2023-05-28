@@ -9,6 +9,8 @@ import Find from '../find/Find'
 import api from '../../static/api';
 import React, { Component } from 'react';
 import cookie from 'react-cookies';
+import { userIdState, userIdxState } from '../../static/atoms';
+import { useRecoilState } from 'recoil';
 
 const Div = styled.div`
  margin: 1em;
@@ -19,6 +21,9 @@ const Login = ({ isOpen, onClose }) => {
 
     const [id, setId] = useState();
     const [password, setPassword] = useState();
+
+    const [userIdx, setUserIdx] = useRecoilState(userIdxState);
+
 
     const [isRegisterOpen, setRegisterOpen] = useState(false);
     const openRegister = () => {
@@ -88,36 +93,24 @@ const Login = ({ isOpen, onClose }) => {
     //             console.log(error);
     //         });
     // }
-
     const handleLogin = () => {
-        // POST 요청 보내기
+        //POST 요청 보내기
+        api
+        .post(`/users/login`, {
+        userId: id,
+        userPassword: password,
+        }
+        )
+        .then(response => {
+            console.log(response.data.userIdx+"Dddd"); // 응답 상태 코드 출력
+            setUserIdx(response.data.userIdx); // Update the userIdx state
+        
+      });
 
-        api.post(`/users/login`, {
-            withCredentials: true,
-            userId: id,
-            userPassword: password,
-        })
-            .then(response => {
-                console.log('Login successfully :', response.headers['Set-Cookie']);
-                console.log(response.data);
-                cookie.save('Set-Cookie','JSESSIONID=e0f26c28-254e-4d6a-88c6-e7b05a399114', {
-                    path : '/',
-                });
-
-                const cookies = response.headers.get('Set-Cookie');
-                document.cookie = cookies;
-                console.log(cookie.load('Set-Cookie'));
-                // response.headers['set-cookie']
-                // 취소 성공 시 추가적인 작업을 수행하거나 상태를 업데이트할 수 있습니다.
-            })
-            .catch(error => {
-                console.error('Error :', error);
-                // 취소 실패 시 에러 처리를 수행할 수 있습니다.
-            });
-        alert("로그인이 완료되었습니다!");
-        // 모달 닫기
+        alert('로그인이 완료되었습니다!');
         onClose();
-    };
+      };
+      
 
     return (
         <>
