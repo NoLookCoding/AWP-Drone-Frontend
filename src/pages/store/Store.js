@@ -10,7 +10,7 @@ import {userIdxState} from "../../static/atoms";
 import { useRecoilValue } from 'recoil';
 
 
-const AddProductModal = ({ isOpen, onClose }) => {
+const AddProductModal = ({ isOpen, onClose ,fetchDrones }) => {
   const userIdx = useRecoilValue(userIdxState);
 
   const handleSubmit = async (event) => {
@@ -24,12 +24,14 @@ const AddProductModal = ({ isOpen, onClose }) => {
             productDescription: formData.get("description"),
             stockQuantity: formData.get("count"),
             category: formData.get("category"),
-            hashtags: formData.get("tag"),
+            hashtags: [formData.get("tag")],
             imgUrl: "http://www.xdrone.co.kr/bizdemo50929/component/board/board_7/u_image/25/1329953711_XD-I8D20BOX.png",
             // 기타 필요한 주문 정보
           });
     alert("등록이 성공적으로 등록되었습니다.");
+    fetchDrones();
     onClose();
+
   };
 
   return (
@@ -208,6 +210,14 @@ const Store = () => {
         <AddProductModal
           isOpen={isModalOpen}
           onClose={closeModal}
+          fetchDrones = {fetchDrones({
+            cursor: 0,
+            size: 10,
+            sort: 'CHRONOLOGICAL',
+            search: null,
+            filter: null,
+            hashtag: null,
+          })}
         />
       )}
       <div className="store-search-container">
