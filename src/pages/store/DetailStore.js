@@ -8,10 +8,10 @@ import "./PurchaseModal.css";
 import { addCount, addToCart } from "../cart/cartSlice";
 import api from "../../static/api";
 import { useRecoilValue } from 'recoil';
-import { userIdState } from "../../static/atoms";
+import { userIdxState } from "../../static/atoms";
 
 const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
-  const userId = useRecoilValue(userIdState);
+  const userIdx = useRecoilValue(userIdxState);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -29,12 +29,12 @@ const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
         // 재고 검증 성공
         const isStockAvailable = stockValidationResponse.data.isStockAvailable;
   
-        if (isStockAvailable) {
+        if (stockValidationResponse.status === 200) {
           // 재고가 있는 경우, 주문 등록 API 요청
           const orderResponse = await api.post("/orders/direct", {
-            productId: selectedDrone.id,
+            productId: selectedDrone.productId,
             quantity: selectedDrone.count,
-            userId: userId,
+            userId: userIdx,
             receiver: formData.get("name"),
             address: formData.get("address"),
             phoneNumber: formData.get("phone"),
@@ -104,7 +104,7 @@ const PurchaseModal = ({ isOpen, onClose, selectedDrone }) => {
               </div>
                 </div>
                 <div className="modal-buttons-purchase">
-                  <button type="submit"  onClick={onClose}>구매 완료</button>
+                  <button type="submit">구매 완료</button>
                   <button type="button" onClick={onClose}>취소</button>
                 </div>
               </form>
@@ -121,7 +121,7 @@ const DetailDrone = () => {
   const [product, setProduct] = useState(null);
   const count = useSelector((state) => state.stockCount.count);
   const [totalPrice, setTotalPrice] = useState(null);
-  const userId = useRecoilValue(userIdState);
+  const userIdx = useRecoilValue(userIdxState);
 
   useEffect(() => {
     const fetchDrone = async () => {
@@ -142,7 +142,7 @@ const DetailDrone = () => {
   const handleAddToCart = async (drone, count) => {
     try {
       // 장바구니 등록 API 요청
-      const response = await api.post(`/carts`, {
+      const response = await api.post(`/carts/${userIdx}`, {
         productId: drone.productId,
         quantity: count,
         // 필요한 경우 추가 데이터 전송

@@ -5,7 +5,8 @@ import {FaRegUser} from "react-icons/fa"
 import React, { useState, useEffect } from 'react';
 import Login from './login/Login'
 import Register from './register/Register'
-
+import { userIdxState, adminState  } from '../static/atoms';
+import { useRecoilValue } from 'recoil';
 
 
 
@@ -32,7 +33,12 @@ const Dropdown = props => {
     )
 };
 
+
 const Header = () => {
+    const [currentUserIdx, setCurrentUserIdx] = useState(null);
+
+    const userIdx = useRecoilValue(userIdxState);
+    const admin = useRecoilValue(adminState);
 
     // Modal
     const [isLoginOpen, setLoginOpen] = useState(false);
@@ -54,7 +60,10 @@ const Header = () => {
     const closeRegister = () => {
         setRegisterOpen(false);
     };
-
+    useEffect(() => {
+        setCurrentUserIdx(userIdx);
+      }, [userIdx]);
+    
     const [dropdownVisibility, setDropdownVisibility] = React.useState(false);
     const [isDimmed, setIsDimmed] = React.useState(false);
     const [isBrightening, setIsBrightening] = useState(false);
@@ -127,9 +136,10 @@ const Header = () => {
                                 멤버십
                             </button>
                         </Link>
+                        {userIdx != 0 &&
                         <Link to = "/cart">
                             <AiOutlineShoppingCart className="header-nav-button-icon"/>
-                        </Link> 
+                        </Link> }
                         <button className="header-nav-button-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                             <FaRegUser className="header-nav-button-icon" style={{ width: 20 }} />
                         </button>
@@ -138,15 +148,12 @@ const Header = () => {
                 </div>
                 <div className="dropdown-container" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
                 <Dropdown visibility={dropdownVisibility}>
-                    <ul>
-                          <li className="dropdown-list-item" onClick={openLogin}>로그인</li>
-                          <li className="dropdown-list-item" onClick={openRegister}>회원가입</li>
-                        <Link to = "/order" style={{ textDecoration: "none" }} onClick={handleMouseLeave}>
+                    <ul>    
+                        {userIdx == 0 && <li className="dropdown-list-item" onClick={openLogin}>로그인</li>}
+                        {userIdx == 0 && <li className="dropdown-list-item" onClick={openRegister}>회원가입</li>}
+                        {userIdx != 0 &&<Link to = "/order" style={{ textDecoration: "none" }} onClick={handleMouseLeave}>
                           <li className="dropdown-list-item">주문조회</li>
-                        </Link>
-                        <Link to = "/order" style={{ textDecoration: "none" }} onClick={handleMouseLeave}>
-                          <li className="dropdown-list-item">배송조회</li>
-                        </Link>                    
+                        </Link>}
                     </ul>
                 </Dropdown>    
                 </div>

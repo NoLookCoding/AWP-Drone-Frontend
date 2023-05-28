@@ -6,12 +6,12 @@ import React, { useState, useEffect } from "react";
 import { BsArrowUpRightCircleFill } from "react-icons/bs";
 import { AiOutlineSearch } from "react-icons/ai";
 import api from "../../static/api";
-import {userIdState} from "../../static/atoms";
+import {userIdxState} from "../../static/atoms";
 import { useRecoilValue } from 'recoil';
 
 
-const AddProductModal = ({ isOpen, onClose }) => {
-  const userId = useRecoilValue(userIdState);
+const AddProductModal = ({ isOpen, onClose ,fetchDrones }) => {
+  const userIdx = useRecoilValue(userIdxState);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,19 +24,21 @@ const AddProductModal = ({ isOpen, onClose }) => {
             productDescription: formData.get("description"),
             stockQuantity: formData.get("count"),
             category: formData.get("category"),
-            hashtags: formData.get("tag"),
+            hashtags: [formData.get("tag")],
             imgUrl: "http://www.xdrone.co.kr/bizdemo50929/component/board/board_7/u_image/25/1329953711_XD-I8D20BOX.png",
             // 기타 필요한 주문 정보
           });
     alert("등록이 성공적으로 등록되었습니다.");
+    fetchDrones();
     onClose();
+
   };
 
   return (
     <>
       {isOpen && (
         <div className="modal-container-purchase" onClick={onClose}>
-          <div className="modal-content-purchase" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content-purchase" style={{width:`60%`}} onClick={(e) => e.stopPropagation()}>
             {/* <div className="left-section-purchase">
               <img src={selectedDrone.imgUrl} alt={selectedDrone.productName} />
               <p className="h2">{selectedDrone.productName}</p>
@@ -73,7 +75,7 @@ const AddProductModal = ({ isOpen, onClose }) => {
                 <div>
                 </div>
                 <div className="modal-buttons-purchase">
-                  <button type="submit"  onClick={onClose}>상품 등록</button>
+                  <button type="submit" >상품 등록</button>
                   <button type="button" onClick={onClose}>취소</button>
                 </div>
               </form>
@@ -92,7 +94,7 @@ const Store = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-  const userId = useRecoilValue(userIdState);
+  const userIdx = useRecoilValue(userIdxState);
 
   const fetchDrones = (params) => {
     console.log("dddddd");
@@ -110,6 +112,7 @@ const Store = () => {
         // setData(prevData => (currentPage === 0 ? dronesData : [...prevData, ...dronesData]));
         if(response.data.length != 0){
         setData(dronesData)
+        console.log("dd");
         }
         setIsLoading(false);
       })
@@ -163,19 +166,26 @@ const Store = () => {
   const handleCategoryClick = (category) => {
     setCategory(category);
     setCurrentPage(0);
-    setData([]);
+    fetchDrones({
+      cursor: 0,
+      size: 10,
+      sort: 'CHRONOLOGICAL',
+      search: null,
+      filter: category,
+      hashtag: null,
+    });
   };
 
   const handleSearch = () => {
-    setCurrentPage(1);
-    setData([]);
+    
+    setCurrentPage(0);
     fetchDrones({
       cursor: 0,
       size: 10,
       sort: 'CHRONOLOGICAL',
       search: searchTerm,
-      filter: category,
-      hashtag: '',
+      filter: null,
+      hashtag: null,
     });
   };
 
@@ -236,7 +246,7 @@ const Store = () => {
             <li className="category-item" onClick={() => handleCategoryClick("MANAGE")} >
               관리용 드론
             </li>
-            {userId != "admin" && <li className="category-item" onClick={openModal} >
+            {userIdx == 1 && <li className="category-item" onClick={openModal} >
               상품 등록
             </li>}
           </ul>

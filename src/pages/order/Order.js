@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Order.css";
 import { useRecoilValue } from 'recoil';
-import { userIdState } from '../../static/atoms';
+import { userIdxState, adminState } from '../../static/atoms';
 import api from "../../static/api";
 
 
 const OrderModal = ({ isOpen, onClose, order }) => {
-  const userId = useRecoilValue(userIdState);
+  const userIdx = useRecoilValue(userIdxState);
+  const admin = useRecoilValue(adminState);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,13 +17,17 @@ const OrderModal = ({ isOpen, onClose, order }) => {
     // Close the modal after handling form submission
     onClose();
   };
+  console.log(order);
   // 제품 개수에 따라 표시할 내용 설정
-  let productTitle = order.products[0].productName;
-  if (order.products.length > 1) {
-    productTitle += ` 외 ${order.products.length - 1}건`;
+  let productTitle = order.orderedProducts[0].productName;
+  if (order.orderedProducts.length > 1) {
+    productTitle += ` 외 ${order.orderedProducts.length - 1}건`;
   }
-  const totalPrice = order.products.reduce((total, item) => total + item.price, 0);
+  let totalPrice = 0;
 
+  for (let i = 0; i < order.orderedProducts.length; i++) {
+    totalPrice += order.orderedProducts[i].price;
+  }
   const handleCancel = () => {
     // DELETE 요청 보내기
     api.delete(`/orders/${order.orderId}`)
@@ -70,7 +75,7 @@ const OrderModal = ({ isOpen, onClose, order }) => {
                   </div>
                 </div>
                 <div className="modal-buttons-order">
-                    {userId===-1 ?  <button type="submit">
+                    {userIdx===admin ?  <button type="submit">
                         {order.orderState}
                     </button> : <button type="button" >
                         삭제
@@ -103,11 +108,13 @@ const OrderProcess = ({ title, data, type }) => {
 };
 
 const OrderProduct = ({ product, onClick }) => {
-  if (!product || !product.imageLoc) {
-    return null;
-  }
 
-  const totalPrice = product.products.reduce((total, item) => total + item.price, 0);
+
+  let totalPrice = 0;
+
+  for (let i = 0; i < product.products.length; i++) {
+    totalPrice += product.products[i].productPrice;
+  }
 
   // 제품 개수에 따라 표시할 내용 설정
   let productTitle = product.products[0].productName;
@@ -115,15 +122,17 @@ const OrderProduct = ({ product, onClick }) => {
     productTitle += ` 외 ${product.products.length - 1}건`;
   }
 
+  const date = product.createdDate.split("T")[0];
+
   return (
     <div className="order-product" onClick={() => onClick(product)}>
       <li className="product-li" key={product.orderId}>
-        <div className="product-img" style={{ backgroundImage: `url(${product.products[0].imageLoc})` }}></div>
+        <div className="product-img" style={{ backgroundImage: `url(${product.products[0].imgUrl})` }}></div>
         <div className="order-product-info">
           <div className="order-product-id">주문번호: {product.orderUUID}</div>
           <div className="order-product-title">{productTitle}</div>
           <div className="order-product-des">총 금액 : {totalPrice}원</div>
-          <div className="order-product-date">{product.createdDate}</div>
+          <div className="order-product-date">{date}</div>
         </div>
       </li>
     </div>
@@ -131,16 +140,17 @@ const OrderProduct = ({ product, onClick }) => {
 };
 
 const Order = () => {
-  console.log("call Order");
 
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState({});
-  const userId = useRecoilValue(userIdState);
+  const userIdx = useRecoilValue(userIdxState);
+  
 
   const openModal = (orderId) => {
-    api.get(`/orders/${userId}/${orderId}`)
+    api.get(`/orders/user/${orderId}`)
       .then(response => {
         setSelectedOrder(response.data);
+        console.log(response.data);
         setModalOpen(true);
       })
       .catch(error => {
@@ -168,13 +178,14 @@ const Order = () => {
     setIsLoading(true);
 
     api
-      .get(`/orders/${userId}`, { params })
+      .get(`/orders/${userIdx}`, { params })
       .then(response => {
         const dronesData = response.data;
-        console.log(dronesData);
+
+        setData(dronesData);
 
         // 현재 페이지가 1이면 데이터를 대체하고, 그렇지 않으면 기존 데이터에 추가합니다.
-        setData(prevData => (currentPage === 1 ? dronesData : [...prevData, ...dronesData]));
+        // setData(prevData => (currentPage === 1 ? dronesData : [...prevData, ...dronesData]));
         setIsLoading(false);
       })
       .catch(error => {
@@ -187,7 +198,7 @@ const Order = () => {
     console.log("Call user info");
 
     api
-      .get(`/users/user-profile`)
+      .get(`/users/${userIdx}`)
       .then(response => {  
         setUserInfo(response.data);
       })
@@ -200,7 +211,7 @@ const Order = () => {
     console.log("Call all");
 
     api
-      .get(`/orders/${userId}`, { params })
+      .get(`/orders/${userIdx}`, { params })
       .then(response => {
         const dronesData = response.data;
         console.log(dronesData+"all");
@@ -215,8 +226,8 @@ const Order = () => {
 
   useEffect(() => {
     // 첫 번째 페이지 데이터를 가져옵니다.
-    fetchDrones({ cursor: 1, size: 10 })
-    fetchAllDrones({ cursor: 1, size: 100 })
+    fetchDrones({ cursor: 0, size: 10 })
+    fetchAllDrones({ cursor: 0, size: 10 })
     fetchUserInfo()
   }, []);
 
@@ -251,32 +262,32 @@ const Order = () => {
   return (
     //전체 페이지를 감싸는 컨테이너
     <div className="order-container">
-      {isModalOpen && <OrderModal isOpen={isModalOpen} onClose={closeModal} selectedOrder={selectedOrder} />}
+      {isModalOpen && <OrderModal isOpen={isModalOpen} onClose={closeModal} order={selectedOrder} />}
       <div className="profile-frame-nav-container">
       <nav className="profile-frame-nav">
         <div className="profile-frame">
           <span style={{fontSize: `18px`}}>안녕하세요,</span>
-          <span style={{ fontSize: `22px`, fontWeight: `800` }}>이승민 고객님</span>
+          <span style={{ fontSize: `22px`, fontWeight: `800` }}>{userInfo.name} 고객님</span>
           <br />
           <div>
-            <span>ID: Logan</span>
+            <span>ID: {userInfo.userId}</span>
           </div>
 
           <div>
-            <span>24 / 남</span>
+            <span> {userInfo.age} / {userInfo.sex}</span>
           </div>
 
           <div>
             <span>전화번호</span>
-            <span>010-0000-0000</span>
+            <span>{userInfo.phones}</span>
           </div>
 
           <div>
-            <span>주소: 경기도 파주시</span>
+            <span>주소: {userInfo.address}</span>
           </div>
 
           <div>
-            <span>이메일: 1109min@gmail.com</span>
+            <span>이메일: {userInfo.email}</span>
             {/* <span>1109min@gmail.com</span> */}
           </div>
         </div>
