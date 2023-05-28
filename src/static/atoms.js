@@ -12,7 +12,7 @@ export const userNameState = atom({
 
 export const userIdxState = atom({
     key: 'userIdx',
-    default: 0,
+    default: 1,
 });
 
 export const adminState = atom({

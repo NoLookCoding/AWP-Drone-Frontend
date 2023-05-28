@@ -17,13 +17,17 @@ const OrderModal = ({ isOpen, onClose, order }) => {
     // Close the modal after handling form submission
     onClose();
   };
+  console.log(order);
   // 제품 개수에 따라 표시할 내용 설정
-  let productTitle = order.products[0].productName;
-  if (order.products.length > 1) {
-    productTitle += ` 외 ${order.products.length - 1}건`;
+  let productTitle = order.orderedProducts[0].productName;
+  if (order.orderedProducts.length > 1) {
+    productTitle += ` 외 ${order.orderedProducts.length - 1}건`;
   }
-  const totalPrice = order.products.reduce((total, item) => total + item.price, 0);
+  let totalPrice = 0;
 
+  for (let i = 0; i < order.orderedProducts.length; i++) {
+    totalPrice += order.orderedProducts[i].price;
+  }
   const handleCancel = () => {
     // DELETE 요청 보내기
     api.delete(`/orders/${order.orderId}`)
@@ -143,9 +147,10 @@ const Order = () => {
   
 
   const openModal = (orderId) => {
-    api.get(`/orders/${userIdx}/${orderId}`)
+    api.get(`/orders/user/${orderId}`)
       .then(response => {
         setSelectedOrder(response.data);
+        console.log(response.data);
         setModalOpen(true);
       })
       .catch(error => {
@@ -257,7 +262,7 @@ const Order = () => {
   return (
     //전체 페이지를 감싸는 컨테이너
     <div className="order-container">
-      {isModalOpen && <OrderModal isOpen={isModalOpen} onClose={closeModal} selectedOrder={selectedOrder} />}
+      {isModalOpen && <OrderModal isOpen={isModalOpen} onClose={closeModal} order={selectedOrder} />}
       <div className="profile-frame-nav-container">
       <nav className="profile-frame-nav">
         <div className="profile-frame">

@@ -210,14 +210,6 @@ const Store = () => {
         <AddProductModal
           isOpen={isModalOpen}
           onClose={closeModal}
-          fetchDrones = {fetchDrones({
-            cursor: 0,
-            size: 10,
-            sort: 'CHRONOLOGICAL',
-            search: null,
-            filter: null,
-            hashtag: null,
-          })}
         />
       )}
       <div className="store-search-container">
